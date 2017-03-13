@@ -8,7 +8,7 @@ subtitle: 微笑，简单，奋发
 description: 安静地做一只攻城狮。
 author: VeiZhang
 language: zh-Hans
-timezone:
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
