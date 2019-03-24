@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<!-- modify by zhangwei -->
+<!-- 百度站长 -->
+<meta name="baidu-site-verification" content="MdPKZBgY0U" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="8DKRuNxJDPU2k6cNyVhLe_eSqGk-R8oiYk8iKMg5gwI" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/uploads/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,selector," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="班德尔城" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="selector中文的意思选择器，在Android中常常用来作组件的背景，这样做的好处是省去了用代码控制实现组件在不同状态下不同的背景颜色或图片的变换。使用十分方便。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android青铜篇-selector">
+<meta property="og:url" content="http://tiimor.cn/Android青铜篇-selector/index.html">
+<meta property="og:site_name" content="班德尔城">
+<meta property="og:description" content="selector中文的意思选择器，在Android中常常用来作组件的背景，这样做的好处是省去了用代码控制实现组件在不同状态下不同的背景颜色或图片的变换。使用十分方便。">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/%E5%94%AF%E7%BE%8E%E7%AF%87%EF%BC%8D%E6%AF%8F%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E4%BA%BA%EF%BC%8C%E9%83%BD%E4%BC%9A%E6%9C%89%E4%B8%80%E6%AE%B5%E9%BB%98%E9%BB%98%E5%A5%8B%E6%96%97%E7%9A%84%E5%AD%A4%E7%8B%AC%E6%9C%9F.jpg">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/Color-Selector.gif">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/Drawable-Selector.gif">
+<meta property="og:updated_time" content="2019-03-17T06:47:42.372Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android青铜篇-selector">
+<meta name="twitter:description" content="selector中文的意思选择器，在Android中常常用来作组件的背景，这样做的好处是省去了用代码控制实现组件在不同状态下不同的背景颜色或图片的变换。使用十分方便。">
+<meta name="twitter:image" content="http://cdn.tiimor.cn/images/%E5%94%AF%E7%BE%8E%E7%AF%87%EF%BC%8D%E6%AF%8F%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E4%BA%BA%EF%BC%8C%E9%83%BD%E4%BC%9A%E6%9C%89%E4%B8%80%E6%AE%B5%E9%BB%98%E9%BB%98%E5%A5%8B%E6%96%97%E7%9A%84%E5%AD%A4%E7%8B%AC%E6%9C%9F.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'EJ36R2M952',
+      apiKey: 'f14ef41ccc238f9d187b5defa630aa77',
+      indexName: 'tiimor',
+      hits: {"per_page":8},
+      labels: {"input_placeholder":"搜索","hits_empty":"未发现与「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://tiimor.cn/Android青铜篇-selector/"/>
+
+
+
+
+
+  <title>Android青铜篇-selector | 班德尔城</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-96457043-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?abb97f8f68c9e5eb2217d3111c64e696";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+  <!-- modify by zhangwei -->
+  <!-- 下雪的动画 -->
+  <div class="canvas-snow">
+    <canvas id="canvas" style="margin: 0;  padding: 0;top:0; left: 0; right: 0; background: transparent; position: absolute;" width="1366" height="105"></canvas>
+      <script>
+
+      var canvasBgImg = {
+        start: function () {
+          this.canvas = document.getElementById('canvas')
+          this.ctx = this.canvas.getContext("2d")
+          this.canvas.width = window.innerWidth
+          this.canvas.height = 105
+          this.starList = []
+        },
+        drawLine: function (ctx, x1, y1, x2, y2) {
+          ctx.beginPath()
+          ctx.strokeStyle = '#ffffff'
+          ctx.lineTo(x1, y1)
+          ctx.lineTo(x2, y2)
+          ctx.stroke()
+        },
+        canvasSingleSnow: function (snowSize) {
+          var singleSnow = document.createElement('canvas'),
+            ctxSingle = singleSnow.getContext('2d')
+          singleSnow.setAttribute('width', snowSize * 2)
+          singleSnow.setAttribute('height', snowSize * 2)
+          for (var i = 0; i < 6; i++) {
+            ctxSingle.save()
+            ctxSingle.translate(snowSize, snowSize)
+            ctxSingle.rotate(Math.PI * 2 * i / 6)
+            this.drawLine(ctxSingle, 0, 0, snowSize, 0)
+            ctxSingle.restore()
+          }
+          return singleSnow
+        },
+        canvasAllSnow: function (centerSnow) {
+          var canvasSnow = document.createElement('canvas'),
+            ctxSnow = canvasSnow.getContext('2d'),
+            bigSnow = this.canvasSingleSnow(centerSnow),
+            smallSnow = this.canvasSingleSnow(centerSnow / 3),
+            sizeSnow = centerSnow * 3 / 5,
+            rSnow = centerSnow - sizeSnow / 2
+          canvasSnow.setAttribute('width', centerSnow * 2)
+          canvasSnow.setAttribute('height', centerSnow * 2)
+          ctxSnow.drawImage(bigSnow, 0, 0, bigSnow.width, bigSnow.height, 0, 0, centerSnow * 2, centerSnow * 2)
+          for (var i = 0; i < 6; i++) {
+            ctxSnow.save()
+            ctxSnow.translate(centerSnow, centerSnow)
+            ctxSnow.rotate(Math.PI * 2 * i / 6)
+            ctxSnow.drawImage(smallSnow, 0, 0, smallSnow.width, smallSnow.height, rSnow - sizeSnow / 2,
+              -sizeSnow / 2, sizeSnow, sizeSnow)
+            ctxSnow.restore()
+          }
+          return canvasSnow
+        },
+        init: function () {
+          this.start()
+          for (var i = 0; i < 75; i++) {
+            this.starList.push({
+              drawFunc: this.canvasAllSnow(15),
+              width: Math.random() * this.canvas.width,
+              height: Math.random() * this.canvas.height,
+              speed: Math.random() * 1.5 + .5,
+              scale: Math.random() * 12 + 5,
+              angel: 0
+            })
+          }
+          var self = this,
+            loop = function () {
+              self.ctx.clearRect(0, 0, self.canvas.width, self.canvas.width)
+              for (var i = 0; i < 75; i++) {
+                self.ctx.save()
+                self.starList[i].height = self.starList[i].height + self.starList[i].speed
+                self.starList[i].angel += 2
+                self.ctx.translate(self.starList[i].width, self.starList[i].height)
+                self.ctx.rotate(self.starList[i].angel * Math.PI / 360)
+                self.ctx.translate(-self.starList[i].width, -self.starList[i].height)
+                self.ctx.drawImage(self.starList[i].drawFunc, 0, 0,
+                  self.starList[i].drawFunc.width, self.starList[i].drawFunc.height,
+                  self.starList[i].width - self.starList[i].scale / 2,
+                  self.starList[i].height - self.starList[i].scale / 2,
+                  self.starList[i].scale, self.starList[i].scale)
+                if (self.starList[i].height > self.canvas.height) {
+                  self.starList[i] = Object.assign(self.starList[i], {
+                    height: -self.starList[i].scale,
+                    width: Math.random() * this.canvas.width
+                  })
+                }
+                self.ctx.restore()
+              }
+              requestAnimationFrame(loop)
+            }
+          requestAnimationFrame(loop)
+        }
+      }
+      canvasBgImg.init()
+      </script>
+
+    </div>
+
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <!-- modify by zhangwei -->
+        <!-- 圣诞帽 -->
+        <img src="uploads/santa-hat.png" id="santa" style="height: 41px; position: absolute; left: -40px; top: -20px; transform: rotate(-45deg); z-index: 9000;">
+
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">班德尔城</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">微笑，简单，奋发</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-send"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-favourite">
+          <a href="/favourite" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bookmark"></i> <br />
+            
+            收藏
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tiimor.cn/Android青铜篇-selector/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tiimor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="班德尔城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android青铜篇-selector</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-11T16:06:20+08:00">
+                2017-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android联盟/" itemprop="url" rel="index">
+                    <span itemprop="name">Android联盟</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Android青铜篇-selector/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/Android青铜篇-selector/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/Android青铜篇-selector/" class="leancloud_visitors" data-flag-title="Android青铜篇-selector">
+               <span class="post-meta-divider">|</span>
+               <!-- modify by zhangwei -->
+               <!-- 去掉阅读的眼睛图标，阅读次数改为℃ -->
+			   
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://cdn.tiimor.cn/images/%E5%94%AF%E7%BE%8E%E7%AF%87%EF%BC%8D%E6%AF%8F%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E4%BA%BA%EF%BC%8C%E9%83%BD%E4%BC%9A%E6%9C%89%E4%B8%80%E6%AE%B5%E9%BB%98%E9%BB%98%E5%A5%8B%E6%96%97%E7%9A%84%E5%AD%A4%E7%8B%AC%E6%9C%9F.jpg" alt="Android" title="每个优秀的人，都会有一段默默奋斗的孤独期"></p>
+<p>selector中文的意思选择器，在Android中常常用来作组件的背景，这样做的好处是省去了用代码控制实现组件在不同状态下不同的背景颜色或图片的变换。使用十分方便。</p>
+<a id="more"></a>
+<h1 id="selector的定义"><a href="#selector的定义" class="headerlink" title="selector的定义"></a>selector的定义</h1><p>selector就是状态列表（StateList），可以添加一个或多个item子标签，而相应的状态是在item标签中定义的。定义的xml文件可以作为两种资源使用：drawable和color。作为drawable资源使用时，一般和shape一样放于drawable目录下，item必须指定android:drawable属性；作为color资源使用时，则可以放于drawable目录下，也可放于color目录下，item必须指定android:color属性。</p>
+<p><strong>设置状态：</strong></p>
+<ul>
+<li>android:state_enabled: 设置触摸或点击事件是否可用状态，一般只在false时设置该属性，表示不可用状态</li>
+<li>android:state_pressed: 设置是否按压状态，一般在true时设置该属性，表示已按压状态，默认为false</li>
+<li>android:state_selected: 设置是否选中状态，true表示已选中，false表示未选中</li>
+<li>android:state_checked: 设置是否勾选状态，主要用于CheckBox和RadioButton，true表示已被勾选，false表示未被勾选</li>
+<li>android:state_checkable: 设置勾选是否可用状态，类似state_enabled，只是state_enabled会影响触摸或点击事件，而state_checkable影响勾选事件</li>
+<li>android:state_focused: 设置是否获得焦点状态，true表示获得焦点，默认为false，表示未获得焦点</li>
+<li>android:state_window_focused: 设置当前窗口是否获得焦点状态，true表示获得焦点，false表示未获得焦点，例如拉下通知栏或弹出对话框时，当前界面就会失去焦点；另外，ListView的ListItem获得焦点时也会触发true状态，可以理解为当前窗口就是ListItem本身</li>
+<li>android:state_activated: 设置是否被激活状态，true表示被激活，false表示未激活，API Level 11及以上才支持，可通过代码调用控件的setActivated(boolean)方法设置是否激活该控件</li>
+<li>android:state_hovered: 设置是否鼠标在上面滑动的状态，true表示鼠标在上面滑动，默认为false，API Level 14及以上才支持</li>
+</ul>
+<h1 id="Color-Selector"><a href="#Color-Selector" class="headerlink" title="Color-Selector"></a>Color-Selector</h1><p>color-selector 就是颜色状态列表，可以跟color一样使用，颜色会随着组件的状态而改变。</p>
+<h2 id="Color-Selector语法"><a href="#Color-Selector语法" class="headerlink" title="Color-Selector语法"></a>Color-Selector语法</h2><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?</span>xml <span class="built_in">version</span>=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></div><div class="line">&lt;selector xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span> &gt;</div><div class="line">    &lt;<span class="keyword">item</span></div><div class="line">        android:color=<span class="string">"color"</span>               		<span class="comment">	// 颜色值，#RGB,$ARGB,#RRGGBB,#AARRGGBB</span></div><div class="line">        android:state_pressed=[<span class="string">"true"</span> | <span class="string">"false"</span>]	<span class="comment">	// 是否触摸 </span></div><div class="line">        android:state_focused=[<span class="string">"true"</span> | <span class="string">"false"</span>]	<span class="comment">	// 是否获得焦点</span></div><div class="line">        android:state_selected=[<span class="string">"true"</span> | <span class="string">"false"</span>]	<span class="comment">	// 是否被状态</span></div><div class="line">        android:state_checkable=[<span class="string">"true"</span> | <span class="string">"false"</span>]	<span class="comment">	// 是否可选</span></div><div class="line">        android:state_checked=[<span class="string">"true"</span> | <span class="string">"false"</span>]	<span class="comment">	// 是否选中</span></div><div class="line">        android:state_enabled=[<span class="string">"true"</span> | <span class="string">"false"</span>]	<span class="comment">	// 是否可用</span></div><div class="line">        android:state_window_focused=[<span class="string">"true"</span> | <span class="string">"false"</span>] /&gt;<span class="comment">	// 是否窗口聚焦</span></div><div class="line">&lt;/selector&gt;</div></pre></td></tr></table></figure>
+<h2 id="Color-Selector示例"><a href="#Color-Selector示例" class="headerlink" title="Color-Selector示例"></a>Color-Selector示例</h2><ul>
+<li><p>在res/drawable/目录下新建文件color_selector.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">selector</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_pressed</span>=<span class="string">"true"</span></span></div><div class="line">          <span class="attr">android:color</span>=<span class="string">"#ffff0000"</span>/&gt; <span class="comment">&lt;!-- 按压时 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_focused</span>=<span class="string">"true"</span></span></div><div class="line">          <span class="attr">android:color</span>=<span class="string">"#ff0000ff"</span>/&gt; <span class="comment">&lt;!-- 有焦点时 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:color</span>=<span class="string">"#ff000000"</span>/&gt;</span> <span class="comment">&lt;!-- 默认时 --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">selector</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>xml布局调用</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;Button</div><div class="line">        android:id=<span class="string">"@+id/bt_about"</span></div><div class="line">        style=<span class="string">"@style/Button_style"</span></div><div class="line">        android:layout_width=<span class="string">"250dp"</span></div><div class="line">        android:layout_height=<span class="string">"50dp"</span></div><div class="line">        android:layout_margin=<span class="string">"5dp"</span></div><div class="line">        android:textColor=<span class="string">"@drawable/color_selector"</span></div><div class="line">        android:text=<span class="string">"@string/about"</span> /&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>效果<br><img src="http://cdn.tiimor.cn/images/Color-Selector.gif" alt="Color-Selector" title="Color-Selector"></p>
+</li>
+</ul>
+<h1 id="Drawable-Selector"><a href="#Drawable-Selector" class="headerlink" title="Drawable-Selector"></a>Drawable-Selector</h1><p>drawable-selector 是背景图状态列表，可以跟图片一样使用，背景会根据组件的状态变化而变化。</p>
+<h2 id="Drawable-Selector语法"><a href="#Drawable-Selector语法" class="headerlink" title="Drawable-Selector语法"></a>Drawable-Selector语法</h2><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?</span>xml <span class="built_in">version</span>=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></div><div class="line">&lt;selector xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    android:constantSize=[<span class="string">"true"</span> | <span class="string">"false"</span>]		<span class="comment">	// drawable的大小是否当中状态变化，true表示是变化，false表示不变换，默认为false</span></div><div class="line">    android:dither=[<span class="string">"true"</span> | <span class="string">"false"</span>]			<span class="comment">	// 当位图与屏幕的像素配置不一样时(例如，一个ARGB为8888的位图与RGB为555的屏幕)会自行递色(dither)。设置为false时不可递色。默认true</span></div><div class="line">    android:variablePadding=[<span class="string">"true"</span> | <span class="string">"false"</span>] &gt;	<span class="comment">	// 内边距是否变化，默认false</span></div><div class="line">    &lt;<span class="keyword">item</span></div><div class="line">        android:drawable=<span class="string">"drawable"</span>			<span class="comment">	//图片资源</span></div><div class="line">        android:state_pressed=[<span class="string">"true"</span> | <span class="string">"false"</span>]	<span class="comment">	// 是否触摸</span></div><div class="line">        android:state_focused=[<span class="string">"true"</span> | <span class="string">"false"</span>]	<span class="comment">	// 是否获取到焦点</span></div><div class="line">        android:state_hovered=[<span class="string">"true"</span> | <span class="string">"false"</span>]	<span class="comment">	// 光标是否经过</span></div><div class="line">        android:state_selected=[<span class="string">"true"</span> | <span class="string">"false"</span>]	<span class="comment">	// 是否选中</span></div><div class="line">        android:state_checkable=[<span class="string">"true"</span> | <span class="string">"false"</span>]	<span class="comment">	// 是否可勾选</span></div><div class="line">        android:state_checked=[<span class="string">"true"</span> | <span class="string">"false"</span>]	<span class="comment">	// 是否勾选</span></div><div class="line">        android:state_enabled=[<span class="string">"true"</span> | <span class="string">"false"</span>]	<span class="comment">	// 是否可用</span></div><div class="line">        android:state_activated=[<span class="string">"true"</span> | <span class="string">"false"</span>]	<span class="comment">	// 是否激活</span></div><div class="line">        android:state_window_focused=[<span class="string">"true"</span> | <span class="string">"false"</span>] /&gt;<span class="comment">	// 所在窗口是否获取焦点</span></div><div class="line">&lt;/selector&gt;</div></pre></td></tr></table></figure>
+<h2 id="Drawable-Selector示例"><a href="#Drawable-Selector示例" class="headerlink" title="Drawable-Selector示例"></a>Drawable-Selector示例</h2><ul>
+<li><p>在res/drawable/目录下新建文件drawable_selector.xml</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?</span>xml <span class="built_in">version</span>=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></div><div class="line">&lt;selector xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</div><div class="line">    &lt;<span class="keyword">item</span> android:state_selected=<span class="string">"true"</span> android:drawable=<span class="string">"@drawable/button_bg_press"</span> /&gt;<span class="comment">	// 选中时</span></div><div class="line">    &lt;<span class="keyword">item</span> android:state_focused=<span class="string">"true"</span> android:drawable=<span class="string">"@drawable/button_bg_press"</span> /&gt;<span class="comment">	// 有焦点时</span></div><div class="line">    &lt;<span class="keyword">item</span> android:state_pressed=<span class="string">"true"</span> android:drawable=<span class="string">"@drawable/button_bg_press"</span>  /&gt;<span class="comment">	// 按压时</span></div><div class="line">    &lt;<span class="keyword">item</span> android:drawable=<span class="string">"@drawable/button_bg_normol"</span>  /&gt;</div><div class="line">&lt;/selector&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>xml布局调用</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;Button</div><div class="line">       android:id=<span class="string">"@+id/bt_about"</span></div><div class="line">       style=<span class="string">"@style/Button_style"</span></div><div class="line">       android:background=<span class="string">"@drawable/drawable_selector"</span></div><div class="line">       android:layout_width=<span class="string">"250dp"</span></div><div class="line">       android:layout_height=<span class="string">"50dp"</span></div><div class="line">       android:layout_margin=<span class="string">"5dp"</span></div><div class="line">       android:text=<span class="string">"@string/about"</span> /&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>效果<br><img src="http://cdn.tiimor.cn/images/Drawable-Selector.gif" alt="Drawable-Selector" title="Drawable-Selector"></p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢老板，请尽情用红包来蹂躏我吧！！！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechatpay.jpg" alt="Tiimor 微信打赏"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay.jpg" alt="Tiimor 支付宝打赏"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <!-- modify by zhangwei -->
+            <!-- 文章底部标签图标 -->
+            <a href="/tags/Android/" rel="tag"><i class="menu-item-icon fa fa-tag fa-fw"></i>Android</a>
+          
+            <!-- modify by zhangwei -->
+            <!-- 文章底部标签图标 -->
+            <a href="/tags/selector/" rel="tag"><i class="menu-item-icon fa fa-tag fa-fw"></i>selector</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android青铜篇-layer-list/" rel="next" title="Android青铜篇-layer-list">
+                <i class="fa fa-chevron-left"></i> Android青铜篇-layer-list
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android黄金篇-SQLite数据库/" rel="prev" title="Android黄金篇-SQLite数据库">
+                Android黄金篇-SQLite数据库 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="Tiimor" />
+            
+              <p class="site-author-name" itemprop="name">Tiimor</p>
+              <p class="site-description motion-element" itemprop="description">安静地做一只攻城狮。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/VeiZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.weibo.com/tiimor" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/589972d0570c3500624fd791" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-anchor"></i>掘金</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.jianshu.com/u/93b886580243" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-book"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://wpa.qq.com/msgrd?v=3&uin=690393541&site=qq&menu=yes" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:tiimor@qq.com" target="_blank" title="邮箱">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>邮箱</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#selector的定义"><span class="nav-number">1.</span> <span class="nav-text">selector的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Color-Selector"><span class="nav-number">2.</span> <span class="nav-text">Color-Selector</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Color-Selector语法"><span class="nav-number">2.1.</span> <span class="nav-text">Color-Selector语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Color-Selector示例"><span class="nav-number">2.2.</span> <span class="nav-text">Color-Selector示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Drawable-Selector"><span class="nav-number">3.</span> <span class="nav-text">Drawable-Selector</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Drawable-Selector语法"><span class="nav-number">3.1.</span> <span class="nav-text">Drawable-Selector语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Drawable-Selector示例"><span class="nav-number">3.2.</span> <span class="nav-text">Drawable-Selector示例</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tiimor</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <!-- modify by zhangwei -->
+  <!-- 修改不蒜子统计脚本 -->
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+<script>
+  	var _mtac = {};
+  	(function() {
+  		var mta = document.createElement("script");
+  		mta.src = "https://pingjs.qq.com/h5/stats.js?v2.0.4";
+  		mta.setAttribute("name", "MTAH5");
+  		mta.setAttribute("sid", "500425805");
+
+  		var s = document.getElementsByTagName("script")[0];
+  		s.parentNode.insertBefore(mta, s);
+  	})();
+</script>
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=61441764";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            <!-- modify by zhangwei -->
+            <!-- 修复gitment评论页初始化错误@tiimor -->
+            id: '1497168380000', 
+            owner: 'VeiZhang',
+            repo: 'veizhang.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '9919bc61413a89ea3eb156910d282e3103093e32',
+            
+                client_id: 'f08924ca58e61d6f51f4'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("7aBs9I9Y3PjoN6ueX5J3AYQW-gzGzoHsz", "kboycyzaPNAYcUW8AkF3edeW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <!-- modify by zhangwei -->
+  <!-- 动态时间小人 -->
+  <!-- modify by zhangwei -->
+<!-- 动态时间小人 -->
+<!-- z-index -1 表示在最底层，不能悬浮也不能点击 -->
+<!-- z-index auto 可以点击 -->
+<!-- z-index 9999 无限大时，总是在最上层，会影响其他悬浮框 -->
+<div id="dg" style="z-index: auto; position: fixed ! important; right: 0px; top: 0px;">  
+    <table width=""100% style="position: absolute; width:260px; right: 0px; top: 0px;">  
+		<div>
+			<embed wmode="transparent" src="http://cdn.tiimor.cn/images/dynamic_time.swf" quality="high" bgcolor="#ffffff" width="160" height="70" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+		</div>
+    </table>  
+</div>
+  
+</body>
+</html>

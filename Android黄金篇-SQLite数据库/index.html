@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<!-- modify by zhangwei -->
+<!-- 百度站长 -->
+<meta name="baidu-site-verification" content="MdPKZBgY0U" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="8DKRuNxJDPU2k6cNyVhLe_eSqGk-R8oiYk8iKMg5gwI" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/uploads/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,SQLite," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="班德尔城" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Android SQLite，是一款轻量级的关系型数据库。在很多嵌入式设备都用来存储数据。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android黄金篇-SQLite数据库">
+<meta property="og:url" content="http://tiimor.cn/Android黄金篇-SQLite数据库/index.html">
+<meta property="og:site_name" content="班德尔城">
+<meta property="og:description" content="Android SQLite，是一款轻量级的关系型数据库。在很多嵌入式设备都用来存储数据。">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/sqlite.jpg">
+<meta property="og:updated_time" content="2019-03-17T06:47:42.375Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android黄金篇-SQLite数据库">
+<meta name="twitter:description" content="Android SQLite，是一款轻量级的关系型数据库。在很多嵌入式设备都用来存储数据。">
+<meta name="twitter:image" content="http://cdn.tiimor.cn/images/sqlite.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'EJ36R2M952',
+      apiKey: 'f14ef41ccc238f9d187b5defa630aa77',
+      indexName: 'tiimor',
+      hits: {"per_page":8},
+      labels: {"input_placeholder":"搜索","hits_empty":"未发现与「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://tiimor.cn/Android黄金篇-SQLite数据库/"/>
+
+
+
+
+
+  <title>Android黄金篇-SQLite数据库 | 班德尔城</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-96457043-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?abb97f8f68c9e5eb2217d3111c64e696";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+  <!-- modify by zhangwei -->
+  <!-- 下雪的动画 -->
+  <div class="canvas-snow">
+    <canvas id="canvas" style="margin: 0;  padding: 0;top:0; left: 0; right: 0; background: transparent; position: absolute;" width="1366" height="105"></canvas>
+      <script>
+
+      var canvasBgImg = {
+        start: function () {
+          this.canvas = document.getElementById('canvas')
+          this.ctx = this.canvas.getContext("2d")
+          this.canvas.width = window.innerWidth
+          this.canvas.height = 105
+          this.starList = []
+        },
+        drawLine: function (ctx, x1, y1, x2, y2) {
+          ctx.beginPath()
+          ctx.strokeStyle = '#ffffff'
+          ctx.lineTo(x1, y1)
+          ctx.lineTo(x2, y2)
+          ctx.stroke()
+        },
+        canvasSingleSnow: function (snowSize) {
+          var singleSnow = document.createElement('canvas'),
+            ctxSingle = singleSnow.getContext('2d')
+          singleSnow.setAttribute('width', snowSize * 2)
+          singleSnow.setAttribute('height', snowSize * 2)
+          for (var i = 0; i < 6; i++) {
+            ctxSingle.save()
+            ctxSingle.translate(snowSize, snowSize)
+            ctxSingle.rotate(Math.PI * 2 * i / 6)
+            this.drawLine(ctxSingle, 0, 0, snowSize, 0)
+            ctxSingle.restore()
+          }
+          return singleSnow
+        },
+        canvasAllSnow: function (centerSnow) {
+          var canvasSnow = document.createElement('canvas'),
+            ctxSnow = canvasSnow.getContext('2d'),
+            bigSnow = this.canvasSingleSnow(centerSnow),
+            smallSnow = this.canvasSingleSnow(centerSnow / 3),
+            sizeSnow = centerSnow * 3 / 5,
+            rSnow = centerSnow - sizeSnow / 2
+          canvasSnow.setAttribute('width', centerSnow * 2)
+          canvasSnow.setAttribute('height', centerSnow * 2)
+          ctxSnow.drawImage(bigSnow, 0, 0, bigSnow.width, bigSnow.height, 0, 0, centerSnow * 2, centerSnow * 2)
+          for (var i = 0; i < 6; i++) {
+            ctxSnow.save()
+            ctxSnow.translate(centerSnow, centerSnow)
+            ctxSnow.rotate(Math.PI * 2 * i / 6)
+            ctxSnow.drawImage(smallSnow, 0, 0, smallSnow.width, smallSnow.height, rSnow - sizeSnow / 2,
+              -sizeSnow / 2, sizeSnow, sizeSnow)
+            ctxSnow.restore()
+          }
+          return canvasSnow
+        },
+        init: function () {
+          this.start()
+          for (var i = 0; i < 75; i++) {
+            this.starList.push({
+              drawFunc: this.canvasAllSnow(15),
+              width: Math.random() * this.canvas.width,
+              height: Math.random() * this.canvas.height,
+              speed: Math.random() * 1.5 + .5,
+              scale: Math.random() * 12 + 5,
+              angel: 0
+            })
+          }
+          var self = this,
+            loop = function () {
+              self.ctx.clearRect(0, 0, self.canvas.width, self.canvas.width)
+              for (var i = 0; i < 75; i++) {
+                self.ctx.save()
+                self.starList[i].height = self.starList[i].height + self.starList[i].speed
+                self.starList[i].angel += 2
+                self.ctx.translate(self.starList[i].width, self.starList[i].height)
+                self.ctx.rotate(self.starList[i].angel * Math.PI / 360)
+                self.ctx.translate(-self.starList[i].width, -self.starList[i].height)
+                self.ctx.drawImage(self.starList[i].drawFunc, 0, 0,
+                  self.starList[i].drawFunc.width, self.starList[i].drawFunc.height,
+                  self.starList[i].width - self.starList[i].scale / 2,
+                  self.starList[i].height - self.starList[i].scale / 2,
+                  self.starList[i].scale, self.starList[i].scale)
+                if (self.starList[i].height > self.canvas.height) {
+                  self.starList[i] = Object.assign(self.starList[i], {
+                    height: -self.starList[i].scale,
+                    width: Math.random() * this.canvas.width
+                  })
+                }
+                self.ctx.restore()
+              }
+              requestAnimationFrame(loop)
+            }
+          requestAnimationFrame(loop)
+        }
+      }
+      canvasBgImg.init()
+      </script>
+
+    </div>
+
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <!-- modify by zhangwei -->
+        <!-- 圣诞帽 -->
+        <img src="uploads/santa-hat.png" id="santa" style="height: 41px; position: absolute; left: -40px; top: -20px; transform: rotate(-45deg); z-index: 9000;">
+
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">班德尔城</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">微笑，简单，奋发</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-send"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-favourite">
+          <a href="/favourite" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bookmark"></i> <br />
+            
+            收藏
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tiimor.cn/Android黄金篇-SQLite数据库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tiimor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="班德尔城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android黄金篇-SQLite数据库</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-18T15:41:14+08:00">
+                2017-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android联盟/" itemprop="url" rel="index">
+                    <span itemprop="name">Android联盟</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Android黄金篇-SQLite数据库/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/Android黄金篇-SQLite数据库/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/Android黄金篇-SQLite数据库/" class="leancloud_visitors" data-flag-title="Android黄金篇-SQLite数据库">
+               <span class="post-meta-divider">|</span>
+               <!-- modify by zhangwei -->
+               <!-- 去掉阅读的眼睛图标，阅读次数改为℃ -->
+			   
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://cdn.tiimor.cn/images/sqlite.jpg" alt="SQLite"></p>
+<p>Android SQLite，是一款轻量级的关系型数据库。在很多嵌入式设备都用来存储数据。</p>
+<a id="more"></a>
+<h1 id="SQLite介绍"><a href="#SQLite介绍" class="headerlink" title="SQLite介绍"></a>SQLite介绍</h1><p>SQLite是一款轻量级的关系型数据库，它的运算速度非常快，占用资源很少，通常只需要几百K的内存就足够了，因而特别适合在移动设备上使用。</p>
+<h1 id="SQLite特点"><a href="#SQLite特点" class="headerlink" title="SQLite特点"></a>SQLite特点</h1><ul>
+<li>轻量级<br>  使用 SQLite 只需要带一个动态库，就可以享受它的全部功能，而且那个动态库的尺寸想当小。</li>
+<li>独立性<br>  SQLite 数据库的核心引擎不需要依赖第三方软件，也不需要所谓的“安装”。</li>
+<li>隔离性<br>  SQLite 数据库中所有的信息（比如表、视图、触发器等）都包含在一个文件夹内，方便管理和维护。</li>
+<li>跨平台<br>  SQLite 目前支持大部分操作系统，不至电脑操作系统更在众多的手机系统也是能够运行，比如：Android和IOS。</li>
+<li>多语言接口<br>  SQLite 数据库支持多语言编程接口。</li>
+<li>安全性<br>  SQLite 数据库通过数据库级上的独占性和共享锁来实现独立事务处理。这意味着多个进程可以在同一时间从同一数据库读取数据，但只能有一个可以写入数据。</li>
+<li>弱类型的字段<br>  同一列中的数据可以是不同类型</li>
+</ul>
+<h1 id="SQLite数据类型"><a href="#SQLite数据类型" class="headerlink" title="SQLite数据类型"></a>SQLite数据类型</h1><p>SQLite 数据类型是一个用来指定任何对象的数据类型的属性。SQLite 中的每一列，每个变量和表达式都有相关的数据类型。<br>您可以在创建表的同时使用这些数据类型。SQLite 使用一个更普遍的动态类型系统。在 SQLite 中，值的数据类型与值本身是相关的，而不是与它的容器相关。<br>一般数据采用的固定的静态数据类型，而SQLite采用的是动态数据类型，会根据存入值自动判断。SQLite具有以下五种常用的数据类型：</p>
+<table>
+<thead>
+<tr>
+<th>存储类</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NULL</td>
+<td>值是一个 NULL 值。</td>
+</tr>
+<tr>
+<td>INTEGER</td>
+<td>值是一个带符号的整数，根据值的大小存储在 1、2、3、4、6 或 8 字节中。</td>
+</tr>
+<tr>
+<td>REAL</td>
+<td>值是一个浮点值，存储为 8 字节的 IEEE 浮点数字。</td>
+</tr>
+<tr>
+<td>TEXT</td>
+<td>值是一个文本字符串，使用数据库编码（UTF-8、UTF-16BE 或 UTF-16LE）存储。</td>
+</tr>
+<tr>
+<td>BLOB</td>
+<td>值是一个 blob 数据，完全根据它的输入存储。</td>
+</tr>
+</tbody>
+</table>
+<p><a href="http://www.runoob.com/sqlite/sqlite-data-types.html" target="_blank" rel="external">传送门</a></p>
+<h1 id="SQLiteDatabase的介绍"><a href="#SQLiteDatabase的介绍" class="headerlink" title="SQLiteDatabase的介绍"></a>SQLiteDatabase的介绍</h1><p>Android提供了创建和是用SQLite数据库的API。SQLiteDatabase代表一个数据库对象，提供了操作数据库的一些方法。在Android的SDK目录下有sqlite3工具，我们可以利用它创建数据库、创建表和执行一些SQL语句。下面是SQLiteDatabase的常用方法。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>openOrCreateDatabase(String path,SQLiteDatabase.CursorFactory  factory)</td>
+<td>打开或创建数据库</td>
+</tr>
+<tr>
+<td>insert(String table,String nullColumnHack,ContentValues  values)</td>
+<td>插入一条记录</td>
+</tr>
+<tr>
+<td>delete(String table,String whereClause,String[]  whereArgs)</td>
+<td>删除一条记录</td>
+</tr>
+<tr>
+<td>query(String table,String[] columns,String selection,String[]  selectionArgs,String groupBy,String having,String  orderBy)</td>
+<td>查询一条记录</td>
+</tr>
+<tr>
+<td>update(String table,ContentValues values,String whereClause,String[]  whereArgs)</td>
+<td>修改记录</td>
+</tr>
+<tr>
+<td>execSQL(String sql)</td>
+<td>执行一条SQL语句</td>
+</tr>
+<tr>
+<td>close()</td>
+<td>关闭数据库</td>
+</tr>
+</tbody>
+</table>
+<h2 id="打开或创建数据库"><a href="#打开或创建数据库" class="headerlink" title="打开或创建数据库"></a>打开或创建数据库</h2><p>在Android 中使用SQLiteDatabase的静态方法<code>openOrCreateDatabase(String  path,SQLiteDatabae.CursorFactory  factory)</code>打开或者创建一个数据库。它会自动去检测是否存在这个数据库，如果存在则打开，不存在则创建一个数据库；创建成功则返回一个SQLiteDatabase对象，否则抛出异常FileNotFoundException。</p>
+<p>下面是创建名为“stu.db”数据库的代码：<br><code>openOrCreateDatabase(String  path,SQLiteDatabae.CursorFactory  factory)</code><br>参数1  数据库创建的路径<br>参数2  一般设置为null就可以了<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">db</span>=SQLiteDatabase.openOrCreateDatabase(<span class="string">"/data/data/com.lingdududu.db/databases/stu.db"</span>,null);</div></pre></td></tr></table></figure></p>
+<h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><p>创建了一张用户表，属性列为：id（主键并且自动增加）、sname（学生姓名）、snumber（学号）<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">createTable</span><span class="params">(SQLiteDatabase db)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="comment">// 创建表SQL语句</span></div><div class="line">	String stu_table=<span class="string">"CREATE TABLE IF NOT EXISTS usertable(_id integer primary key autoincrement,sname text,snumber text)"</span>;</div><div class="line">	<span class="comment">// 执行SQL语句</span></div><div class="line">	db.execSQL(stu_table);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="判断数据表是否存在"><a href="#判断数据表是否存在" class="headerlink" title="判断数据表是否存在"></a>判断数据表是否存在</h2><p>sqlite_master这个表是系统的表，sqlitedatabase会为每一个数据库创建一个这样的表，目的是用来记录用户自己创建的表的索引。如果用户进行了表的增删改查操作，这个表都会相应的进行索引的改动。通过查询sqlite_master，判断表是否存在。<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="built_in">boolean</span> isTableExist()</div><div class="line">&#123;</div><div class="line">	<span class="keyword">String</span> sql = <span class="string">"select count(*) as c from sqlite_master where type ='table' and name = 'tableName'"</span>;</div><div class="line">	 Cursor <span class="built_in">cursor</span> = db.rawQuery(sql, <span class="keyword">null</span>);</div><div class="line">     <span class="keyword">if</span>(<span class="built_in">cursor</span>.moveToNext())</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">int</span> count = <span class="built_in">cursor</span>.getInt(<span class="number">0</span>);</div><div class="line">		<span class="keyword">if</span>(count&gt;<span class="number">0</span>)</div><div class="line">			retutrn <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="数据表删除"><a href="#数据表删除" class="headerlink" title="数据表删除"></a>数据表删除</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">drop</span><span class="params">(SQLiteDatabase db)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="comment">// 删除表的SQL语句</span></div><div class="line">	String sql =<span class="string">"DROP TABLE IF EXISTS stu_table"</span>;   </div><div class="line">	<span class="comment">// 执行SQL</span></div><div class="line">	db.execSQL(sql);   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="数据总记录数"><a href="#数据总记录数" class="headerlink" title="数据总记录数"></a>数据总记录数</h2><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">long</span> allCaseNum( )&#123;</div><div class="line">	<span class="keyword">long</span> count = <span class="number">0</span>;</div><div class="line">	<span class="comment">// 查询记录数语句</span></div><div class="line">    <span class="keyword">String</span> sql = <span class="string">"select count(*) from tableName"</span>;</div><div class="line">	Cursor <span class="built_in">cursor</span> = db.rawQuery(sql, <span class="keyword">null</span>);  </div><div class="line">	<span class="keyword">if</span>(<span class="built_in">cursor</span> != <span class="keyword">null</span>)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">cursor</span>.moveToFirst();</div><div class="line">    	<span class="keyword">long</span> count = <span class="built_in">cursor</span>.getLong(<span class="number">0</span>);  </div><div class="line">    	<span class="built_in">cursor</span>.close();</div><div class="line">	&#125;  </div><div class="line">    <span class="keyword">return</span> count;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><p>两种方式插入数据</p>
+<ul>
+<li><p><code>SQLiteDatabase的insert(String table,String nullColumnHack,ContentValues  values)方法</code><br>参数1  表名称，<br>参数2  空列的默认值<br>参数3  ContentValues类型的一个封装了列名称和列值的Map；</p>
+  <figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">void</span> insert(SQLiteDatabase db)</div><div class="line">&#123;   </div><div class="line">   	<span class="comment">// 实例化常量值   </span></div><div class="line">   	ContentValues cValue = <span class="keyword">new</span> ContentValues();   </div><div class="line">   	<span class="comment">// 添加用户名   </span></div><div class="line">   	cValue.<span class="built_in">put</span>(<span class="string">"sname"</span>,<span class="string">"xiaoming"</span>);   </div><div class="line">   	<span class="comment">// 添加密码   </span></div><div class="line">   	cValue.<span class="built_in">put</span>(<span class="string">"snumber"</span>,<span class="string">"01005"</span>);   </div><div class="line">   	<span class="comment">// 调用insert()方法插入数据   </span></div><div class="line">   	db.insert(<span class="string">"stu_table"</span>,null,cValue);   </div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>编写插入数据的SQL语句，直接调用SQLiteDatabase的execSQL()方法来执行</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(SQLiteDatabase db)</span></span></div><div class="line">&#123;   </div><div class="line">   	<span class="comment">//插入数据SQL语句</span></div><div class="line">   	String stu_sql=<span class="string">"insert into stu_table(sname,snumber) values('xiaoming','01005')"</span>; </div><div class="line">   	<span class="comment">//执行SQL语句</span></div><div class="line">   	db.execSQL(sql);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h2><p>两种方式</p>
+<ul>
+<li><p>调用<code>SQLiteDatabase的delete(String table,String whereClause,String[]  whereArgs)</code>方法<br>参数1  表名称<br>参数2  删除条件<br>参数3  删除条件值数组</p>
+  <figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="keyword">delete</span>(SQLiteDatabase db) </div><div class="line">&#123;   </div><div class="line">   	<span class="comment">// 删除条件</span></div><div class="line">   	<span class="keyword">String</span> whereClause = <span class="string">"id=?"</span>;</div><div class="line">   	<span class="comment">// 删除条件参数</span></div><div class="line">   	<span class="keyword">String</span>[] whereArgs = &#123;<span class="keyword">String</span>.valueOf(<span class="number">2</span>)&#125;;</div><div class="line">   	<span class="comment">// 执行删除</span></div><div class="line">   	db.<span class="keyword">delete</span>(<span class="string">"stu_table"</span>,whereClause,whereArgs); </div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>编写删除SQL语句，调用SQLiteDatabase的execSQL()方法来执行删除</p>
+  <figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="keyword">delete</span>(SQLiteDatabase db) </div><div class="line">&#123;   </div><div class="line">   	<span class="comment">// 删除SQL语句</span></div><div class="line">   	<span class="keyword">String</span> sql = <span class="string">"delete from stu_table where _id = 6"</span>;</div><div class="line">   	<span class="comment">// 执行SQL语句</span></div><div class="line">   	db.execSQL(sql);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h2><p>两种方式</p>
+<ul>
+<li><p>调用<code>SQLiteDatabase的update(String table,ContentValues values,String  whereClause, String[]  whereArgs)</code>方法<br>参数1  表名称<br>参数2  跟行列ContentValues类型的键值对Key-Value<br>参数3  更新条件（where字句）<br>参数4  更新条件数组</p>
+  <figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">void</span> update(SQLiteDatabase db) </div><div class="line">&#123;   </div><div class="line">   	<span class="comment">// 实例化内容值 </span></div><div class="line">	ContentValues values = <span class="keyword">new</span> ContentValues();   </div><div class="line">   	<span class="comment">// 在values中添加内容   </span></div><div class="line">   	values.<span class="built_in">put</span>(<span class="string">"snumber"</span>,<span class="string">"101003"</span>);   </div><div class="line">   	<span class="comment">// 修改条件   </span></div><div class="line">   	<span class="keyword">String</span> whereClause = <span class="string">"id=?"</span>;   </div><div class="line">   	<span class="comment">// 修改添加参数   </span></div><div class="line">   	<span class="keyword">String</span>[] whereArgs=&#123;<span class="keyword">String</span>.valuesOf(<span class="number">1</span>)&#125;;   </div><div class="line">   	<span class="comment">// 修改   </span></div><div class="line">   	db.update(<span class="string">"usertable"</span>,values,whereClause,whereArgs);   </div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>编写更新的SQL语句，调用SQLiteDatabase的execSQL执行更新</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(SQLiteDatabase db)</span></span></div><div class="line">&#123;   </div><div class="line">   	<span class="comment">// 修改SQL语句</span></div><div class="line">   	String sql = <span class="string">"update stu_table set snumber = 654321 where id = 1"</span>;</div><div class="line">   	<span class="comment">// 执行SQL</span></div><div class="line">   	db.execSQL(sql); </div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h2><p>在Android中查询数据是通过Cursor类来实现的，当我们使用<code>SQLiteDatabase.query()</code>方法时，会得到一个Cursor对象，Cursor指向的就是每一条数据。它提供了很多有关查询的方法，具体方法如下：<br><code>public  Cursor query(String table,String[] columns,String selection,String[]  selectionArgs,String groupBy,String having,String orderBy,String limit);</code></p>
+<p>各个参数的意义说明：<br>参数table:表名称<br>参数columns:列名称数组<br>参数selection:条件字句，相当于where<br>参数selectionArgs:条件字句，参数数组<br>参数groupBy:分组列<br>参数having:分组条件<br>参数orderBy:排序列<br>参数limit:分页查询限制<br>参数Cursor:返回值，相当于结果集ResultSet</p>
+<p>Cursor是一个游标接口，提供了遍历查询结果的方法，如移动指针方法move()，获得列值方法getString()等.</p>
+<p>Cursor游标常用方法</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getCount()</td>
+<td>获得总的数据项数</td>
+</tr>
+<tr>
+<td>isFirst()</td>
+<td>判断是否第一条记录</td>
+</tr>
+<tr>
+<td>isLast()</td>
+<td>判断是否最后一条记录</td>
+</tr>
+<tr>
+<td>moveToFirst()</td>
+<td>移动到第一条记录</td>
+</tr>
+<tr>
+<td>moveToLast()</td>
+<td>移动到最后一条记录</td>
+</tr>
+<tr>
+<td>move(int offset)</td>
+<td>移动到指定记录</td>
+</tr>
+<tr>
+<td>moveToNext()</td>
+<td>移动到下一条记录</td>
+</tr>
+<tr>
+<td>moveToPrevious()</td>
+<td>移动到上一条记录</td>
+</tr>
+<tr>
+<td>getColumnIndexOrThrow(String  columnName)</td>
+<td>根据列名称获得列索引</td>
+</tr>
+<tr>
+<td>getInt(int columnIndex)</td>
+<td>获得指定列索引的int类型值</td>
+</tr>
+<tr>
+<td>getString(int columnIndex)</td>
+<td>获得指定列缩影的String类型值</td>
+</tr>
+</tbody>
+</table>
+<p>示例：查询数据<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">void</span> query(SQLiteDatabase db) </div><div class="line">&#123;   </div><div class="line">	<span class="comment">// 查询获得游标   </span></div><div class="line">	Cursor <span class="built_in">cursor</span> = db.query (<span class="string">"usertable"</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>);   </div><div class="line">	<span class="comment">// 判断游标是否为空   </span></div><div class="line">	<span class="keyword">if</span>(<span class="built_in">cursor</span>.moveToFirst() </div><div class="line">	&#123;   </div><div class="line">		<span class="comment">// 遍历游标   </span></div><div class="line">		<span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;<span class="built_in">cursor</span>.getCount();i++)</div><div class="line">		&#123;   </div><div class="line">			<span class="built_in">cursor</span>.move(i);   </div><div class="line">			<span class="comment">// 获得ID   </span></div><div class="line">			<span class="built_in">int</span> id = <span class="built_in">cursor</span>.getInt(<span class="number">0</span>);   </div><div class="line">			<span class="comment">// 获得用户名   </span></div><div class="line">			<span class="keyword">String</span> username=<span class="built_in">cursor</span>.getString(<span class="number">1</span>);   </div><div class="line">			<span class="comment">// 获得密码   </span></div><div class="line">			<span class="keyword">String</span> password=<span class="built_in">cursor</span>.getString(<span class="number">2</span>);   </div><div class="line">			<span class="comment">// 输出用户信息 </span></div><div class="line">			System.out.<span class="built_in">println</span>(id+<span class="string">":"</span>+sname+<span class="string">":"</span>+snumber);   </div><div class="line">		&#125;   </div><div class="line">	&#125;   </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="SQLiteOpenHelper"><a href="#SQLiteOpenHelper" class="headerlink" title="SQLiteOpenHelper"></a>SQLiteOpenHelper</h1><p>该类是SQLiteDatabase一个辅助类。这个类主要生成一 个数据库，并对数据库的版本进行管理。<strong>在特殊情况下，即当打开外部数据库如<code>/sdcard/sqlite.db</code>，则不会执行管理；而一般情况下，即打开<code>/data/data/package/databases/</code>应用里的内部数据库会执行管理</strong>。当在程序当中调用这个类的方法getWritableDatabase()或者 getReadableDatabase()方法的时候，如果当时没有数据，那么Android系统就会自动生成一个数据库。 SQLiteOpenHelper 是一个抽象类，我们通常需要继承它，并且实现里面的3个函数：</p>
+<ul>
+<li><p>onCreate(SQLiteDatabase)<br>在数据库第一次生成的时候会调用这个方法，也就是说，只有在创建数据库的时候才会调用，当然也有一些其它的情况，一般我们在这个方法里边生成数据库表。</p>
+</li>
+<li><p>onUpgrade(SQLiteDatabase，int，int)<br>当数据库需要升级的时候，Android系统会主动的调用这个方法。一般我们在这个方法里边删除数据表，并建立新的数据表，当然是否还需要做其他的操作，完全取决于应用的需求。</p>
+</li>
+<li><p>onOpen(SQLiteDatabase)<br>这是当打开数据库时的回调函数，一般在程序中不是很常使用。</p>
+</li>
+</ul>
+<h2 id="SQLiteOpenHelper操作内部数据库"><a href="#SQLiteOpenHelper操作内部数据库" class="headerlink" title="SQLiteOpenHelper操作内部数据库"></a>SQLiteOpenHelper操作内部数据库</h2><p>数据库帮助类SQLiteOpenHelper操作内部数据库时，在应用安装后第一次启动时<strong>会执行onCreate方法</strong>，在此方法中创建数据库。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DBUtils</span> <span class="keyword">extends</span> <span class="title">SQLiteOpenHelper</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span>	DB_VERSION		= BuildConfig.dbVersion;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String	SQLITE_MASTER		= <span class="string">"sqlite_master "</span>;</div><div class="line">	</div><div class="line">	<span class="keyword">protected</span> SQLiteDatabase	mDatabase		= <span class="keyword">null</span>;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">DBUtils</span><span class="params">(Context context, String name, SQLiteDatabase.CursorFactory factory, <span class="keyword">int</span> version)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(context, name, factory, version);</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			mDatabase = getWritableDatabase();</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			mDatabase = getReadableDatabase();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(SQLiteDatabase db)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (mDatabase == <span class="keyword">null</span>)</div><div class="line">			mDatabase = db;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="keyword">int</span> oldVersion, <span class="keyword">int</span> newVersion)</span> </span>&#123;</div><div class="line">		mDatabase = db;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="SQLiteOpenHelper操作外部数据库"><a href="#SQLiteOpenHelper操作外部数据库" class="headerlink" title="SQLiteOpenHelper操作外部数据库"></a>SQLiteOpenHelper操作外部数据库</h2><p>数据库帮助类SQLiteOpenHelper操作外部数据库时，在应用安装后第一次启动时<strong>不会执行onCreate方法</strong>。</p>
+<ul>
+<li><p>借助ContextWrapper类打开外部数据库，<strong>注意数据库文件需要判断是否存在，否则报错</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DatabaseContext</span> <span class="keyword">extends</span> <span class="title">ContextWrapper</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> String mDBPath = <span class="keyword">null</span>;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="title">DatabaseContext</span><span class="params">(Context base)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(base);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">DatabaseContext</span><span class="params">(Context base, String dbPath)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(base);</div><div class="line">		mDBPath = dbPath;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> File <span class="title">getDatabasePath</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">		String dbPath = mDBPath + name;</div><div class="line">		<span class="keyword">if</span> (FileUtils.isFileExists(dbPath)) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">new</span> File(dbPath);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> SQLiteDatabase <span class="title">openOrCreateDatabase</span><span class="params">(String name, <span class="keyword">int</span> mode, SQLiteDatabase.CursorFactory factory)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> flags = SQLiteDatabase.CREATE_IF_NECESSARY | SQLiteDatabase.NO_LOCALIZED_COLLATORS;</div><div class="line">		<span class="keyword">return</span> SQLiteDatabase.openDatabase(getDatabasePath(name).getAbsolutePath(), factory, flags, <span class="keyword">null</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> SQLiteDatabase <span class="title">openOrCreateDatabase</span><span class="params">(String name, <span class="keyword">int</span> mode, SQLiteDatabase.CursorFactory factory, DatabaseErrorHandler errorHandler)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> flags = SQLiteDatabase.CREATE_IF_NECESSARY | SQLiteDatabase.NO_LOCALIZED_COLLATORS;</div><div class="line">		<span class="keyword">return</span> SQLiteDatabase.openDatabase(getDatabasePath(name).getAbsolutePath(), factory, flags, errorHandler);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建数据库帮助类，开启数据库操作</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UtilDao</span></div><div class="line">&#123;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initDao</span>(<span class="params"></span>)</span></div><div class="line">	&#123;</div><div class="line">		<span class="comment">// DB_PATH 数据库文件路径，如：/sdcard/db/sqlite.db </span></div><div class="line">		DatabaseContext dbContext = <span class="keyword">new</span> DatabaseContext(mContext, DB_PATH);</div><div class="line">		<span class="comment">// 然后创建数据库帮助类，后面的操作与内部数据库一致。参数Context、数据表名、数据库版本号等</span></div><div class="line">		DBUtils dbUtils = <span class="keyword">new</span> DBUtils(mContext, tableName, <span class="literal">null</span>, dbVersion);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="Android常用SQLite命令"><a href="#Android常用SQLite命令" class="headerlink" title="Android常用SQLite命令"></a>Android常用SQLite命令</h1><ul>
+<li><p>打开数据库 </p>
+  <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; sqlite3 sql<span class="meta">.db</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>查看</p>
+  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sqlite&gt; <span class="selector-class">.database</span> <span class="comment">// 显示数据库信息</span></div><div class="line">sqlite&gt; <span class="selector-class">.tables</span> <span class="comment">// 显示表名</span></div><div class="line">sqlite&gt; <span class="selector-class">.schema</span> <span class="comment">// 命令可以查看创建数据表时的SQL命令</span></div><div class="line">sqlite&gt; <span class="selector-class">.schema</span> table_name <span class="comment">// 查看创建表table_name时的SQL的命令</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>插入记录</p>
+  <figure class="highlight n1ql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> table_name <span class="keyword">values</span> (field1, field2, field3...);</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">drop</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">exists</span> table_name;    // 删除表</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">update</span> <span class="keyword">table</span> <span class="keyword">set</span> field1=<span class="string">'xxxxx'</span> <span class="keyword">where</span> option1=<span class="string">''</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询</p>
+  <figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> table_name;	<span class="comment">// 查看table_name表中所有记录</span></div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> table_name <span class="keyword">where</span> field1=<span class="string">'xxxxx'</span>;  <span class="comment">// 查询符合指定条件的记录</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢老板，请尽情用红包来蹂躏我吧！！！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechatpay.jpg" alt="Tiimor 微信打赏"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay.jpg" alt="Tiimor 支付宝打赏"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <!-- modify by zhangwei -->
+            <!-- 文章底部标签图标 -->
+            <a href="/tags/Android/" rel="tag"><i class="menu-item-icon fa fa-tag fa-fw"></i>Android</a>
+          
+            <!-- modify by zhangwei -->
+            <!-- 文章底部标签图标 -->
+            <a href="/tags/SQLite/" rel="tag"><i class="menu-item-icon fa fa-tag fa-fw"></i>SQLite</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android青铜篇-selector/" rel="next" title="Android青铜篇-selector">
+                <i class="fa fa-chevron-left"></i> Android青铜篇-selector
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android铂金篇-SQLite全文检索/" rel="prev" title="Android铂金篇-SQLite全文检索">
+                Android铂金篇-SQLite全文检索 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="Tiimor" />
+            
+              <p class="site-author-name" itemprop="name">Tiimor</p>
+              <p class="site-description motion-element" itemprop="description">安静地做一只攻城狮。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/VeiZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.weibo.com/tiimor" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/589972d0570c3500624fd791" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-anchor"></i>掘金</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.jianshu.com/u/93b886580243" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-book"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://wpa.qq.com/msgrd?v=3&uin=690393541&site=qq&menu=yes" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:tiimor@qq.com" target="_blank" title="邮箱">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>邮箱</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQLite介绍"><span class="nav-number">1.</span> <span class="nav-text">SQLite介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQLite特点"><span class="nav-number">2.</span> <span class="nav-text">SQLite特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQLite数据类型"><span class="nav-number">3.</span> <span class="nav-text">SQLite数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQLiteDatabase的介绍"><span class="nav-number">4.</span> <span class="nav-text">SQLiteDatabase的介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#打开或创建数据库"><span class="nav-number">4.1.</span> <span class="nav-text">打开或创建数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建表"><span class="nav-number">4.2.</span> <span class="nav-text">创建表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断数据表是否存在"><span class="nav-number">4.3.</span> <span class="nav-text">判断数据表是否存在</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据表删除"><span class="nav-number">4.4.</span> <span class="nav-text">数据表删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据总记录数"><span class="nav-number">4.5.</span> <span class="nav-text">数据总记录数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入数据"><span class="nav-number">4.6.</span> <span class="nav-text">插入数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除数据"><span class="nav-number">4.7.</span> <span class="nav-text">删除数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改数据"><span class="nav-number">4.8.</span> <span class="nav-text">修改数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询数据"><span class="nav-number">4.9.</span> <span class="nav-text">查询数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQLiteOpenHelper"><span class="nav-number">5.</span> <span class="nav-text">SQLiteOpenHelper</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQLiteOpenHelper操作内部数据库"><span class="nav-number">5.1.</span> <span class="nav-text">SQLiteOpenHelper操作内部数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQLiteOpenHelper操作外部数据库"><span class="nav-number">5.2.</span> <span class="nav-text">SQLiteOpenHelper操作外部数据库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android常用SQLite命令"><span class="nav-number">6.</span> <span class="nav-text">Android常用SQLite命令</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tiimor</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <!-- modify by zhangwei -->
+  <!-- 修改不蒜子统计脚本 -->
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+<script>
+  	var _mtac = {};
+  	(function() {
+  		var mta = document.createElement("script");
+  		mta.src = "https://pingjs.qq.com/h5/stats.js?v2.0.4";
+  		mta.setAttribute("name", "MTAH5");
+  		mta.setAttribute("sid", "500425805");
+
+  		var s = document.getElementsByTagName("script")[0];
+  		s.parentNode.insertBefore(mta, s);
+  	})();
+</script>
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=61441764";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            <!-- modify by zhangwei -->
+            <!-- 修复gitment评论页初始化错误@tiimor -->
+            id: '1497771674000', 
+            owner: 'VeiZhang',
+            repo: 'veizhang.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '9919bc61413a89ea3eb156910d282e3103093e32',
+            
+                client_id: 'f08924ca58e61d6f51f4'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("7aBs9I9Y3PjoN6ueX5J3AYQW-gzGzoHsz", "kboycyzaPNAYcUW8AkF3edeW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <!-- modify by zhangwei -->
+  <!-- 动态时间小人 -->
+  <!-- modify by zhangwei -->
+<!-- 动态时间小人 -->
+<!-- z-index -1 表示在最底层，不能悬浮也不能点击 -->
+<!-- z-index auto 可以点击 -->
+<!-- z-index 9999 无限大时，总是在最上层，会影响其他悬浮框 -->
+<div id="dg" style="z-index: auto; position: fixed ! important; right: 0px; top: 0px;">  
+    <table width=""100% style="position: absolute; width:260px; right: 0px; top: 0px;">  
+		<div>
+			<embed wmode="transparent" src="http://cdn.tiimor.cn/images/dynamic_time.swf" quality="high" bgcolor="#ffffff" width="160" height="70" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+		</div>
+    </table>  
+</div>
+  
+</body>
+</html>

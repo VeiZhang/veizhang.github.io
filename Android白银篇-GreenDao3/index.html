@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<!-- modify by zhangwei -->
+<!-- 百度站长 -->
+<meta name="baidu-site-verification" content="MdPKZBgY0U" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="8DKRuNxJDPU2k6cNyVhLe_eSqGk-R8oiYk8iKMg5gwI" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/uploads/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,SQLite,GreenDao," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="班德尔城" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="GreenDao 是一个将对象映射到 SQLite 数据库中的轻量且快速的 ORM 解决方案。它的本质就是提供一个面向对象的接口，使得开发者更加方便地将数据存储到数据库SQLite之中。我们只需要定义数据模型，GreenDao就会为我们生成实体类以及DAOs(data access objects)，（在3.0之后不需要我们编写generator而是编写实体类并添加注解，GreenDao会为我们">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android白银篇-GreenDao3">
+<meta property="og:url" content="http://tiimor.cn/Android白银篇-GreenDao3/index.html">
+<meta property="og:site_name" content="班德尔城">
+<meta property="og:description" content="GreenDao 是一个将对象映射到 SQLite 数据库中的轻量且快速的 ORM 解决方案。它的本质就是提供一个面向对象的接口，使得开发者更加方便地将数据存储到数据库SQLite之中。我们只需要定义数据模型，GreenDao就会为我们生成实体类以及DAOs(data access objects)，（在3.0之后不需要我们编写generator而是编写实体类并添加注解，GreenDao会为我们">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/GreenDao.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/GreenDao-%E5%8D%95%E4%BD%8D%E6%97%B6%E9%97%B4%E5%86%85%E7%9A%84%E6%93%8D%E4%BD%9C%E6%95%B0%E9%87%8F.png">
+<meta property="og:updated_time" content="2019-03-17T06:47:42.367Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android白银篇-GreenDao3">
+<meta name="twitter:description" content="GreenDao 是一个将对象映射到 SQLite 数据库中的轻量且快速的 ORM 解决方案。它的本质就是提供一个面向对象的接口，使得开发者更加方便地将数据存储到数据库SQLite之中。我们只需要定义数据模型，GreenDao就会为我们生成实体类以及DAOs(data access objects)，（在3.0之后不需要我们编写generator而是编写实体类并添加注解，GreenDao会为我们">
+<meta name="twitter:image" content="http://cdn.tiimor.cn/images/GreenDao.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'EJ36R2M952',
+      apiKey: 'f14ef41ccc238f9d187b5defa630aa77',
+      indexName: 'tiimor',
+      hits: {"per_page":8},
+      labels: {"input_placeholder":"搜索","hits_empty":"未发现与「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://tiimor.cn/Android白银篇-GreenDao3/"/>
+
+
+
+
+
+  <title>Android白银篇-GreenDao3 | 班德尔城</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-96457043-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?abb97f8f68c9e5eb2217d3111c64e696";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+  <!-- modify by zhangwei -->
+  <!-- 下雪的动画 -->
+  <div class="canvas-snow">
+    <canvas id="canvas" style="margin: 0;  padding: 0;top:0; left: 0; right: 0; background: transparent; position: absolute;" width="1366" height="105"></canvas>
+      <script>
+
+      var canvasBgImg = {
+        start: function () {
+          this.canvas = document.getElementById('canvas')
+          this.ctx = this.canvas.getContext("2d")
+          this.canvas.width = window.innerWidth
+          this.canvas.height = 105
+          this.starList = []
+        },
+        drawLine: function (ctx, x1, y1, x2, y2) {
+          ctx.beginPath()
+          ctx.strokeStyle = '#ffffff'
+          ctx.lineTo(x1, y1)
+          ctx.lineTo(x2, y2)
+          ctx.stroke()
+        },
+        canvasSingleSnow: function (snowSize) {
+          var singleSnow = document.createElement('canvas'),
+            ctxSingle = singleSnow.getContext('2d')
+          singleSnow.setAttribute('width', snowSize * 2)
+          singleSnow.setAttribute('height', snowSize * 2)
+          for (var i = 0; i < 6; i++) {
+            ctxSingle.save()
+            ctxSingle.translate(snowSize, snowSize)
+            ctxSingle.rotate(Math.PI * 2 * i / 6)
+            this.drawLine(ctxSingle, 0, 0, snowSize, 0)
+            ctxSingle.restore()
+          }
+          return singleSnow
+        },
+        canvasAllSnow: function (centerSnow) {
+          var canvasSnow = document.createElement('canvas'),
+            ctxSnow = canvasSnow.getContext('2d'),
+            bigSnow = this.canvasSingleSnow(centerSnow),
+            smallSnow = this.canvasSingleSnow(centerSnow / 3),
+            sizeSnow = centerSnow * 3 / 5,
+            rSnow = centerSnow - sizeSnow / 2
+          canvasSnow.setAttribute('width', centerSnow * 2)
+          canvasSnow.setAttribute('height', centerSnow * 2)
+          ctxSnow.drawImage(bigSnow, 0, 0, bigSnow.width, bigSnow.height, 0, 0, centerSnow * 2, centerSnow * 2)
+          for (var i = 0; i < 6; i++) {
+            ctxSnow.save()
+            ctxSnow.translate(centerSnow, centerSnow)
+            ctxSnow.rotate(Math.PI * 2 * i / 6)
+            ctxSnow.drawImage(smallSnow, 0, 0, smallSnow.width, smallSnow.height, rSnow - sizeSnow / 2,
+              -sizeSnow / 2, sizeSnow, sizeSnow)
+            ctxSnow.restore()
+          }
+          return canvasSnow
+        },
+        init: function () {
+          this.start()
+          for (var i = 0; i < 75; i++) {
+            this.starList.push({
+              drawFunc: this.canvasAllSnow(15),
+              width: Math.random() * this.canvas.width,
+              height: Math.random() * this.canvas.height,
+              speed: Math.random() * 1.5 + .5,
+              scale: Math.random() * 12 + 5,
+              angel: 0
+            })
+          }
+          var self = this,
+            loop = function () {
+              self.ctx.clearRect(0, 0, self.canvas.width, self.canvas.width)
+              for (var i = 0; i < 75; i++) {
+                self.ctx.save()
+                self.starList[i].height = self.starList[i].height + self.starList[i].speed
+                self.starList[i].angel += 2
+                self.ctx.translate(self.starList[i].width, self.starList[i].height)
+                self.ctx.rotate(self.starList[i].angel * Math.PI / 360)
+                self.ctx.translate(-self.starList[i].width, -self.starList[i].height)
+                self.ctx.drawImage(self.starList[i].drawFunc, 0, 0,
+                  self.starList[i].drawFunc.width, self.starList[i].drawFunc.height,
+                  self.starList[i].width - self.starList[i].scale / 2,
+                  self.starList[i].height - self.starList[i].scale / 2,
+                  self.starList[i].scale, self.starList[i].scale)
+                if (self.starList[i].height > self.canvas.height) {
+                  self.starList[i] = Object.assign(self.starList[i], {
+                    height: -self.starList[i].scale,
+                    width: Math.random() * this.canvas.width
+                  })
+                }
+                self.ctx.restore()
+              }
+              requestAnimationFrame(loop)
+            }
+          requestAnimationFrame(loop)
+        }
+      }
+      canvasBgImg.init()
+      </script>
+
+    </div>
+
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <!-- modify by zhangwei -->
+        <!-- 圣诞帽 -->
+        <img src="uploads/santa-hat.png" id="santa" style="height: 41px; position: absolute; left: -40px; top: -20px; transform: rotate(-45deg); z-index: 9000;">
+
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">班德尔城</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">微笑，简单，奋发</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-send"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-favourite">
+          <a href="/favourite" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bookmark"></i> <br />
+            
+            收藏
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tiimor.cn/Android白银篇-GreenDao3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tiimor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="班德尔城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android白银篇-GreenDao3</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-04T16:34:52+08:00">
+                2017-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android联盟/" itemprop="url" rel="index">
+                    <span itemprop="name">Android联盟</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Android白银篇-GreenDao3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/Android白银篇-GreenDao3/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/Android白银篇-GreenDao3/" class="leancloud_visitors" data-flag-title="Android白银篇-GreenDao3">
+               <span class="post-meta-divider">|</span>
+               <!-- modify by zhangwei -->
+               <!-- 去掉阅读的眼睛图标，阅读次数改为℃ -->
+			   
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://cdn.tiimor.cn/images/GreenDao.png" alt="GreenDao"></p>
+<p>GreenDao 是一个将对象映射到 SQLite 数据库中的轻量且快速的 ORM 解决方案。它的本质就是提供一个面向对象的接口，使得开发者更加方便地将数据存储到数据库SQLite之中。我们只需要定义数据模型，GreenDao就会为我们生成实体类以及DAOs(data access objects)，（在3.0之后不需要我们编写generator而是编写实体类并添加注解，GreenDao会为我们生成schema，以及DAOs）从而避免了开发者编写较多枯燥的数据存储和加载的代码。</p>
+<a id="more"></a>
+<hr>
+<blockquote>
+<ul>
+<li><a href="http://tiimor.cn/Android%E9%BB%84%E9%87%91%E7%AF%87-SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/">Android黄金篇-SQLite数据库</a></li>
+<li><a href="http://tiimor.cn/Android%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8A%A0%E5%AF%86/">Android数据库加密</a></li>
+</ul>
+</blockquote>
+<hr>
+<font size="4"><strong><a href="https://github.com/greenrobot/greenDAO" target="_blank" rel="external">GreenDao传送门</a></strong></font>
+
+<p><br></p>
+<h1 id="GreenDao介绍"><a href="#GreenDao介绍" class="headerlink" title="GreenDao介绍"></a>GreenDao介绍</h1><p>在GreenDao中，默认会为每一个实体类建立一张数据表，实体类的每一个属性对应数据表中的一列。</p>
+<p><strong>优点</strong></p>
+<ul>
+<li>Android精简的依赖库，方便集成</li>
+<li>性能最大化</li>
+<li>内存开销最小化</li>
+<li>易于使用的APIs</li>
+<li>对Android进行高度优化</li>
+</ul>
+<p><img src="http://cdn.tiimor.cn/images/GreenDao-%E5%8D%95%E4%BD%8D%E6%97%B6%E9%97%B4%E5%86%85%E7%9A%84%E6%93%8D%E4%BD%9C%E6%95%B0%E9%87%8F.png" alt="性能比较" title="单位时间内的操作数量"></p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>GreenDao3 采用注解方式来定义实体类，通过gradle插件生成相应的代码。</p>
+<h2 id="配置插件"><a href="#配置插件" class="headerlink" title="配置插件"></a>配置插件</h2><p>在工程<strong>根目录下的build.gradle文件里</strong>，添加代码：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">	<span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:2.3.3'</span></div><div class="line">	<span class="comment">// 添加GreenDao插件	</span></div><div class="line">	<span class="keyword">classpath</span> <span class="string">'org.greenrobot:greendao-gradle-plugin:3.2.0'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="配置依赖"><a href="#配置依赖" class="headerlink" title="配置依赖"></a>配置依赖</h2><p>在<strong>Module下的build.gradle</strong>文件里，添加代码：<br><figure class="highlight sqf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">apply</span> plugin: <span class="string">'com.android.application'</span></div><div class="line"><span class="comment">// 添加</span></div><div class="line"><span class="built_in">apply</span> plugin: <span class="string">'org.greenrobot.greendao'</span></div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">	<span class="comment">// 添加</span></div><div class="line">	<span class="built_in">compile</span> <span class="string">'org.greenrobot:greendao:3.2.0'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 添加</span></div><div class="line">greendao &#123;</div><div class="line">    schemaVersion <span class="number">1</span></div><div class="line">    daoPackage <span class="string">'com.excellence.medical.greendao'</span></div><div class="line">    targetGenDir <span class="string">'src/main/java'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>schemaVersion： 数据库版本号，默认为1</li>
+<li>daoPackage： 生成的DAOs、DaoMaster、DaoSession包名；默认为entities（数据库实体类）所在的包名</li>
+<li>targetGenDir: 生成的DAOs、DaoMaster、DaoSession的目录，默认为build/generated/source/greendao</li>
+<li>generateTests: 设置true自动生成单元测试。</li>
+<li>targetGenDirTests: 设置生成单元测试目录。默认为src/androidTest/java</li>
+</ul>
+<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="实体"><a href="#实体" class="headerlink" title="实体"></a>实体</h2><p>创建带注解@Entity的实体类，实体类即数据表；通常（除开带@Transient注解的成员）实体类中成员就是数据库中对应的字段。然后<code>make project</code>编译项目，实体类会自动生成get、set方法，并且在<code>targetGenDir</code>目录下的<code>daoPackage</code>包里，如<code>src/main/java/com/excellence/medical/greendao</code>，生成DaoMaster、DaoSession、以及AccountDao。</p>
+<p>如果想增加或减少数据库字段，删除实体类中自动生成的代码，然后进行增加或减少实体类中的成员。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Entity(nameInDb = <span class="meta-string">"account"</span>)</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Account</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Id(autoincrement = true)</span></div><div class="line">	<span class="keyword">private</span> <span class="built_in">Long</span>			id;</div><div class="line">	<span class="meta">@Unique</span></div><div class="line">	<span class="keyword">private</span> String			accountId;</div><div class="line">	<span class="keyword">private</span> String			accountName;</div><div class="line">	<span class="keyword">private</span> String			accountPwd;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><ul>
+<li><p>@Entity<br>修饰实体类名</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">@Entity(</div><div class="line">    // schema 名，多个 schema 时设置关联实体。插件产生不支持，需使用产生器</div><div class="line">    // <span class="attr">schema</span> = <span class="string">"myschema"</span>,</div><div class="line"></div><div class="line">    // 标记一个实体是否处于活动状态，活动实体有 update、delete、refresh 方法。默认为 <span class="literal">false</span></div><div class="line">    <span class="attr">active</span> = <span class="literal">false</span>,</div><div class="line"></div><div class="line">    // 表名，默认为类名</div><div class="line">    <span class="attr">nameInDb</span> = <span class="string">"Account"</span>,</div><div class="line"></div><div class="line">    // 定义多列索引</div><div class="line">    <span class="attr">indexes</span> = &#123;</div><div class="line">            @Index(<span class="attr">value</span> = <span class="string">"name DESC"</span>, <span class="attr">unique</span> = <span class="literal">true</span>)</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    // 标记是否创建表，默认 <span class="literal">true</span>。多实体对应一个表或者表已创建，不需要 greenDAO 创建时设置 <span class="literal">false</span></div><div class="line">    <span class="attr">createInDb</span> = <span class="literal">true</span>,</div><div class="line"></div><div class="line">    // 是否产生所有参数构造器。默认为 <span class="literal">true</span>。无参构造器必定产生</div><div class="line">    <span class="attr">generateConstructors</span> = <span class="literal">true</span>,</div><div class="line"></div><div class="line">    // 如果没有 get/set 方法，是否生成。默认为 <span class="literal">true</span></div><div class="line">    <span class="attr">generateGettersSetters</span> = <span class="literal">true</span></div><div class="line">)</div></pre></td></tr></table></figure>
+</li>
+<li><p>修饰实体类成员</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 主键，autoincrement设置自增，注意类型是Long，而不是long</span></div><div class="line"><span class="variable">@Id</span>(autoincrement = true)</div><div class="line"></div><div class="line"><span class="comment">// 唯一，默认索引</span></div><div class="line"><span class="variable">@Unique</span></div><div class="line"></div><div class="line"><span class="comment">// 列名-字段名，默认使用变量名。变化：customName --&gt; CUSTOM_NAME</span></div><div class="line"><span class="variable">@Property</span>(nameInDb = <span class="string">"USERNAME"</span>)</div><div class="line"></div><div class="line"><span class="comment">// 索引，unique设置唯一，name设置索引别名</span></div><div class="line"><span class="variable">@Index</span>(unique = true)</div><div class="line"></div><div class="line"><span class="comment">// 非空</span></div><div class="line"><span class="variable">@NotNull</span></div><div class="line"></div><div class="line"><span class="comment">// 忽略，不持久化，即数据表不创建该字段，可用关键字transient替代</span></div><div class="line"><span class="variable">@Transient</span></div><div class="line"></div><div class="line"><span class="comment">// 对一，实体属性 joinProperty 对应外联实体ID</span></div><div class="line"><span class="variable">@ToOne</span>(joinProperty = <span class="string">"fk_dogId"</span>)</div><div class="line"></div><div class="line"><span class="comment">// 对多。实体ID对应外联实体属性 referencedJoinProperty</span></div><div class="line"><span class="variable">@ToMany</span>(referencedJoinProperty = <span class="string">"fk_userId"</span>)</div><div class="line"></div><div class="line"><span class="comment">// 对多。@JoinProperty：name 实体属性对应外联实体属性 referencedName</span></div><div class="line"><span class="variable">@ToMany</span>(joinProperties = &#123;<span class="variable">@JoinProperty</span>(name = <span class="string">"horseName"</span>, referencedName = <span class="string">"name"</span>)&#125;)</div><div class="line"></div><div class="line"><span class="comment">// 对多。@JoinEntity：entity 中间表；中间表属性 sourceProperty 对应实体ID；中间表属性 targetProperty 对应外联实体ID</span></div><div class="line"><span class="variable">@ToMany</span></div><div class="line"><span class="variable">@JoinEntity</span>(entity = JoinUserWithSheep.class, sourceProperty = <span class="string">"uId"</span>, targetProperty = <span class="string">"sId"</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>在Application中进行初始化，GreenDao打开数据库两种方式：①打开内部（<code>/data/data/xxxpackageNamexxx/</code>）数据库，②打开外部（其他目录下）数据库</p>
+<ul>
+<li><p>内部数据库</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 注意</span></div><div class="line">DaoMaster.OpenHelper helper = <span class="keyword">new</span> <span class="type">DaoMaster</span>.DevOpenHelper(<span class="built_in">this</span>, VOD_DB, <span class="literal">null</span>);</div><div class="line">mDaoMaster = <span class="keyword">new</span> <span class="type">DaoMaster</span>(helper.getWritableDatabase());</div><div class="line"></div><div class="line"><span class="comment">// 如果想使用Dao，直接用mDaoSession获取对应的Dao来操作</span></div><div class="line">mDaoSession = mDaoMaster.<span class="keyword">new</span><span class="type">Session</span>();</div><div class="line"><span class="comment">// Dao，执行增删改查操作</span></div><div class="line">AccountDao dao = mDaoSession.getAccountDao();</div><div class="line"></div><div class="line"><span class="comment">// 如果想使用Sql语句，就使用mDaoDatabase操作</span></div><div class="line">mDaoDatabase = mDaoSession.getDatabase();</div><div class="line"></div><div class="line"><span class="comment">// GreenDao有特殊的线程来处理数据库的耗时操作</span></div><div class="line">mAsyncSession = mDaoSession.startAsyncSession();</div></pre></td></tr></table></figure>
+</li>
+<li><p>外部数据库</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DatabaseContext</span> <span class="keyword">extends</span> <span class="title">ContextWrapper</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> String mDBPath = <span class="keyword">null</span>;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="title">DatabaseContext</span><span class="params">(Context base)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(base);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">DatabaseContext</span><span class="params">(Context base, String dbPath)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(base);</div><div class="line">		mDBPath = dbPath;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> File <span class="title">getDatabasePath</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">		String dbPath = mDBPath + name;</div><div class="line">		<span class="keyword">if</span> (FileUtils.isFileExists(dbPath)) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">new</span> File(dbPath);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> SQLiteDatabase <span class="title">openOrCreateDatabase</span><span class="params">(String name, <span class="keyword">int</span> mode, SQLiteDatabase.CursorFactory factory)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> flags = SQLiteDatabase.CREATE_IF_NECESSARY | SQLiteDatabase.NO_LOCALIZED_COLLATORS;</div><div class="line">		<span class="keyword">return</span> SQLiteDatabase.openDatabase(getDatabasePath(name).getAbsolutePath(), factory, flags, <span class="keyword">null</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> SQLiteDatabase <span class="title">openOrCreateDatabase</span><span class="params">(String name, <span class="keyword">int</span> mode, SQLiteDatabase.CursorFactory factory, DatabaseErrorHandler errorHandler)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> flags = SQLiteDatabase.CREATE_IF_NECESSARY | SQLiteDatabase.NO_LOCALIZED_COLLATORS;</div><div class="line">		<span class="keyword">return</span> SQLiteDatabase.openDatabase(getDatabasePath(name).getAbsolutePath(), factory, flags, errorHandler);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 重写传入DaoMaster.DevOpenHelper的Context，即改变数据库的路径</span></div><div class="line">DatabaseContext databaseContext = <span class="keyword">new</span> <span class="type">DatabaseContext</span>(<span class="built_in">this</span>, DB_PATH);</div><div class="line">DaoMaster.OpenHelper helper = <span class="keyword">new</span> <span class="type">DaoMaster</span>.DevOpenHelper(databaseContext, VOD_DB, <span class="literal">null</span>);</div><div class="line">其他类似打开内部数据库</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>注意：</strong></p>
+<ul>
+<li>DaoMaster.DevOpenHelper在数据库升级的时候，会删除所有的表，只能用于Debug调试，正式项目需要封装处理，GreenDao升级请参考：<a href="https://github.com/yuweiguocn/GreenDaoUpgradeHelper" target="_blank" rel="external">GreenDaoUpgradeHelper</a></li>
+<li>如果GreenDao想使用<strong>打开多个数据库</strong>，可以创建多个DaoMaster.OpenHelper和DaoSession；同时重写onCreate方法，否则每个数据库的表是一样的。例如：<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">DaoMaster.OpenHelper helper = <span class="keyword">new</span> <span class="type">DaoMaster</span>.OpenHelper(<span class="built_in">this</span>, DB_NAME) &#123;</div><div class="line">		@Override</div><div class="line">		<span class="keyword">public</span> void onCreate(Database db) &#123;</div><div class="line">			ConfigDao.createTable(db, <span class="literal">false</span>);</div><div class="line">			MemberDao.createTable(db, <span class="literal">false</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line">	mDaoSession = <span class="keyword">new</span> <span class="type">DaoMaster</span>(helper.getWritableDatabase()).<span class="keyword">new</span><span class="type">Session</span>();</div><div class="line">	</div><div class="line">	DaoMaster.OpenHelper encryptedHelper = <span class="keyword">new</span> <span class="type">DaoMaster</span>.OpenHelper(<span class="built_in">this</span>, ENCRYPTED_DB_NAME) &#123;</div><div class="line">		@Override</div><div class="line">		<span class="keyword">public</span> void onCreate(Database db) &#123;</div><div class="line">			AccountDao.createTable(db, <span class="literal">false</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line">	mEncryptedDaoSession = <span class="keyword">new</span> <span class="type">DaoMaster</span>(encryptedHelper.getEncryptedWritableDb(getUniquePseudoID())).<span class="keyword">new</span><span class="type">Session</span>();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><ul>
+<li><p>使用Dao操作时，数据库里必须有<strong>主键</strong>，操作才会成功；否则操作无效或达不到预期的结果</p>
+</li>
+<li><p>GreenDao有一个缓存机制，即把用户插入，更改或查找的实体保存在内存中，当用户下一次查找时先从内存中查找，如果不存在再从数据库中查找，清除缓存使用：<code>DaoSession.clear()</code></p>
+</li>
+<li><p>如果没有主键，则只能使用Sql语句操作数据库，可以参考：<a href="http://tiimor.cn/Android%E9%BB%84%E9%87%91%E7%AF%87-SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/">Android黄金篇-SQLite数据库</a></p>
+</li>
+</ul>
+<h3 id="Dao增加"><a href="#Dao增加" class="headerlink" title="Dao增加"></a>Dao增加</h3><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">long</span>     insert(T entity)  <span class="comment">// 插入指定实体</span></div><div class="line"><span class="keyword">void</span>     insertInTx(T... entities)</div><div class="line"><span class="keyword">void</span>     insertInTx(java.lang.Iterable&lt;T&gt; entities)</div><div class="line"><span class="keyword">void</span>     insertInTx(java.lang.Iterable&lt;T&gt; entities, <span class="built_in">boolean</span> setPrimaryKey)</div><div class="line"><span class="keyword">long</span>     insertWithoutSettingPk(T entity)  <span class="comment">// 插入指定实体，无主键</span></div><div class="line"><span class="keyword">long</span>     insertOrReplace(T entity)  <span class="comment">// 插入或替换指定实体</span></div><div class="line"><span class="keyword">void</span>     insertOrReplaceInTx(T... entities)</div><div class="line"><span class="keyword">void</span>     insertOrReplaceInTx(java.lang.Iterable&lt;T&gt; entities)</div><div class="line"><span class="keyword">void</span>     insertOrReplaceInTx(java.lang.Iterable&lt;T&gt; entities, <span class="built_in">boolean</span> setPrimaryKey)</div><div class="line"><span class="keyword">void</span>     <span class="built_in">save</span>(T entity)  <span class="comment">// 依赖指定的主键插入或修改实体</span></div><div class="line"><span class="keyword">void</span>     saveInTx(T... entities)</div><div class="line"><span class="keyword">void</span>     saveInTx(java.lang.Iterable&lt;T&gt; entities)</div></pre></td></tr></table></figure>
+<h3 id="Dao删除"><a href="#Dao删除" class="headerlink" title="Dao删除"></a>Dao删除</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span>     deleteAll()  <span class="comment">// 删除所有</span></div><div class="line"><span class="keyword">void</span>     delete(T entity)  <span class="comment">// 删除指定的实体</span></div><div class="line"><span class="keyword">void</span>     deleteInTx(T... entities)</div><div class="line"><span class="keyword">void</span>     deleteInTx(java.lang.<span class="built_in">Iterable</span>&lt;T&gt; entities)</div><div class="line"><span class="keyword">void</span>     deleteByKey(K key)  <span class="comment">// 删除指定主键对应的实体</span></div><div class="line"><span class="keyword">void</span>     deleteByKeyInTx(K... keys)</div><div class="line"><span class="keyword">void</span>     deleteByKeyInTx(java.lang.<span class="built_in">Iterable</span>&lt;K&gt; keys)</div></pre></td></tr></table></figure>
+<h3 id="Dao修改"><a href="#Dao修改" class="headerlink" title="Dao修改"></a>Dao修改</h3><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void     update(<span class="name">T</span> entity)</div><div class="line">void     updateInTx(<span class="name">T</span>... entities)</div><div class="line">void     updateInTx(<span class="name">java</span>.lang.Iterable&lt;T&gt; entities)</div></pre></td></tr></table></figure>
+<h3 id="Dao查询"><a href="#Dao查询" class="headerlink" title="Dao查询"></a>Dao查询</h3><figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">java.util.List<span class="variable">&lt;T&gt;</span>     <span class="built_in">load</span>All()</div><div class="line">T     <span class="built_in">load</span>(K key)</div><div class="line">T     <span class="built_in">load</span>ByRowId(long rowId)</div></pre></td></tr></table></figure>
+<h3 id="QueryBuilder查询"><a href="#QueryBuilder查询" class="headerlink" title="QueryBuilder查询"></a>QueryBuilder查询</h3><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">QueryBuilder<span class="params">&lt;T&gt;</span>     queryBuilder()  <span class="comment">// Dao</span></div><div class="line"></div><div class="line"><span class="comment">// QueryBuilder</span></div><div class="line">QueryBuilder<span class="params">&lt;T&gt;</span>     where(WhereCondition cond, WhereCondition... condMore)  <span class="comment">// 条件，AND 连接</span></div><div class="line">QueryBuilder<span class="params">&lt;T&gt;</span>     whereOr(WhereCondition cond1, WhereCondition cond2, WhereCondition... condMore)  <span class="comment">// 条件，OR 连接</span></div><div class="line">QueryBuilder<span class="params">&lt;T&gt;</span>     distinct()  <span class="comment">// 去重，例如使用联合查询时</span></div><div class="line">QueryBuilder<span class="params">&lt;T&gt;</span>     limit(int limit)  <span class="comment">// 限制返回数</span></div><div class="line">QueryBuilder<span class="params">&lt;T&gt;</span>     offset(int offset)  <span class="comment">// 偏移结果起始位，配合limit(int)使用</span></div><div class="line">QueryBuilder<span class="params">&lt;T&gt;</span>     orderAsc(Property... properties)  <span class="comment">// 排序，升序</span></div><div class="line">QueryBuilder<span class="params">&lt;T&gt;</span>     orderDesc(Property... properties)  <span class="comment">// 排序，降序</span></div><div class="line">QueryBuilder<span class="params">&lt;T&gt;</span>     orderCustom(Property property, java.lang.String customOrderForProperty)  <span class="comment">// 排序，自定义</span></div><div class="line">QueryBuilder<span class="params">&lt;T&gt;</span>     orderRaw(java.lang.String rawOrder)  <span class="comment">// 排序，SQL 语句</span></div><div class="line">QueryBuilder<span class="params">&lt;T&gt;</span>     preferLocalizedStringOrder()  <span class="comment">// 本地化字符串排序，用于加密数据库无效</span></div><div class="line">QueryBuilder<span class="params">&lt;T&gt;</span>     stringOrderCollation(java.lang.String stringOrderCollation)  <span class="comment">// 自定义字符串排序，默认不区分大小写</span></div><div class="line"></div><div class="line">WhereCondition     and(WhereCondition cond1, WhereCondition cond2, WhereCondition... condMore)  <span class="comment">// 条件，AND 连接</span></div><div class="line">WhereCondition     or(WhereCondition cond1, WhereCondition cond2, WhereCondition... condMore)  <span class="comment">// 条件，OR 连接</span></div></pre></td></tr></table></figure>
+<p>示例<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">mAccountDao</span><span class="selector-class">.queryBuilder</span>()<span class="selector-class">.orderDesc</span>(<span class="selector-tag">Properties</span><span class="selector-class">.Date</span>)<span class="selector-class">.limit</span>(1)<span class="selector-class">.unique</span>()</div></pre></td></tr></table></figure></p>
+<h3 id="DaoSession异步操作"><a href="#DaoSession异步操作" class="headerlink" title="DaoSession异步操作"></a>DaoSession异步操作</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">DaoSession</span>()<span class="selector-class">.startAsyncSession</span>()<span class="selector-class">.runInTx</span>(new Runnable() &#123;</div><div class="line"></div><div class="line">    <span class="variable">@Override</span></div><div class="line">    public void run() &#123;</div><div class="line">        <span class="comment">// insert</span></div><div class="line">        <span class="comment">// delete</span></div><div class="line">        <span class="comment">// update</span></div><div class="line">		<span class="comment">// query</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"><span class="selector-tag">DaoSession</span><span class="selector-class">.startAsyncSession</span>()<span class="selector-class">.insertInTx</span></div><div class="line"><span class="selector-tag">DaoSession</span><span class="selector-class">.startAsyncSession</span>()<span class="selector-class">.deleteInTx</span></div><div class="line"><span class="selector-tag">DaoSession</span><span class="selector-class">.startAsyncSession</span>()<span class="selector-class">.updateInTx</span></div><div class="line"><span class="selector-tag">DaoSession</span><span class="selector-class">.startAsyncSession</span>()<span class="selector-class">.insertInTx</span></div><div class="line"><span class="selector-tag">DaoSession</span><span class="selector-class">.startAsyncSession</span>()<span class="selector-class">.insertOrReplaceInTx</span></div></pre></td></tr></table></figure>
+<h3 id="DaoSession增删改查"><a href="#DaoSession增删改查" class="headerlink" title="DaoSession增删改查"></a>DaoSession增删改查</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// DaoSession 的方法转换成 Dao 的对应方法执行</span></div><div class="line">&lt;T&gt; long     insert(T entity)</div><div class="line">&lt;T&gt; long     insertOrReplace(T entity)</div><div class="line">&lt;T&gt; void     delete(T entity)</div><div class="line">&lt;T&gt; void     deleteAll(java<span class="selector-class">.lang</span><span class="selector-class">.Class</span>&lt;T&gt; entityClass)</div><div class="line">&lt;T&gt; void     update(T entity)</div><div class="line">&lt;T,K&gt; T     load(java<span class="selector-class">.lang</span><span class="selector-class">.Class</span>&lt;T&gt; entityClass, K key)</div><div class="line">&lt;T,K&gt; java<span class="selector-class">.util</span><span class="selector-class">.List</span>&lt;T&gt;     loadAll(java<span class="selector-class">.lang</span><span class="selector-class">.Class</span>&lt;T&gt; entityClass)</div><div class="line">&lt;T&gt; QueryBuilder&lt;T&gt;     queryBuilder(java<span class="selector-class">.lang</span><span class="selector-class">.Class</span>&lt;T&gt; entityClass)</div><div class="line">&lt;T,K&gt; java<span class="selector-class">.util</span><span class="selector-class">.List</span>&lt;T&gt;     queryRaw(java<span class="selector-class">.lang</span><span class="selector-class">.Class</span>&lt;T&gt; entityClass, java<span class="selector-class">.lang</span><span class="selector-class">.String</span> where, java<span class="selector-class">.lang</span><span class="selector-class">.String</span>... selectionArgs)</div><div class="line">&lt;T&gt; void     refresh(T entity)</div></pre></td></tr></table></figure>
+<h3 id="Query重复查询"><a href="#Query重复查询" class="headerlink" title="Query重复查询"></a>Query重复查询</h3><figure class="highlight glsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// QueryBuilder</span></div><div class="line">Query&lt;T&gt;     build()</div><div class="line">CursorQuery     buildCursor()</div><div class="line">CountQuery&lt;T&gt;     buildCount()</div><div class="line">DeleteQuery&lt;T&gt;     buildDelete()</div><div class="line"></div><div class="line"><span class="comment">// Query</span></div><div class="line"><span class="comment">// 设置查询参数，从 0 开始</span></div><div class="line">Query&lt;T&gt;     setParameter(<span class="type">int</span> <span class="keyword">index</span>, java.lang.Object parameter)</div><div class="line">Query&lt;T&gt;     setParameter(<span class="type">int</span> <span class="keyword">index</span>, java.lang.Boolean parameter)</div><div class="line">Query&lt;T&gt;     setParameter(<span class="type">int</span> <span class="keyword">index</span>, java.util.Date parameter)</div><div class="line"><span class="type">void</span>     setLimit(<span class="type">int</span> limit)  <span class="comment">// 限制返回数</span></div><div class="line"><span class="type">void</span>     setOffset(<span class="type">int</span> <span class="keyword">offset</span>)  <span class="comment">// 偏移结果起始位，配合limit(int)使用</span></div><div class="line"></div><div class="line"><span class="comment">// Query 绑定线程，执行非本线程的 Query 抛异常，调用获取本线程 Query</span></div><div class="line">Query&lt;T&gt;     forCurrentThread()  <span class="comment">// 获取本线程 Query</span></div></pre></td></tr></table></figure>
+<h3 id="查询结果"><a href="#查询结果" class="headerlink" title="查询结果"></a>查询结果</h3><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// QueryBuilder、Query</span></div><div class="line">T     unique()  <span class="comment">// 返回唯一结果或者 null</span></div><div class="line">T     uniqueOrThrow()  <span class="comment">// 返回唯一非空结果，如果 null 则抛异常</span></div><div class="line">java.util.List<span class="params">&lt;T&gt;</span>     list()  <span class="comment">// 返回结果集进内存</span></div><div class="line"><span class="comment">// 懒加载，须在 try/finally 代码中关闭。</span></div><div class="line">LazyList<span class="params">&lt;T&gt;</span>     listLazy()  <span class="comment">// 第一次使用返回结果集，所有数据使用后会自动关闭</span></div><div class="line">LazyList<span class="params">&lt;T&gt;</span>     listLazyUncached()  <span class="comment">// 返回虚拟结果集，数据库读取不缓存</span></div><div class="line">CloseableListIterator<span class="params">&lt;T&gt;</span>     listIterator()  <span class="comment">// 懒加载数据迭代器，不缓存，所有数据使用后会自动关闭</span></div><div class="line"></div><div class="line"><span class="comment">// QueryBuilder、CountQuery</span></div><div class="line">long     count()  <span class="comment">// 获取结果数量</span></div></pre></td></tr></table></figure>
+<h1 id="混淆"><a href="#混淆" class="headerlink" title="混淆"></a>混淆</h1><p>在混淆文件proguard-rules.pro中添加</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">### greenDAO <span class="number">3</span></div><div class="line">-keepclassmembers <span class="class"><span class="keyword">class</span> <span class="title">*</span> <span class="keyword">extends</span> <span class="title">org</span>.<span class="title">greenrobot</span>.<span class="title">greendao</span>.<span class="title">AbstractDao</span> </span>&#123;</div><div class="line">public static java.lang.<span class="type">String</span> <span class="type">TABLENAME</span>;</div><div class="line">&#125;</div><div class="line">-keep <span class="class"><span class="keyword">class</span> <span class="title">**$Properties</span></span></div><div class="line"></div><div class="line"># <span class="type">If</span> you do not use <span class="type">SQLCipher</span>:</div><div class="line">-dontwarn org.greenrobot.greendao.database.**</div><div class="line"># <span class="type">If</span> you do not use <span class="type">RxJava</span>:</div><div class="line">-dontwarn rx.**</div></pre></td></tr></table></figure>
+<p><strong>@ToOne、@ToMany，1：1、1：n、n：m等多张表关联待续^_^</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢老板，请尽情用红包来蹂躏我吧！！！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechatpay.jpg" alt="Tiimor 微信打赏"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay.jpg" alt="Tiimor 支付宝打赏"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <!-- modify by zhangwei -->
+            <!-- 文章底部标签图标 -->
+            <a href="/tags/Android/" rel="tag"><i class="menu-item-icon fa fa-tag fa-fw"></i>Android</a>
+          
+            <!-- modify by zhangwei -->
+            <!-- 文章底部标签图标 -->
+            <a href="/tags/SQLite/" rel="tag"><i class="menu-item-icon fa fa-tag fa-fw"></i>SQLite</a>
+          
+            <!-- modify by zhangwei -->
+            <!-- 文章底部标签图标 -->
+            <a href="/tags/GreenDao/" rel="tag"><i class="menu-item-icon fa fa-tag fa-fw"></i>GreenDao</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android适配器终结者？/" rel="next" title="Android适配器终结者？">
+                <i class="fa fa-chevron-left"></i> Android适配器终结者？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android数据库加密/" rel="prev" title="Android数据库加密">
+                Android数据库加密 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="Tiimor" />
+            
+              <p class="site-author-name" itemprop="name">Tiimor</p>
+              <p class="site-description motion-element" itemprop="description">安静地做一只攻城狮。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/VeiZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.weibo.com/tiimor" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/589972d0570c3500624fd791" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-anchor"></i>掘金</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.jianshu.com/u/93b886580243" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-book"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://wpa.qq.com/msgrd?v=3&uin=690393541&site=qq&menu=yes" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:tiimor@qq.com" target="_blank" title="邮箱">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>邮箱</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GreenDao介绍"><span class="nav-number">1.</span> <span class="nav-text">GreenDao介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置插件"><span class="nav-number">2.1.</span> <span class="nav-text">配置插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置依赖"><span class="nav-number">2.2.</span> <span class="nav-text">配置依赖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本用法"><span class="nav-number">3.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实体"><span class="nav-number">3.1.</span> <span class="nav-text">实体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注解"><span class="nav-number">3.2.</span> <span class="nav-text">注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化"><span class="nav-number">3.3.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增删改查"><span class="nav-number">3.4.</span> <span class="nav-text">增删改查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dao增加"><span class="nav-number">3.4.1.</span> <span class="nav-text">Dao增加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dao删除"><span class="nav-number">3.4.2.</span> <span class="nav-text">Dao删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dao修改"><span class="nav-number">3.4.3.</span> <span class="nav-text">Dao修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dao查询"><span class="nav-number">3.4.4.</span> <span class="nav-text">Dao查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QueryBuilder查询"><span class="nav-number">3.4.5.</span> <span class="nav-text">QueryBuilder查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DaoSession异步操作"><span class="nav-number">3.4.6.</span> <span class="nav-text">DaoSession异步操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DaoSession增删改查"><span class="nav-number">3.4.7.</span> <span class="nav-text">DaoSession增删改查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Query重复查询"><span class="nav-number">3.4.8.</span> <span class="nav-text">Query重复查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询结果"><span class="nav-number">3.4.9.</span> <span class="nav-text">查询结果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#混淆"><span class="nav-number">4.</span> <span class="nav-text">混淆</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tiimor</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <!-- modify by zhangwei -->
+  <!-- 修改不蒜子统计脚本 -->
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+<script>
+  	var _mtac = {};
+  	(function() {
+  		var mta = document.createElement("script");
+  		mta.src = "https://pingjs.qq.com/h5/stats.js?v2.0.4";
+  		mta.setAttribute("name", "MTAH5");
+  		mta.setAttribute("sid", "500425805");
+
+  		var s = document.getElementsByTagName("script")[0];
+  		s.parentNode.insertBefore(mta, s);
+  	})();
+</script>
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=61441764";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            <!-- modify by zhangwei -->
+            <!-- 修复gitment评论页初始化错误@tiimor -->
+            id: '1509784492000', 
+            owner: 'VeiZhang',
+            repo: 'veizhang.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '9919bc61413a89ea3eb156910d282e3103093e32',
+            
+                client_id: 'f08924ca58e61d6f51f4'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("7aBs9I9Y3PjoN6ueX5J3AYQW-gzGzoHsz", "kboycyzaPNAYcUW8AkF3edeW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <!-- modify by zhangwei -->
+  <!-- 动态时间小人 -->
+  <!-- modify by zhangwei -->
+<!-- 动态时间小人 -->
+<!-- z-index -1 表示在最底层，不能悬浮也不能点击 -->
+<!-- z-index auto 可以点击 -->
+<!-- z-index 9999 无限大时，总是在最上层，会影响其他悬浮框 -->
+<div id="dg" style="z-index: auto; position: fixed ! important; right: 0px; top: 0px;">  
+    <table width=""100% style="position: absolute; width:260px; right: 0px; top: 0px;">  
+		<div>
+			<embed wmode="transparent" src="http://cdn.tiimor.cn/images/dynamic_time.swf" quality="high" bgcolor="#ffffff" width="160" height="70" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+		</div>
+    </table>  
+</div>
+  
+</body>
+</html>

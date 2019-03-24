@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<!-- modify by zhangwei -->
+<!-- 百度站长 -->
+<meta name="baidu-site-verification" content="MdPKZBgY0U" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="8DKRuNxJDPU2k6cNyVhLe_eSqGk-R8oiYk8iKMg5gwI" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/uploads/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android图表,MPAndroidChart," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="班德尔城" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="MPAndroidChart图表库的使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android图表库-MPAndroidChart">
+<meta property="og:url" content="http://tiimor.cn/Android图表库-MPAndroidChart/index.html">
+<meta property="og:site_name" content="班德尔城">
+<meta property="og:description" content="MPAndroidChart图表库的使用">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/MPAndroidChart.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/LineChart1.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/LineChart2.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/LineChart3.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/LineChart4.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/Combined-Chart.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/BarChart1.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/BarChart2.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/Horizontal-BarChart.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/PieChart.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/ScatterChart.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/CandleStickChart.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/BubbleChart.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/RadarChart.png">
+<meta property="og:updated_time" content="2019-03-17T06:47:42.363Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android图表库-MPAndroidChart">
+<meta name="twitter:description" content="MPAndroidChart图表库的使用">
+<meta name="twitter:image" content="http://cdn.tiimor.cn/images/MPAndroidChart.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'EJ36R2M952',
+      apiKey: 'f14ef41ccc238f9d187b5defa630aa77',
+      indexName: 'tiimor',
+      hits: {"per_page":8},
+      labels: {"input_placeholder":"搜索","hits_empty":"未发现与「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://tiimor.cn/Android图表库-MPAndroidChart/"/>
+
+
+
+
+
+  <title>Android图表库-MPAndroidChart | 班德尔城</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-96457043-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?abb97f8f68c9e5eb2217d3111c64e696";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+  <!-- modify by zhangwei -->
+  <!-- 下雪的动画 -->
+  <div class="canvas-snow">
+    <canvas id="canvas" style="margin: 0;  padding: 0;top:0; left: 0; right: 0; background: transparent; position: absolute;" width="1366" height="105"></canvas>
+      <script>
+
+      var canvasBgImg = {
+        start: function () {
+          this.canvas = document.getElementById('canvas')
+          this.ctx = this.canvas.getContext("2d")
+          this.canvas.width = window.innerWidth
+          this.canvas.height = 105
+          this.starList = []
+        },
+        drawLine: function (ctx, x1, y1, x2, y2) {
+          ctx.beginPath()
+          ctx.strokeStyle = '#ffffff'
+          ctx.lineTo(x1, y1)
+          ctx.lineTo(x2, y2)
+          ctx.stroke()
+        },
+        canvasSingleSnow: function (snowSize) {
+          var singleSnow = document.createElement('canvas'),
+            ctxSingle = singleSnow.getContext('2d')
+          singleSnow.setAttribute('width', snowSize * 2)
+          singleSnow.setAttribute('height', snowSize * 2)
+          for (var i = 0; i < 6; i++) {
+            ctxSingle.save()
+            ctxSingle.translate(snowSize, snowSize)
+            ctxSingle.rotate(Math.PI * 2 * i / 6)
+            this.drawLine(ctxSingle, 0, 0, snowSize, 0)
+            ctxSingle.restore()
+          }
+          return singleSnow
+        },
+        canvasAllSnow: function (centerSnow) {
+          var canvasSnow = document.createElement('canvas'),
+            ctxSnow = canvasSnow.getContext('2d'),
+            bigSnow = this.canvasSingleSnow(centerSnow),
+            smallSnow = this.canvasSingleSnow(centerSnow / 3),
+            sizeSnow = centerSnow * 3 / 5,
+            rSnow = centerSnow - sizeSnow / 2
+          canvasSnow.setAttribute('width', centerSnow * 2)
+          canvasSnow.setAttribute('height', centerSnow * 2)
+          ctxSnow.drawImage(bigSnow, 0, 0, bigSnow.width, bigSnow.height, 0, 0, centerSnow * 2, centerSnow * 2)
+          for (var i = 0; i < 6; i++) {
+            ctxSnow.save()
+            ctxSnow.translate(centerSnow, centerSnow)
+            ctxSnow.rotate(Math.PI * 2 * i / 6)
+            ctxSnow.drawImage(smallSnow, 0, 0, smallSnow.width, smallSnow.height, rSnow - sizeSnow / 2,
+              -sizeSnow / 2, sizeSnow, sizeSnow)
+            ctxSnow.restore()
+          }
+          return canvasSnow
+        },
+        init: function () {
+          this.start()
+          for (var i = 0; i < 75; i++) {
+            this.starList.push({
+              drawFunc: this.canvasAllSnow(15),
+              width: Math.random() * this.canvas.width,
+              height: Math.random() * this.canvas.height,
+              speed: Math.random() * 1.5 + .5,
+              scale: Math.random() * 12 + 5,
+              angel: 0
+            })
+          }
+          var self = this,
+            loop = function () {
+              self.ctx.clearRect(0, 0, self.canvas.width, self.canvas.width)
+              for (var i = 0; i < 75; i++) {
+                self.ctx.save()
+                self.starList[i].height = self.starList[i].height + self.starList[i].speed
+                self.starList[i].angel += 2
+                self.ctx.translate(self.starList[i].width, self.starList[i].height)
+                self.ctx.rotate(self.starList[i].angel * Math.PI / 360)
+                self.ctx.translate(-self.starList[i].width, -self.starList[i].height)
+                self.ctx.drawImage(self.starList[i].drawFunc, 0, 0,
+                  self.starList[i].drawFunc.width, self.starList[i].drawFunc.height,
+                  self.starList[i].width - self.starList[i].scale / 2,
+                  self.starList[i].height - self.starList[i].scale / 2,
+                  self.starList[i].scale, self.starList[i].scale)
+                if (self.starList[i].height > self.canvas.height) {
+                  self.starList[i] = Object.assign(self.starList[i], {
+                    height: -self.starList[i].scale,
+                    width: Math.random() * this.canvas.width
+                  })
+                }
+                self.ctx.restore()
+              }
+              requestAnimationFrame(loop)
+            }
+          requestAnimationFrame(loop)
+        }
+      }
+      canvasBgImg.init()
+      </script>
+
+    </div>
+
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <!-- modify by zhangwei -->
+        <!-- 圣诞帽 -->
+        <img src="uploads/santa-hat.png" id="santa" style="height: 41px; position: absolute; left: -40px; top: -20px; transform: rotate(-45deg); z-index: 9000;">
+
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">班德尔城</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">微笑，简单，奋发</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-send"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-favourite">
+          <a href="/favourite" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bookmark"></i> <br />
+            
+            收藏
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tiimor.cn/Android图表库-MPAndroidChart/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tiimor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="班德尔城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android图表库-MPAndroidChart</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-10T14:29:46+08:00">
+                2017-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android联盟/" itemprop="url" rel="index">
+                    <span itemprop="name">Android联盟</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Android图表库-MPAndroidChart/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/Android图表库-MPAndroidChart/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/Android图表库-MPAndroidChart/" class="leancloud_visitors" data-flag-title="Android图表库-MPAndroidChart">
+               <span class="post-meta-divider">|</span>
+               <!-- modify by zhangwei -->
+               <!-- 去掉阅读的眼睛图标，阅读次数改为℃ -->
+			   
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://cdn.tiimor.cn/images/MPAndroidChart.png" alt="Android" title="MPAndroidChart"></p>
+<p><strong><a href="https://github.com/PhilJay/MPAndroidChart" target="_blank" rel="external">MPAndroidChart</a>图表库的使用</strong></p>
+<a id="more"></a>
+<p>MPAndroidChart是一款基于Android的开源图表库，MPAndroidChart不仅可以在Android设备上绘制各种统计图表，而且可以对图表进行拖动和缩放操作，应用起来非常灵活。MPAndroidChart显得更为轻巧和简单，拥有常用的图表类型：线型图、饼图、柱状图和散点图。</p>
+<h1 id="核心功能"><a href="#核心功能" class="headerlink" title="核心功能"></a>核心功能</h1><ul>
+<li>支持x，y轴缩放</li>
+<li>支持拖拽</li>
+<li>支持手指滑动</li>
+<li>支持高亮显示</li>
+<li>支持保存图表到文件中</li>
+<li>支持从文件（txt）中读取数据</li>
+<li>预先定义颜色模板</li>
+<li>自动生成标注</li>
+<li>支持自定义x，y轴的显示标签</li>
+<li>支持x，y轴动画</li>
+<li>支持x，y轴设置最大值和附加信息</li>
+<li>支持自定义字体，颜色，背景，手势，虚线等</li>
+</ul>
+<h1 id="图表类型"><a href="#图表类型" class="headerlink" title="图表类型"></a>图表类型</h1><ul>
+<li><p>LineChart (with legend, simple design)<br><img src="http://cdn.tiimor.cn/images/LineChart1.png" alt="LineChart1"></p>
+</li>
+<li><p>LineChart (with legend, simple design)<br><img src="http://cdn.tiimor.cn/images/LineChart2.png" alt="LineChart2"></p>
+</li>
+<li><p>LineChart (cubic lines)<br><img src="http://cdn.tiimor.cn/images/LineChart3.png" alt="LineChart3"></p>
+</li>
+<li><p>LineChart (gradient fill)<br><img src="http://cdn.tiimor.cn/images/LineChart4.png" alt="LineChart4"></p>
+</li>
+<li><p>Combined-Chart (bar- and linechart in this case)<br><img src="http://cdn.tiimor.cn/images/Combined-Chart.png" alt="Combined-Chart"></p>
+</li>
+<li><p>BarChart (with legend, simple design)<br><img src="http://cdn.tiimor.cn/images/BarChart1.png" alt="BarChart1"></p>
+</li>
+<li><p>BarChart (grouped DataSets)<br><img src="http://cdn.tiimor.cn/images/BarChart2.png" alt="BarChart2"></p>
+</li>
+<li><p>Horizontal-BarChart<br><img src="http://cdn.tiimor.cn/images/Horizontal-BarChart.png" alt="Horizontal-BarChart"></p>
+</li>
+<li><p>PieChart (with selection, …)<br><img src="http://cdn.tiimor.cn/images/PieChart.png" alt="PieChart"></p>
+</li>
+<li><p>ScatterChart (with squares, triangles, circles, … and more)<br><img src="http://cdn.tiimor.cn/images/ScatterChart.png" alt="ScatterChart"></p>
+</li>
+<li><p>CandleStickChart (for financial data)<br><img src="http://cdn.tiimor.cn/images/CandleStickChart.png" alt="CandleStickChart"></p>
+</li>
+<li><p>BubbleChart (area covered by bubbles indicates the yValue)<br><img src="http://cdn.tiimor.cn/images/BubbleChart.png" alt="BubbleChart"></p>
+</li>
+<li><p>RadarChart (spider web chart)<br><img src="http://cdn.tiimor.cn/images/RadarChart.png" alt="RadarChart"></p>
+</li>
+</ul>
+<h1 id="图表绘制"><a href="#图表绘制" class="headerlink" title="图表绘制"></a>图表绘制</h1><h2 id="XY轴绘制"><a href="#XY轴绘制" class="headerlink" title="XY轴绘制"></a>XY轴绘制</h2><ul>
+<li><code>setEnabled(boolean enabled)</code>:设置轴是否被绘制。默认绘制,false不会被绘制。</li>
+<li><code>setDrawLabels(boolean enabled)</code>:设置为true打开绘制轴的标签。</li>
+<li><code>setDrawAxisLine(boolean enabled)</code>:设置为true，绘制轴线</li>
+<li><code>setDrawGridLines(boolean enabled)</code>:设置为true绘制网格线。</li>
+</ul>
+<h2 id="定义轴线样式"><a href="#定义轴线样式" class="headerlink" title="定义轴线样式"></a>定义轴线样式</h2><ul>
+<li><code>setTextColor(int color)</code>:设置轴标签文本颜色。</li>
+<li><code>setTextSize(float size)</code>:设置轴标签的字体大小。</li>
+<li><code>setTypeface(Typeface tf)</code>:设置轴标签的自定义Typeface</li>
+<li><code>setGridColor(int color)</code>:设置网格线颜色。</li>
+<li><code>setGridLineWidth(float width)</code>:设置网格线宽度。</li>
+<li><code>setAxisLineColor(int color)</code>:设置此轴的坐标轴的颜色。</li>
+<li><code>setAxisLineWidth(float width)</code>:设置此轴的坐标轴的宽度。</li>
+<li><code>setVisibleXRangeMaximum(float maxXRange)</code>:设置x轴最多显示数据条数，（要在设置数据源后调用，否则是无效的）</li>
+<li><code>enableGridDashedLine(float lineLength, float spaceLength, float phase)</code>:显示网格线虚线模式，“lineLength”控制短线条的长度，“spaceLength”控制两段线之间的间隔长度，“phase”控制开始的点。</li>
+</ul>
+<h2 id="自定义轴线的值"><a href="#自定义轴线的值" class="headerlink" title="自定义轴线的值"></a>自定义轴线的值</h2><ul>
+<li><code>setAdjustXLabels(boolean enabled)</code>:如果被设置为true，x轴条目将依赖于它自己在进行缩放的时候。如果设置为false，x轴条目将总是保持相同。</li>
+<li><code>setAvoidFirstLastClipping(boolean enabled)</code>:如果设置为true，图表将避免第一个和最后一个标签条目被减掉在图表或屏幕的边缘。</li>
+<li><code>setSpaceBetweenLabels(int characters)</code>:设置x轴标签之间的空间字符数，默认是4个。</li>
+<li><code>setPosition(XAxisPosition pos)</code>:设置XAxis应该出现的位置。可以选择TOP，BOTTOM，BOTH_SIDED，TOP_INSIDE或者BOTTOM_INSIDE。</li>
+<li><code>setStartAtZero(boolean enabled)</code>:如果这个打开，轴线总是有最小值0,无论什么类型的图表被展示。</li>
+<li><code>setAxisMaxValue(float max)</code>:设置一个自定义的最大值为这条轴，如果设置了，这个值将不会依赖于提供的数据自动计算。</li>
+<li><code>resetAxisMaxValue()</code>:调用这个将撤销以前设置的最大值。这意味着，你将再次允许轴自动计算它的最大值。</li>
+<li><code>setAxisMinValue(float min)</code>:设置一个自定义的最小值。如果设置了，这个值将不会依赖于你提供的数据进行自动计算。</li>
+<li><code>resetAxisMinValue()</code>:调用这个方法撤销以前设置的最小值。这意味着，你将再次允许轴自动计算他的最小值。</li>
+<li><code>setInverted(boolean enabled)</code>:如果设置为true，这个轴将被反向，那意味着最高出的将到底部，最低部的到顶端。</li>
+<li><code>setSpaceTop(float percent)</code>:设置在图表上最高处的值相比轴上最高值的顶端空间（总轴范围的百分比）</li>
+<li><code>setSpaceBottom(float percent)</code>:设置在图表上最低处的值相比轴上最低处值的底部空间（总轴范围的百分比）</li>
+<li><code>setShowOnlyMinMax(boolean enabled)</code>:如果打开了，这个轴将展示出它的最小值和最大值。这将忽略或者覆盖定义过的label-count。</li>
+<li><code>setPosition(YAxisLabelPosition pos)</code>:设置轴标签应该被绘制的位置。INSIDE_CHART或者OUTSIDE_CHART中的一个。 自定义影响轴的数值范围应该在图表被设置数据之前应用。</li>
+</ul>
+<h2 id="图表样式"><a href="#图表样式" class="headerlink" title="图表样式"></a>图表样式</h2><p>一些样式相关方法，可以直接使用<br>有关更详尽单独图表类型的样式和设置，请看看具体的图表设置的wiki页面<a href="https://github.com/PhilJay/MPAndroidChart/wiki/Specific-chart-settings" target="_blank" rel="external">Specific-chart-settings</a></p>
+<ul>
+<li><code>setBackgroundColor(int color)</code>:设置整个图表视图的背景</li>
+<li><code>setDescription(String desc)</code>:右下角对图表的描述信息</li>
+<li><code>setDescriptionColor(int color)</code>:描述信息的颜色</li>
+<li><code>setDescriptionPosition(float x, float y)</code>:自定义描述信息位置.</li>
+<li><code>setDescriptionTypeface(Typeface t)</code>:自定义描述信息字体</li>
+<li><code>setDescriptionTextSize(float size)</code>:自定义描述信息字体大小, 最小值6f, 最大值16f.</li>
+<li><code>setNoDataTextDescription(String desc)</code>:设置空表的描述信息</li>
+<li><code>setDrawGridBackground(boolean enabled)</code>:是否绘制网格背景</li>
+<li><code>setGridBackgroundColor(int color)</code>:设置网格背景颜色</li>
+<li><code>setDrawBorders(boolean enabled)</code>:是否绘制边线</li>
+<li><code>setBorderColor(int color)</code>:边线颜色</li>
+<li><code>setBorderWidth(float width)</code>:边线宽度，单位dp</li>
+<li><code>setMaxVisibleValueCount(int count)</code>:设置图表绘制可见标签数量最大值. 仅在setDrawValues() 启用时生效</li>
+</ul>
+<h2 id="打印日志"><a href="#打印日志" class="headerlink" title="打印日志"></a>打印日志</h2><ul>
+<li><code>setLogEnabled(boolean enabled)</code>:设置为true会激活log输出。使用这种log会对性能造成影响，没有必要用的话关掉它。</li>
+</ul>
+<h2 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h2><ul>
+<li><code>invalidate()</code>:这个方法能使图表重绘.要使图表更改生效，这个方法是必要的。</li>
+<li><code>notifyDataSetChanged()</code>:让图表知道它的基础数据发生更改，并执行所有必要的重新计算(offsets, legend, maxima, minima, …)。 动态添加数据时，这是必须调用的。</li>
+</ul>
+<h1 id="图表的交互"><a href="#图表的交互" class="headerlink" title="图表的交互"></a>图表的交互</h1><h2 id="启用-禁用交互"><a href="#启用-禁用交互" class="headerlink" title="启用/禁用交互"></a>启用/禁用交互</h2><ul>
+<li><code>setTouchEnabled(boolean enabled)</code>:启用图表触摸事件</li>
+<li><code>setDragEnabled(boolean enabled)</code>:启用图表拖拽事件</li>
+<li><code>setScaleEnabled(boolean enabled)</code>:启用图表缩放事件</li>
+<li><code>setScaleXEnabled(boolean enabled)</code>:启用X轴上的缩放</li>
+<li><code>setScaleYEnabled(boolean enabled)</code>:启用Y轴上的缩放</li>
+<li><code>setPinchZoom(boolean enabled)</code>:XY同时缩放</li>
+<li><code>setDoubleTapToZoomEnabled(boolean enabled)</code>:启用双击缩放</li>
+<li><code>setHighlightPerDragEnabled(boolean enabled)</code>:拖拽超过图标绘制画布时高亮显示</li>
+<li><code>setHighlightPerTapEnabled(boolean enabled)</code>:双击高亮显示</li>
+</ul>
+<h2 id="图表的减速器"><a href="#图表的减速器" class="headerlink" title="图表的减速器"></a>图表的减速器</h2><ul>
+<li><code>setDragDecelerationEnabled(boolean enabled)</code>:抬起之后继续滚动</li>
+<li><code>setDragDecelerationFrictionCoef(float coef)</code>: 减速插值，取值范围[0，1)。0表示立停止。值越大速度下降越缓慢</li>
+</ul>
+<h2 id="高亮方式"><a href="#高亮方式" class="headerlink" title="高亮方式"></a>高亮方式</h2><ul>
+<li><code>highlightValues(Highlight[] highs)</code>:高亮点的集合，如果为空，全部不高亮</li>
+<li><code>highlightValue(int xIndex, int dataSetIndex)</code>:x轴上的数据集合高亮。如果为-1，全部不高两</li>
+<li><code>getHighlighted()</code>:获取高亮点的集合，高亮显示使用OnChartValueSelectedListener不会生成一个回调。可以通过ChartData或DataSet对象启用和禁用高亮显示。</li>
+</ul>
+<h2 id="自定义高亮符号"><a href="#自定义高亮符号" class="headerlink" title="自定义高亮符号"></a>自定义高亮符号</h2><p>所有的用户输入在内部被默认ChartHighlighter类处理。它可以用下面的方法自定义实现替换默认highligher：</p>
+<ul>
+<li><code>setHighlighter(ChartHighlighter highlighter)</code>:通过继承ChartHighlighter类实现自定义高亮符号。通过setHighlighter设置点击等操作高亮显示的符号</li>
+</ul>
+<h2 id="选择回调"><a href="#选择回调" class="headerlink" title="选择回调"></a>选择回调</h2><ul>
+<li><code>OnChartValueSelectedListener</code>:触摸高亮值时回调</li>
+</ul>
+<h2 id="手势回调"><a href="#手势回调" class="headerlink" title="手势回调"></a>手势回调</h2><ul>
+<li><code>OnChartGestureListener</code>:这个回调可以定制手势操作相关回调。注意该手势的缩放是对图表的Matrix缩放，并不改变X轴的值，如果想实现X轴数值变化缩放，如天月年的切换，需要借助手势类实现。</li>
+</ul>
+<h1 id="主要图表类"><a href="#主要图表类" class="headerlink" title="主要图表类"></a>主要图表类</h1><h2 id="轴AxisBase"><a href="#轴AxisBase" class="headerlink" title="轴AxisBase"></a>轴AxisBase</h2><p>AxisBase 这个类，他是XAxis 和YAxis的基类</p>
+<h2 id="X轴XAxis"><a href="#X轴XAxis" class="headerlink" title="X轴XAxis"></a>X轴XAxis</h2><p>XAxis 是AxisBase的子类。<br>XAxis 类是所有的数据和信息的容器与水平轴有关。。XAxis显示什么是交给ChartData对象作为一个ArrayList<string> 或者String[]。<br>XAxis类允许自定义样式和以下部分:<br>水平对齐标签绘制,其中包含轴描述值,为图表X轴提供的数据对象设置。<br>在标签旁边与标签平行绘制了一个“axis-line”。<br>每个在垂直方向坐标轴标签的网格线。</string></p>
+<h2 id="Y轴YAxis"><a href="#Y轴YAxis" class="headerlink" title="Y轴YAxis"></a>Y轴YAxis</h2><p>YAxis 是AxisBase的子类。<br>YAxis 类是与垂直轴相关的所有数据和信息容器，与左边右边垂直的轴相关。RadarChart 只有一个Y轴，默认情况下，图标的两个轴都启用绘制。</p>
+<h2 id="zeroline"><a href="#zeroline" class="headerlink" title="zeroline"></a>zeroline</h2><p>除了网格线，在水平方向Y轴的每个值，有所谓的zeroline，这是在0位置轴线上值绘制的，是类似于网格线，但可以单独配置。</p>
+<h2 id="LimitLine-类"><a href="#LimitLine-类" class="headerlink" title="LimitLine 类"></a>LimitLine 类</h2><p>两轴支持，所谓LimitLines允许显示特殊信息,如边界或限制。LimitLine在水平方向时添加到YAxis,而在垂直方向时添加到XAxis。这是如何从轴添加和删除LimitLines</p>
+<ul>
+<li><code>addLimitLine(LimitLine l)</code>:在轴上添加新的 LimitLine</li>
+<li><code>removeLimitLine(LimitLine l)</code>:从轴上移除 LimitLine</li>
+<li><code>setDrawLimitLinesBehindData(boolean enabled)</code>:允许控制LimitLines之间的z轴上的实际的数据顺序。如果设置为true,LimitLines在真实数据后边绘制，,否则在上面。默认false</li>
+</ul>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><h2 id="显示隐藏Y轴线及自定义轴线的显示样式"><a href="#显示隐藏Y轴线及自定义轴线的显示样式" class="headerlink" title="显示隐藏Y轴线及自定义轴线的显示样式"></a>显示隐藏Y轴线及自定义轴线的显示样式</h2><ul>
+<li><code>mChart.getAxisLeft().setEnabled(false)</code>:隐藏Y轴左边轴线，此时标签数字也隐藏</li>
+<li><code>mChart.getAxisRight().setEnabled(false)</code>:隐藏Y轴右边轴线，此时标签数字也隐藏  </li>
+<li><code>mChart.getAxisRight().setDrawAxisLine(false)</code>:如果想隐藏轴线但是想显示数字标签</li>
+</ul>
+<h2 id="Y轴线数据标签怎么自己控制显示个数"><a href="#Y轴线数据标签怎么自己控制显示个数" class="headerlink" title="Y轴线数据标签怎么自己控制显示个数"></a>Y轴线数据标签怎么自己控制显示个数</h2><ul>
+<li><code>mChart.getAxisLeft().setLabelCount(8, false)</code>:此时设置了分8个，可根据自己喜好设置</li>
+</ul>
+<h2 id="设置轴线颜色，宽度等信息"><a href="#设置轴线颜色，宽度等信息" class="headerlink" title="设置轴线颜色，宽度等信息"></a>设置轴线颜色，宽度等信息</h2><figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">YAxis leftAxis = mChart.getAxisLeft();</div><div class="line"><span class="comment">// 显示轴线内部INSIDE_CHART  </span></div><div class="line">leftAxis.setPosition(YAxisLabelPosition.OUTSIDE_CHART);</div><div class="line"><span class="comment">// 设置轴线颜色</span></div><div class="line">leftAxis.setAxisLineColor(Color.parseColor(“#ff0000”));</div><div class="line"><span class="comment">// 设置轴线宽度</span></div><div class="line">leftAxis.setAxisLineWidth(<span class="number">1</span>); </div><div class="line"><span class="comment">// 设置y轴标签字体大小 </span></div><div class="line">leftAxis.setTextSize(<span class="number">20</span>);</div><div class="line"><span class="comment">// 设置自定义字体</span></div><div class="line">leftAxis.setTypeface(); </div><div class="line"><span class="comment">// 设置是否显示网格线</span></div><div class="line">leftAxis.setDrawGridLines(<span class="built_in">Boolean</span>);</div></pre></td></tr></table></figure>
+<h2 id="自定义Y轴方向上的值"><a href="#自定义Y轴方向上的值" class="headerlink" title="自定义Y轴方向上的值"></a>自定义Y轴方向上的值</h2><p>重写ValueFormatter，使用DataSet.setValueFormatter进行设置<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerValueFormatter</span> <span class="keyword">implements</span> <span class="title">ValueFormatter</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> DecimalFormat mFormat;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomerValueFormatter</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 此处是显示数据的方式，显示整型或者小数后面小数位数自己随意确定</span></div><div class="line">        mFormat = <span class="keyword">new</span> DecimalFormat(<span class="string">"###,###,###,##0"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> <span class="function">String <span class="title">getFormattedValue</span><span class="params">(<span class="keyword">float</span> value, Entry entry, <span class="keyword">int</span> dataSetIndex, ViewPortHandler viewPortHandler)</span> </span>&#123;</div><div class="line">		<span class="comment">// 数据前或者后可根据自己想要显示的方式添加</span></div><div class="line">        <span class="function"><span class="keyword">return</span> mFormat.<span class="title">format</span><span class="params">(value)</span></span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="自定义Y轴坐标显示的值"><a href="#自定义Y轴坐标显示的值" class="headerlink" title="自定义Y轴坐标显示的值"></a>自定义Y轴坐标显示的值</h2><p>重写YAxisValueFormatter，使用YAxis.setValueFormatter设置<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerValueFormatter</span> <span class="keyword">implements</span> <span class="title">YAxisValueFormatter</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> DecimalFormat mFormat;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomerValueFormatter</span><span class="params">()</span> </span>&#123;</div><div class="line">        mFormat = <span class="keyword">new</span> DecimalFormat(<span class="string">"###,###,###,##0"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getFormattedValue</span><span class="params">(<span class="keyword">float</span> value, YAxis yAxis)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"￥"</span>+mFormat.format(value);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="自定义X轴坐标显示的值"><a href="#自定义X轴坐标显示的值" class="headerlink" title="自定义X轴坐标显示的值"></a>自定义X轴坐标显示的值</h2><p>重写XAxisValueFormatter，使用XAxis.setValueFormatter设置</p>
+<h2 id="将x轴标签倾斜显示"><a href="#将x轴标签倾斜显示" class="headerlink" title="将x轴标签倾斜显示"></a>将x轴标签倾斜显示</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">XAxis xl = mChart.getXAxis();</div><div class="line"><span class="comment">// 设置x轴字体显示角度</span></div><div class="line">xl.setLabelRotationAngle(<span class="number">-20</span>);</div><div class="line"><span class="comment">// 设置X轴的位置TOP, BOTTOM, BOTH_SIDED, TOP_INSIDE, BOTTOM_INSIDE</span></div><div class="line">xl.setPosition(XAxisPosition.BOTTOM);</div><div class="line"><span class="comment">// 设置Lable之间的距离（字符），小于距离将不显示，需要放大图标才能看到</span></div><div class="line">xl.setSpaceBetweenLabels(<span class="keyword">int</span> spaceCharacters)</div></pre></td></tr></table></figure>
+<h2 id="设置一页数据点数"><a href="#设置一页数据点数" class="headerlink" title="设置一页数据点数"></a>设置一页数据点数</h2><p><code>setVisibleXRange(float minXRange, float maxXRange)</code></p>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>更多详细介绍可参考</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/Android-View/JNChartDemo" target="_blank" rel="external">JNChartDemo</a></li>
+<li><a href="https://github.com/Android-View/ChartLib-Demo-Android" target="_blank" rel="external">ChartLib-Demo-Android</a></li>
+<li><a href="https://jitpack.io/com/github/PhilJay/MPAndroidChart/v3.0.0-beta1/javadoc/" target="_blank" rel="external">API</a></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢老板，请尽情用红包来蹂躏我吧！！！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechatpay.jpg" alt="Tiimor 微信打赏"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay.jpg" alt="Tiimor 支付宝打赏"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <!-- modify by zhangwei -->
+            <!-- 文章底部标签图标 -->
+            <a href="/tags/Android图表/" rel="tag"><i class="menu-item-icon fa fa-tag fa-fw"></i>Android图表</a>
+          
+            <!-- modify by zhangwei -->
+            <!-- 文章底部标签图标 -->
+            <a href="/tags/MPAndroidChart/" rel="tag"><i class="menu-item-icon fa fa-tag fa-fw"></i>MPAndroidChart</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android数据库加密/" rel="next" title="Android数据库加密">
+                <i class="fa fa-chevron-left"></i> Android数据库加密
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android功守道-反编译VS混淆与加壳/" rel="prev" title="Android功守道-反编译VS混淆与加壳">
+                Android功守道-反编译VS混淆与加壳 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="Tiimor" />
+            
+              <p class="site-author-name" itemprop="name">Tiimor</p>
+              <p class="site-description motion-element" itemprop="description">安静地做一只攻城狮。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/VeiZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.weibo.com/tiimor" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/589972d0570c3500624fd791" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-anchor"></i>掘金</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.jianshu.com/u/93b886580243" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-book"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://wpa.qq.com/msgrd?v=3&uin=690393541&site=qq&menu=yes" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:tiimor@qq.com" target="_blank" title="邮箱">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>邮箱</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#核心功能"><span class="nav-number">1.</span> <span class="nav-text">核心功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图表类型"><span class="nav-number">2.</span> <span class="nav-text">图表类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图表绘制"><span class="nav-number">3.</span> <span class="nav-text">图表绘制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#XY轴绘制"><span class="nav-number">3.1.</span> <span class="nav-text">XY轴绘制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义轴线样式"><span class="nav-number">3.2.</span> <span class="nav-text">定义轴线样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义轴线的值"><span class="nav-number">3.3.</span> <span class="nav-text">自定义轴线的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图表样式"><span class="nav-number">3.4.</span> <span class="nav-text">图表样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打印日志"><span class="nav-number">3.5.</span> <span class="nav-text">打印日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#刷新"><span class="nav-number">3.6.</span> <span class="nav-text">刷新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图表的交互"><span class="nav-number">4.</span> <span class="nav-text">图表的交互</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#启用-禁用交互"><span class="nav-number">4.1.</span> <span class="nav-text">启用/禁用交互</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图表的减速器"><span class="nav-number">4.2.</span> <span class="nav-text">图表的减速器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高亮方式"><span class="nav-number">4.3.</span> <span class="nav-text">高亮方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义高亮符号"><span class="nav-number">4.4.</span> <span class="nav-text">自定义高亮符号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择回调"><span class="nav-number">4.5.</span> <span class="nav-text">选择回调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#手势回调"><span class="nav-number">4.6.</span> <span class="nav-text">手势回调</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主要图表类"><span class="nav-number">5.</span> <span class="nav-text">主要图表类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#轴AxisBase"><span class="nav-number">5.1.</span> <span class="nav-text">轴AxisBase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#X轴XAxis"><span class="nav-number">5.2.</span> <span class="nav-text">X轴XAxis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Y轴YAxis"><span class="nav-number">5.3.</span> <span class="nav-text">Y轴YAxis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zeroline"><span class="nav-number">5.4.</span> <span class="nav-text">zeroline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LimitLine-类"><span class="nav-number">5.5.</span> <span class="nav-text">LimitLine 类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见问题"><span class="nav-number">6.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#显示隐藏Y轴线及自定义轴线的显示样式"><span class="nav-number">6.1.</span> <span class="nav-text">显示隐藏Y轴线及自定义轴线的显示样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Y轴线数据标签怎么自己控制显示个数"><span class="nav-number">6.2.</span> <span class="nav-text">Y轴线数据标签怎么自己控制显示个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置轴线颜色，宽度等信息"><span class="nav-number">6.3.</span> <span class="nav-text">设置轴线颜色，宽度等信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义Y轴方向上的值"><span class="nav-number">6.4.</span> <span class="nav-text">自定义Y轴方向上的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义Y轴坐标显示的值"><span class="nav-number">6.5.</span> <span class="nav-text">自定义Y轴坐标显示的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义X轴坐标显示的值"><span class="nav-number">6.6.</span> <span class="nav-text">自定义X轴坐标显示的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将x轴标签倾斜显示"><span class="nav-number">6.7.</span> <span class="nav-text">将x轴标签倾斜显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置一页数据点数"><span class="nav-number">6.8.</span> <span class="nav-text">设置一页数据点数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#补充"><span class="nav-number">7.</span> <span class="nav-text">补充</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tiimor</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <!-- modify by zhangwei -->
+  <!-- 修改不蒜子统计脚本 -->
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+<script>
+  	var _mtac = {};
+  	(function() {
+  		var mta = document.createElement("script");
+  		mta.src = "https://pingjs.qq.com/h5/stats.js?v2.0.4";
+  		mta.setAttribute("name", "MTAH5");
+  		mta.setAttribute("sid", "500425805");
+
+  		var s = document.getElementsByTagName("script")[0];
+  		s.parentNode.insertBefore(mta, s);
+  	})();
+</script>
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=61441764";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            <!-- modify by zhangwei -->
+            <!-- 修复gitment评论页初始化错误@tiimor -->
+            id: '1512887386000', 
+            owner: 'VeiZhang',
+            repo: 'veizhang.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '9919bc61413a89ea3eb156910d282e3103093e32',
+            
+                client_id: 'f08924ca58e61d6f51f4'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("7aBs9I9Y3PjoN6ueX5J3AYQW-gzGzoHsz", "kboycyzaPNAYcUW8AkF3edeW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <!-- modify by zhangwei -->
+  <!-- 动态时间小人 -->
+  <!-- modify by zhangwei -->
+<!-- 动态时间小人 -->
+<!-- z-index -1 表示在最底层，不能悬浮也不能点击 -->
+<!-- z-index auto 可以点击 -->
+<!-- z-index 9999 无限大时，总是在最上层，会影响其他悬浮框 -->
+<div id="dg" style="z-index: auto; position: fixed ! important; right: 0px; top: 0px;">  
+    <table width=""100% style="position: absolute; width:260px; right: 0px; top: 0px;">  
+		<div>
+			<embed wmode="transparent" src="http://cdn.tiimor.cn/images/dynamic_time.swf" quality="high" bgcolor="#ffffff" width="160" height="70" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+		</div>
+    </table>  
+</div>
+  
+</body>
+</html>

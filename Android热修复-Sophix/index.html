@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<!-- modify by zhangwei -->
+<!-- 百度站长 -->
+<meta name="baidu-site-verification" content="MdPKZBgY0U" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="8DKRuNxJDPU2k6cNyVhLe_eSqGk-R8oiYk8iKMg5gwI" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/uploads/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,热修复,Sophix," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="班德尔城" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="以往当Android App出现bug的时候，甚至仅仅是修改一行代码，都要重新发布新版本对bug进行修复，这样带来的缺点是明显的，需要用户重新升级app，覆盖率太慢，成本太高。所以就出现了热修复技术，通过打补丁的方式，通过从服务器下载补丁包，然后对有问题的类中出问题的方法，进行替换，优点是用户无感知修复，无需下载新的应用，代价小。对比其他的热修复方案，来耍一耍阿里-Sophix 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android热修复-Sophix">
+<meta property="og:url" content="http://tiimor.cn/Android热修复-Sophix/index.html">
+<meta property="og:site_name" content="班德尔城">
+<meta property="og:description" content="以往当Android App出现bug的时候，甚至仅仅是修改一行代码，都要重新发布新版本对bug进行修复，这样带来的缺点是明显的，需要用户重新升级app，覆盖率太慢，成本太高。所以就出现了热修复技术，通过打补丁的方式，通过从服务器下载补丁包，然后对有问题的类中出问题的方法，进行替换，优点是用户无感知修复，无需下载新的应用，代价小。对比其他的热修复方案，来耍一耍阿里-Sophix 。">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/%E5%94%AF%E7%BE%8E%E7%AF%87%EF%BC%8D%E7%94%BB%E4%B8%AD%E7%9A%84android.jpg">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/%E6%B7%BB%E5%8A%A0%E7%A7%BB%E5%8A%A8%E7%83%AD%E4%BF%AE%E5%A4%8D.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/Sophix%E6%B5%8B%E8%AF%95.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/Sophix%E5%BF%85%E8%A6%81%E4%BF%A1%E6%81%AF.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/%E5%BC%95%E5%85%A5Sophix%E4%BB%93%E5%BA%93.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/gif-Sophix.gif">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/Sophix_V1.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/Sophix_V2.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/Sophix%E8%A1%A5%E4%B8%81%E7%94%9F%E6%88%90.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/Sophix%E6%B7%BB%E5%8A%A0%E8%A1%A5%E4%B8%81%E7%89%88%E6%9C%AC.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/Sophix%E4%B8%8A%E4%BC%A0%E8%A1%A5%E4%B8%81.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/Sophix%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/Sophix%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95%E6%88%90%E5%8A%9F.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/Sophix%E5%8F%91%E5%B8%83.png">
+<meta property="og:image" content="http://tiimor.cn//ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/%E9%98%BF%E9%87%8C%E7%83%AD%E4%BF%AE%E5%A4%8D%E5%8E%9F%E7%90%86%E5%AE%9D%E5%85%B8.png">
+<meta property="og:updated_time" content="2019-03-17T06:47:42.366Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android热修复-Sophix">
+<meta name="twitter:description" content="以往当Android App出现bug的时候，甚至仅仅是修改一行代码，都要重新发布新版本对bug进行修复，这样带来的缺点是明显的，需要用户重新升级app，覆盖率太慢，成本太高。所以就出现了热修复技术，通过打补丁的方式，通过从服务器下载补丁包，然后对有问题的类中出问题的方法，进行替换，优点是用户无感知修复，无需下载新的应用，代价小。对比其他的热修复方案，来耍一耍阿里-Sophix 。">
+<meta name="twitter:image" content="http://cdn.tiimor.cn/images/%E5%94%AF%E7%BE%8E%E7%AF%87%EF%BC%8D%E7%94%BB%E4%B8%AD%E7%9A%84android.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'EJ36R2M952',
+      apiKey: 'f14ef41ccc238f9d187b5defa630aa77',
+      indexName: 'tiimor',
+      hits: {"per_page":8},
+      labels: {"input_placeholder":"搜索","hits_empty":"未发现与「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://tiimor.cn/Android热修复-Sophix/"/>
+
+
+
+
+
+  <title>Android热修复-Sophix | 班德尔城</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-96457043-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?abb97f8f68c9e5eb2217d3111c64e696";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+  <!-- modify by zhangwei -->
+  <!-- 下雪的动画 -->
+  <div class="canvas-snow">
+    <canvas id="canvas" style="margin: 0;  padding: 0;top:0; left: 0; right: 0; background: transparent; position: absolute;" width="1366" height="105"></canvas>
+      <script>
+
+      var canvasBgImg = {
+        start: function () {
+          this.canvas = document.getElementById('canvas')
+          this.ctx = this.canvas.getContext("2d")
+          this.canvas.width = window.innerWidth
+          this.canvas.height = 105
+          this.starList = []
+        },
+        drawLine: function (ctx, x1, y1, x2, y2) {
+          ctx.beginPath()
+          ctx.strokeStyle = '#ffffff'
+          ctx.lineTo(x1, y1)
+          ctx.lineTo(x2, y2)
+          ctx.stroke()
+        },
+        canvasSingleSnow: function (snowSize) {
+          var singleSnow = document.createElement('canvas'),
+            ctxSingle = singleSnow.getContext('2d')
+          singleSnow.setAttribute('width', snowSize * 2)
+          singleSnow.setAttribute('height', snowSize * 2)
+          for (var i = 0; i < 6; i++) {
+            ctxSingle.save()
+            ctxSingle.translate(snowSize, snowSize)
+            ctxSingle.rotate(Math.PI * 2 * i / 6)
+            this.drawLine(ctxSingle, 0, 0, snowSize, 0)
+            ctxSingle.restore()
+          }
+          return singleSnow
+        },
+        canvasAllSnow: function (centerSnow) {
+          var canvasSnow = document.createElement('canvas'),
+            ctxSnow = canvasSnow.getContext('2d'),
+            bigSnow = this.canvasSingleSnow(centerSnow),
+            smallSnow = this.canvasSingleSnow(centerSnow / 3),
+            sizeSnow = centerSnow * 3 / 5,
+            rSnow = centerSnow - sizeSnow / 2
+          canvasSnow.setAttribute('width', centerSnow * 2)
+          canvasSnow.setAttribute('height', centerSnow * 2)
+          ctxSnow.drawImage(bigSnow, 0, 0, bigSnow.width, bigSnow.height, 0, 0, centerSnow * 2, centerSnow * 2)
+          for (var i = 0; i < 6; i++) {
+            ctxSnow.save()
+            ctxSnow.translate(centerSnow, centerSnow)
+            ctxSnow.rotate(Math.PI * 2 * i / 6)
+            ctxSnow.drawImage(smallSnow, 0, 0, smallSnow.width, smallSnow.height, rSnow - sizeSnow / 2,
+              -sizeSnow / 2, sizeSnow, sizeSnow)
+            ctxSnow.restore()
+          }
+          return canvasSnow
+        },
+        init: function () {
+          this.start()
+          for (var i = 0; i < 75; i++) {
+            this.starList.push({
+              drawFunc: this.canvasAllSnow(15),
+              width: Math.random() * this.canvas.width,
+              height: Math.random() * this.canvas.height,
+              speed: Math.random() * 1.5 + .5,
+              scale: Math.random() * 12 + 5,
+              angel: 0
+            })
+          }
+          var self = this,
+            loop = function () {
+              self.ctx.clearRect(0, 0, self.canvas.width, self.canvas.width)
+              for (var i = 0; i < 75; i++) {
+                self.ctx.save()
+                self.starList[i].height = self.starList[i].height + self.starList[i].speed
+                self.starList[i].angel += 2
+                self.ctx.translate(self.starList[i].width, self.starList[i].height)
+                self.ctx.rotate(self.starList[i].angel * Math.PI / 360)
+                self.ctx.translate(-self.starList[i].width, -self.starList[i].height)
+                self.ctx.drawImage(self.starList[i].drawFunc, 0, 0,
+                  self.starList[i].drawFunc.width, self.starList[i].drawFunc.height,
+                  self.starList[i].width - self.starList[i].scale / 2,
+                  self.starList[i].height - self.starList[i].scale / 2,
+                  self.starList[i].scale, self.starList[i].scale)
+                if (self.starList[i].height > self.canvas.height) {
+                  self.starList[i] = Object.assign(self.starList[i], {
+                    height: -self.starList[i].scale,
+                    width: Math.random() * this.canvas.width
+                  })
+                }
+                self.ctx.restore()
+              }
+              requestAnimationFrame(loop)
+            }
+          requestAnimationFrame(loop)
+        }
+      }
+      canvasBgImg.init()
+      </script>
+
+    </div>
+
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <!-- modify by zhangwei -->
+        <!-- 圣诞帽 -->
+        <img src="uploads/santa-hat.png" id="santa" style="height: 41px; position: absolute; left: -40px; top: -20px; transform: rotate(-45deg); z-index: 9000;">
+
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">班德尔城</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">微笑，简单，奋发</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-send"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-favourite">
+          <a href="/favourite" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bookmark"></i> <br />
+            
+            收藏
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tiimor.cn/Android热修复-Sophix/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tiimor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="班德尔城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android热修复-Sophix</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-17T11:52:10+08:00">
+                2017-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/好好学习/" itemprop="url" rel="index">
+                    <span itemprop="name">好好学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Android热修复-Sophix/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/Android热修复-Sophix/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/Android热修复-Sophix/" class="leancloud_visitors" data-flag-title="Android热修复-Sophix">
+               <span class="post-meta-divider">|</span>
+               <!-- modify by zhangwei -->
+               <!-- 去掉阅读的眼睛图标，阅读次数改为℃ -->
+			   
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://cdn.tiimor.cn/images/%E5%94%AF%E7%BE%8E%E7%AF%87%EF%BC%8D%E7%94%BB%E4%B8%AD%E7%9A%84android.jpg" alt="Android" title="画中的android"></p>
+<p>以往当Android App出现bug的时候，甚至仅仅是修改一行代码，都要重新发布新版本对bug进行修复，这样带来的缺点是明显的，需要用户重新升级app，覆盖率太慢，成本太高。所以就出现了热修复技术，通过打补丁的方式，通过从服务器下载补丁包，然后对有问题的类中出问题的方法，进行替换，优点是用户无感知修复，无需下载新的应用，代价小。对比其他的热修复方案，<strong>来耍一耍阿里-Sophix</strong> 。</p>
+<a id="more"></a>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><h3 id="“冷热”"><a href="#“冷热”" class="headerlink" title="“冷热”"></a>“冷热”</h3><ul>
+<li><strong>插件化</strong> - apk 分为宿主和插件部分，插件在需要的时候才加载进来</li>
+<li><strong>热修复</strong> – 更新的类或者插件粒度较小的时候，我们会称之为热修复，一般用于修复bug</li>
+<li><strong>热更新</strong> – 2016 Google 的 Android Studio 推出了Instant Run 功能 同时提出了3个名词</li>
+<li><strong>热部署</strong> – 方法内的简单修改，无需重启app和Activity。 </li>
+<li><strong>暖部署</strong> – app无需重启，但是activity需要重启，比如资源的修改。 </li>
+<li><strong>冷部署</strong> – app需要重启，比如继承关系的改变或方法的签名变化等。</li>
+</ul>
+<h3 id="热修复特点"><a href="#热修复特点" class="headerlink" title="热修复特点"></a>热修复特点</h3><ul>
+<li>无需重新发版，实时高效热修复</li>
+<li>用户无感知修复，无需下载新的应用，无需重装App，代价小</li>
+<li>修复成功率高，把损失降到最低</li>
+</ul>
+<h3 id="阿里热修复方案对比"><a href="#阿里热修复方案对比" class="headerlink" title="阿里热修复方案对比"></a>阿里热修复方案对比</h3><table>
+<thead>
+<tr>
+<th>方案对比</th>
+<th><a href="https://github.com/alibaba/AndFix" target="_blank" rel="external">Andfix开源版本</a></th>
+<th>阿里Hotfix 1.X</th>
+<th><a href="https://github.com/aliyun/alicloud-android-demo/tree/master/hotfix_android_demo" target="_blank" rel="external">阿里Hotfix最新版 (Sophix)</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>方法替换</td>
+<td>支持，除部分情况[0]</td>
+<td>支持，除部分情况</td>
+<td>全部支持</td>
+</tr>
+<tr>
+<td>方法增加减少</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>以冷启动方式支持[1]</td>
+</tr>
+<tr>
+<td>方法反射调用</td>
+<td>只支持静态方法</td>
+<td>只支持静态方法</td>
+<td>以冷启动方式支持</td>
+</tr>
+<tr>
+<td>即时生效</td>
+<td>支持</td>
+<td>支持</td>
+<td>视情况支持[2]</td>
+</tr>
+<tr>
+<td>多DEX</td>
+<td>不支持</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>资源更新</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>so库更新</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>Android版本</td>
+<td>支持2.3~7.0</td>
+<td>支持2.3~6.0</td>
+<td>全部支持包含7.0以上</td>
+</tr>
+<tr>
+<td>已有机型</td>
+<td>大部分支持[3]</td>
+<td>大部分支持</td>
+<td>全部支持</td>
+</tr>
+<tr>
+<td>安全机制</td>
+<td>无</td>
+<td>加密传输及签名校验</td>
+<td>加密传输及签名校验</td>
+</tr>
+<tr>
+<td>性能损耗</td>
+<td>低，几乎无损耗</td>
+<td>低，几乎无损耗</td>
+<td>低，仅冷启动情况下有些损耗</td>
+</tr>
+<tr>
+<td>生成补丁</td>
+<td>繁琐，命令行操作</td>
+<td>繁琐，命令行操作</td>
+<td>便捷，图形化界面</td>
+</tr>
+<tr>
+<td>补丁大小</td>
+<td>不大，仅变动的类</td>
+<td>小，仅变动的方法</td>
+<td>不大，仅变动的资源和代码[4]</td>
+</tr>
+<tr>
+<td>服务端支持</td>
+<td>无</td>
+<td>支持服务端控制[5]</td>
+<td>支持服务端控制</td>
+</tr>
+</tbody>
+</table>
+<p>说明：</p>
+<ul>
+<li>[0] 部分情况指的是构造方法、参数数目大于8或者参数包括long,double,float基本类型的方法。</li>
+<li>[1] 冷启动方式，指的是需要重启app在下次启动时才能生效。 </li>
+<li>[2] 对于Andfix及Hotfix 1.X能够支持的代码变动情况，都能做到即时生效。而对于其他代码变动较大的情况，会走冷启动方式，此时就无法做到即时生效。 </li>
+<li>[3] Hotfix 1.X已经支持绝大部分主流手机，只是在X86设备以及修改了虚拟机底层结构的ROM上不支持。 </li>
+<li>[4] 由于支持了资源和库，如果有这些方面的更新，就会导致的补丁变大一些，这个是很正常的。并且由于只包含差异的部分，所以补丁已经是最大程度的小了。 </li>
+<li>[5] 提供服务端的补丁发布和停发、版本控制和灰度功能，存储开发者上传的补丁包。</li>
+</ul>
+<h3 id="其他热修复方案"><a href="#其他热修复方案" class="headerlink" title="其他热修复方案"></a>其他热修复方案</h3><table>
+<thead>
+<tr>
+<th>方案</th>
+<th>作者</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/Tencent/tinker" target="_blank" rel="external">Tinker</a></td>
+<td>微信(apk补丁)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Meituan-Dianping/Robust" target="_blank" rel="external">Robust</a></td>
+<td>美团</td>
+</tr>
+<tr>
+<td><a href="https://github.com/eleme/Amigo" target="_blank" rel="external">Amigo</a></td>
+<td>饿了么（apk补丁）</td>
+</tr>
+<tr>
+<td><a href="https://github.com/jasonross/Nuwa" target="_blank" rel="external">Nuwa</a></td>
+<td>个人开发者</td>
+</tr>
+<tr>
+<td><a href="https://github.com/alibaba/dexposed" target="_blank" rel="external">Dexposed</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/dodola/RocooFix" target="_blank" rel="external">RocooFix</a></td>
+<td>个人开发者</td>
+</tr>
+</tbody>
+</table>
+<h2 id="集成Sophix"><a href="#集成Sophix" class="headerlink" title="集成Sophix"></a>集成Sophix</h2><h3 id="注册阿里云账号"><a href="#注册阿里云账号" class="headerlink" title="注册阿里云账号"></a>注册<a href="https://www.aliyun.com" target="_blank" rel="external">阿里云</a>账号</h3><p><strong><a href="https://help.aliyun.com/document_detail/53238.html?spm=5176.doc53240.3.2.xk9U86" target="_blank" rel="external">创建App文档传送门</a></strong></p>
+<ul>
+<li>注册完开发者账号，成功登录后进入控制台，添加移动热修复服务。<br><img src="http://cdn.tiimor.cn/images/%E6%B7%BB%E5%8A%A0%E7%A7%BB%E5%8A%A8%E7%83%AD%E4%BF%AE%E5%A4%8D.png" alt="添加移动热修复"></li>
+</ul>
+<ul>
+<li><p>开通热修复服务后，跳转到热修复产品界面-<strong>App管理</strong>，创建App “Sophix测试”，创建完成后会出现两个平台的App列表：iOS和Android<br><img src="http://cdn.tiimor.cn/images/Sophix%E6%B5%8B%E8%AF%95.png" alt="Sophix测试"></p>
+</li>
+<li><p>点击管理进入Android平台，在客户端里，需要使用到AppId、APPSecret、RSA密钥<br><img src="http://cdn.tiimor.cn/images/Sophix%E5%BF%85%E8%A6%81%E4%BF%A1%E6%81%AF.png" alt="Sophix必要信息"></p>
+</li>
+</ul>
+<h3 id="客户端集成"><a href="#客户端集成" class="headerlink" title="客户端集成"></a>客户端集成</h3><p><strong><a href="https://help.aliyun.com/document_detail/53240.html?spm=5176.doc53287.2.1.xLNLZz#1.1%20Android%20SDK%E5%8F%8A%E5%B7%A5%E5%85%B7%E4%B8%8B%E8%BD%BD" target="_blank" rel="external">Sophix文档传送门</a></strong></p>
+<ul>
+<li><p>引入maven依赖仓库<br>在项目app下的build.gradle中添加maven仓库地址和版本依赖</p>
+<ul>
+<li><p>添加maven仓库地址：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="section">repositories</span> &#123;</div><div class="line">   <span class="section">maven</span> &#123;</div><div class="line">       <span class="attribute">url</span> <span class="string">"http://maven.aliyun.com/nexus/content/repositories/releases"</span></div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加依赖：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">compile</span> <span class="string">'com.aliyun.ams:alicloud-android-hotfix:3.1.2'</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://cdn.tiimor.cn/images/%E5%BC%95%E5%85%A5Sophix%E4%BB%93%E5%BA%93.png" alt="引入Sophix依赖"></p>
+<ul>
+<li><p>添加使用权限</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;! <span class="comment">-- 网络权限 --&gt;</span></div><div class="line">&lt;uses-permission android:<span class="built_in">name</span>=<span class="string">"android.permission.INTERNET"</span> /&gt;</div><div class="line">&lt;uses-permission android:<span class="built_in">name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span> /&gt;</div><div class="line">&lt;uses-permission android:<span class="built_in">name</span>=<span class="string">"android.permission.ACCESS_WIFI_STATE"</span> /&gt;</div><div class="line">&lt;! <span class="comment">-- 外部存储读权限，调试工具加载本地补丁需要 --&gt;</span></div><div class="line">&lt;uses-permission android:<span class="built_in">name</span>=<span class="string">"android.permission.READ_EXTERNAL_STORAGE"</span>/&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置AndroidManifest文件<br>在application节点里添加配置，用之前在阿里云上创建的App的配置信息AppId、APPSecret、RSA密钥替换value的值：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;application&gt;</div><div class="line">	&lt;meta-<span class="class"><span class="keyword">data</span></span></div><div class="line">	android:name=<span class="string">"com.taobao.android.hotfix.IDSECRET"</span></div><div class="line">	android:value=<span class="string">"App ID"</span> /&gt;</div><div class="line">	&lt;meta-<span class="class"><span class="keyword">data</span></span></div><div class="line">	android:name=<span class="string">"com.taobao.android.hotfix.APPSECRET"</span></div><div class="line">	android:value=<span class="string">"App Secret"</span> /&gt;</div><div class="line">	&lt;meta-<span class="class"><span class="keyword">data</span></span></div><div class="line">	android:name=<span class="string">"com.taobao.android.hotfix.RSASECRET"</span></div><div class="line">	android:value=<span class="string">"RSA密钥"</span> /&gt;</div><div class="line">	···</div><div class="line">&lt;/application&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>可参考官方的动图示例：<br><img src="http://cdn.tiimor.cn/images/gif-Sophix.gif" alt="gif-Sophix"></p>
+<ul>
+<li>Application接入SDK<br>其他接口使用请查看SDK文档<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 初始化Sophix</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">void</span> initSophix()</div><div class="line">&#123;</div><div class="line">	<span class="keyword">String</span> appVersion;</div><div class="line">	<span class="keyword">try</span></div><div class="line">	&#123;</div><div class="line">		appVersion = getPackageManager().getPackageInfo(getPackageName(), <span class="number">0</span>).versionName;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">catch</span> (Exception e)</div><div class="line">	&#123;</div><div class="line">		e.printStackTrace();</div><div class="line">		appVersion = <span class="string">"1.0.0"</span>;</div><div class="line">	&#125;</div><div class="line">	SophixManager.getInstance().setContext(<span class="keyword">this</span>).setAppVersion(appVersion).setAesKey(<span class="keyword">null</span>).setEnableDebug(<span class="keyword">true</span>).setPatchLoadStatusStub(<span class="keyword">new</span> PatchLoadStatusListener()</div><div class="line">	&#123;</div><div class="line">		@Override</div><div class="line">		<span class="keyword">public</span> <span class="keyword">void</span> onLoad(<span class="keyword">final</span> <span class="built_in">int</span> mode, <span class="keyword">final</span> <span class="built_in">int</span> code, <span class="keyword">final</span> <span class="keyword">String</span> info, <span class="keyword">final</span> <span class="built_in">int</span> handlePatchVersion)</div><div class="line">		&#123;</div><div class="line">			<span class="comment">// 补丁加载回调信息</span></div><div class="line">			StringBuilder msg = <span class="keyword">new</span> StringBuilder();</div><div class="line">			msg.<span class="built_in">append</span>(<span class="string">"Mode:"</span>).<span class="built_in">append</span>(mode).<span class="built_in">append</span>(<span class="string">"\n"</span>);</div><div class="line">			msg.<span class="built_in">append</span>(<span class="string">"Code:"</span>).<span class="built_in">append</span>(code).<span class="built_in">append</span>(<span class="string">"\n"</span>);</div><div class="line">			msg.<span class="built_in">append</span>(<span class="string">"Info:"</span>).<span class="built_in">append</span>(info).<span class="built_in">append</span>(<span class="string">"\n"</span>);</div><div class="line">			msg.<span class="built_in">append</span>(<span class="string">"HandlePatchVersion:"</span>).<span class="built_in">append</span>(handlePatchVersion).<span class="built_in">append</span>(<span class="string">"\n"</span>);</div><div class="line">			<span class="keyword">if</span> (mDisplayListener != <span class="keyword">null</span>)</div><div class="line">				mDisplayListener.handle(msg.toString());</div><div class="line"></div><div class="line">			<span class="comment">// 补丁加载回调通知</span></div><div class="line">			<span class="keyword">switch</span> (code)</div><div class="line">			&#123;</div><div class="line">			<span class="keyword">case</span> PatchStatus.CODE_LOAD_SUCCESS:</div><div class="line">				<span class="comment">// 表明补丁加载成功</span></div><div class="line">				<span class="keyword">break</span>;</div><div class="line"></div><div class="line">			<span class="keyword">case</span> PatchStatus.CODE_LOAD_RELAUNCH:</div><div class="line">				<span class="comment">// 表明新补丁生效需要重启. 开发者可提示用户或者强制重启;</span></div><div class="line">				<span class="comment">// 建议: 用户可以监听进入后台事件，然后调用killProcessSafely自杀</span></div><div class="line">				<span class="comment">// 注意：不可以直接Process.killProcess(Process.myPid())来杀进程，这样会扰乱Sophix的内部状态。</span></div><div class="line">				<span class="keyword">break</span>;</div><div class="line"></div><div class="line">			<span class="keyword">case</span> PatchStatus.CODE_LOAD_FAIL:</div><div class="line">				<span class="comment">// 内部引擎异常，推荐此时清空本地补丁，防止失败补丁重复加载</span></div><div class="line">				SophixManager.getInstance().cleanPatches();</div><div class="line">				<span class="keyword">break</span>;</div><div class="line"></div><div class="line">			<span class="keyword">default</span>:</div><div class="line">				<span class="comment">// 其它错误信息，查看PatchStatus类说明</span></div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;).initialize();</div><div class="line">	<span class="comment">// 加载新的补丁包</span></div><div class="line">	SophixManager.getInstance().queryAndLoadNewPatch();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>至此，Sophix配置完成。</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><ul>
+<li>客户端第一版本，如图，打包成Sophix_V1.apk<br><img src="http://cdn.tiimor.cn/images/Sophix_V1.png" alt="Sophix_V1"></li>
+</ul>
+<ul>
+<li><p>客户端补丁版本，如图，打包成Sophix_V2.apk<br><img src="http://cdn.tiimor.cn/images/Sophix_V2.png" alt="Sophix_V2"></p>
+</li>
+<li><p>生成补丁，<a href="https://help.aliyun.com/document_detail/53247.html?spm=5176.2020520107.0.0.719a83830VCANh" target="_blank" rel="external">生成补丁文档传送门</a><br>Windows下载阿里补丁工具<a href="http://ams-hotfix-repo.oss-cn-shanghai.aliyuncs.com/SophixPatchTool_windows.zip?spm=5176.doc53247.2.2.lz640u&amp;file=SophixPatchTool_windows.zip" target="_blank" rel="external">SophixPatchTool</a>，运行SophixPatchTool.exe，添加包，如果有签名等设置，则点击设置，配置相应的签名等，然后点击“Go”，生成补丁，即<strong>sophix-patch.jar</strong>：<br><img src="http://cdn.tiimor.cn/images/Sophix%E8%A1%A5%E4%B8%81%E7%94%9F%E6%88%90.png" alt="Sophix补丁生成" title="生成补丁"></p>
+</li>
+<li><p>上传补丁<br>进入阿里云热修复App管理的Android平台里，即查看AppId、APPSecret、RSA密钥那个页面，添加新版本，成功添加版本后，点击查看详情进入，上传刚刚生成的sophix-patch.jar补丁。<br><img src="http://cdn.tiimor.cn/images/Sophix%E6%B7%BB%E5%8A%A0%E8%A1%A5%E4%B8%81%E7%89%88%E6%9C%AC.png" alt="Sophix添加补丁版本" title="添加补丁版本"><br><img src="http://cdn.tiimor.cn/images/Sophix%E4%B8%8A%E4%BC%A0%E8%A1%A5%E4%B8%81.png" alt="Sophix上传补丁" title="上传补丁"></p>
+</li>
+<li><p>本地测试<br>安装Sophix_V1.apk，同时将补丁sophix-patch.jar放到Android设备的目录里：<code>/sdcard/sophix-patch.jar</code>，下载<a href="http://ams-hotfix-repo.oss-cn-shanghai.aliyuncs.com/hotfix_debug_tool-release.apk?spm=5176.2020520107.0.0.719a8383MbMrkQ&amp;file=hotfix_debug_tool-release.apk" target="_blank" rel="external">hotfixdebug</a>工具，安装后，打开进入调试apk，配置如下：<br><img src="http://cdn.tiimor.cn/images/Sophix%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95.png" alt="Sophix本地测试"></p>
+</li>
+</ul>
+<p>测试成功<br><img src="http://cdn.tiimor.cn/images/Sophix%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95%E6%88%90%E5%8A%9F.png" alt="Sophix本地测试成功"></p>
+<ul>
+<li>发布<br>进入阿里云的补丁详情页面，点击发布。再次进行调试，这次不用Sophix调试工具；先卸载已安装的Sophix_V1，重新安装，打开后再次等待检测补丁更新，再次出现提示ok。<br><img src="http://cdn.tiimor.cn/images/Sophix%E5%8F%91%E5%B8%83.png" alt="Sophix发布"></li>
+</ul>
+<h2 id="推广"><a href="#推广" class="headerlink" title="推广"></a>推广</h2><p>有兴趣的童鞋可以看看阿里出品的<strong><a href="http://note.youdao.com/noteshare?id=1c2b949de5e966ecaf37b363500e6491&amp;sub=3CAAE8571EC74E4B99C841DD208C23CC" target="_blank" rel="external">热修复原理宝典</a></strong></p>
+<script src="//cdn.bootcss.com/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script><div class="hexo-img-readStream"><style type="text/css">.hexo-image-stream-lazy {display:block;}.hexo-img-readStream{width:100%;max-width:1100px;margin:3% auto}div.hexo-img-readStream readItems{ background: #fefefe;box-shadow: 0 1px 2px rgba(34, 25, 25, 0.2);margin: 0 1% 3%;padding: 3%;padding-bottom: 9px;display: inline-block;max-width: 25%;}div.hexo-img-readStream readItems img{padding-bottom:10px;margin-top: 0.7em;}div.hexo-img-readStream readItems figcaption{font-size:.8rem;color:#999;line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align: center;}div.hexo-img-readStream small{font-size:1rem;float:right;text-transform:uppercase;color:#aaa}div.hexo-img-readStream small a{color:#666;text-decoration:none;transition:.4s color}@media screen and (max-width:750px){.hexo-img-readStream{column-gap:0}}</style>
+<readitems><a href="http://cdn.tiimor.cn/images/%E9%98%BF%E9%87%8C%E7%83%AD%E4%BF%AE%E5%A4%8D%E5%8E%9F%E7%90%86%E5%AE%9D%E5%85%B8.png" target="_blank" rel="external"><img class="hexo-image-stream-lazy nofancy" src="//ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="http://cdn.tiimor.cn/images/%E9%98%BF%E9%87%8C%E7%83%AD%E4%BF%AE%E5%A4%8D%E5%8E%9F%E7%90%86%E5%AE%9D%E5%85%B8.png"><noscript><img src="http://cdn.tiimor.cn/images/%E9%98%BF%E9%87%8C%E7%83%AD%E4%BF%AE%E5%A4%8D%E5%8E%9F%E7%90%86%E5%AE%9D%E5%85%B8.png"></noscript></a><figcaption><a href="http://note.youdao.com/noteshare?id=1c2b949de5e966ecaf37b363500e6491&sub=3CAAE8571EC74E4B99C841DD208C23CC" target="_blank" rel="external" id="favorite">阿里热修复原理宝典</a></figcaption></readitems> 
+</div><script type="text/javascript">$('img.hexo-image-stream-lazy').lazyload({ effect:'fadeIn' });</script>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢老板，请尽情用红包来蹂躏我吧！！！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechatpay.jpg" alt="Tiimor 微信打赏"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay.jpg" alt="Tiimor 支付宝打赏"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <!-- modify by zhangwei -->
+            <!-- 文章底部标签图标 -->
+            <a href="/tags/Android/" rel="tag"><i class="menu-item-icon fa fa-tag fa-fw"></i>Android</a>
+          
+            <!-- modify by zhangwei -->
+            <!-- 文章底部标签图标 -->
+            <a href="/tags/热修复/" rel="tag"><i class="menu-item-icon fa fa-tag fa-fw"></i>热修复</a>
+          
+            <!-- modify by zhangwei -->
+            <!-- 文章底部标签图标 -->
+            <a href="/tags/Sophix/" rel="tag"><i class="menu-item-icon fa fa-tag fa-fw"></i>Sophix</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Java编译注解-自动生成代码/" rel="next" title="Java编译注解-自动生成代码">
+                <i class="fa fa-chevron-left"></i> Java编译注解-自动生成代码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android-DIY-ShimmerTextView/" rel="prev" title="Android-DIY-ShimmerTextView">
+                Android-DIY-ShimmerTextView <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="Tiimor" />
+            
+              <p class="site-author-name" itemprop="name">Tiimor</p>
+              <p class="site-description motion-element" itemprop="description">安静地做一只攻城狮。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/VeiZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.weibo.com/tiimor" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/589972d0570c3500624fd791" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-anchor"></i>掘金</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.jianshu.com/u/93b886580243" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-book"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://wpa.qq.com/msgrd?v=3&uin=690393541&site=qq&menu=yes" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:tiimor@qq.com" target="_blank" title="邮箱">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>邮箱</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#“冷热”"><span class="nav-number">1.1.</span> <span class="nav-text">“冷热”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#热修复特点"><span class="nav-number">1.2.</span> <span class="nav-text">热修复特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阿里热修复方案对比"><span class="nav-number">1.3.</span> <span class="nav-text">阿里热修复方案对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他热修复方案"><span class="nav-number">1.4.</span> <span class="nav-text">其他热修复方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成Sophix"><span class="nav-number">2.</span> <span class="nav-text">集成Sophix</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册阿里云账号"><span class="nav-number">2.1.</span> <span class="nav-text">注册阿里云账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端集成"><span class="nav-number">2.2.</span> <span class="nav-text">客户端集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">2.3.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推广"><span class="nav-number">3.</span> <span class="nav-text">推广</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tiimor</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <!-- modify by zhangwei -->
+  <!-- 修改不蒜子统计脚本 -->
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+<script>
+  	var _mtac = {};
+  	(function() {
+  		var mta = document.createElement("script");
+  		mta.src = "https://pingjs.qq.com/h5/stats.js?v2.0.4";
+  		mta.setAttribute("name", "MTAH5");
+  		mta.setAttribute("sid", "500425805");
+
+  		var s = document.getElementsByTagName("script")[0];
+  		s.parentNode.insertBefore(mta, s);
+  	})();
+</script>
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=61441764";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            <!-- modify by zhangwei -->
+            <!-- 修复gitment评论页初始化错误@tiimor -->
+            id: '1505620330000', 
+            owner: 'VeiZhang',
+            repo: 'veizhang.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '9919bc61413a89ea3eb156910d282e3103093e32',
+            
+                client_id: 'f08924ca58e61d6f51f4'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("7aBs9I9Y3PjoN6ueX5J3AYQW-gzGzoHsz", "kboycyzaPNAYcUW8AkF3edeW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <!-- modify by zhangwei -->
+  <!-- 动态时间小人 -->
+  <!-- modify by zhangwei -->
+<!-- 动态时间小人 -->
+<!-- z-index -1 表示在最底层，不能悬浮也不能点击 -->
+<!-- z-index auto 可以点击 -->
+<!-- z-index 9999 无限大时，总是在最上层，会影响其他悬浮框 -->
+<div id="dg" style="z-index: auto; position: fixed ! important; right: 0px; top: 0px;">  
+    <table width=""100% style="position: absolute; width:260px; right: 0px; top: 0px;">  
+		<div>
+			<embed wmode="transparent" src="http://cdn.tiimor.cn/images/dynamic_time.swf" quality="high" bgcolor="#ffffff" width="160" height="70" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+		</div>
+    </table>  
+</div>
+  
+</body>
+</html>

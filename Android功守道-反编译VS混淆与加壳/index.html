@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<!-- modify by zhangwei -->
+<!-- 百度站长 -->
+<meta name="baidu-site-verification" content="MdPKZBgY0U" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="8DKRuNxJDPU2k6cNyVhLe_eSqGk-R8oiYk8iKMg5gwI" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/uploads/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,混淆,反编译,加壳," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="班德尔城" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="反编译并不是为了去破解人家辛辛苦苦开发的app；混淆与加壳也是为了在一定程度上保护自己的开发成果。反编译、混淆、加壳是非常有用的技能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android功守道-反编译VS混淆与加壳">
+<meta property="og:url" content="http://tiimor.cn/Android功守道-反编译VS混淆与加壳/index.html">
+<meta property="og:site_name" content="班德尔城">
+<meta property="og:description" content="反编译并不是为了去破解人家辛辛苦苦开发的app；混淆与加壳也是为了在一定程度上保护自己的开发成果。反编译、混淆、加壳是非常有用的技能。">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/%E5%94%AF%E7%BE%8E%E7%AF%87%EF%BC%8D%E8%97%8F%E5%9C%A8%E5%A2%99%E4%B8%AD%E7%9A%84android.jpg">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/%E6%9C%AA%E6%B7%B7%E6%B7%86.png">
+<meta property="og:image" content="http://cdn.tiimor.cn/images/%E6%B7%B7%E6%B7%86.png">
+<meta property="og:updated_time" content="2019-03-17T06:47:42.361Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android功守道-反编译VS混淆与加壳">
+<meta name="twitter:description" content="反编译并不是为了去破解人家辛辛苦苦开发的app；混淆与加壳也是为了在一定程度上保护自己的开发成果。反编译、混淆、加壳是非常有用的技能。">
+<meta name="twitter:image" content="http://cdn.tiimor.cn/images/%E5%94%AF%E7%BE%8E%E7%AF%87%EF%BC%8D%E8%97%8F%E5%9C%A8%E5%A2%99%E4%B8%AD%E7%9A%84android.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'EJ36R2M952',
+      apiKey: 'f14ef41ccc238f9d187b5defa630aa77',
+      indexName: 'tiimor',
+      hits: {"per_page":8},
+      labels: {"input_placeholder":"搜索","hits_empty":"未发现与「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://tiimor.cn/Android功守道-反编译VS混淆与加壳/"/>
+
+
+
+
+
+  <title>Android功守道-反编译VS混淆与加壳 | 班德尔城</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-96457043-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?abb97f8f68c9e5eb2217d3111c64e696";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+  <!-- modify by zhangwei -->
+  <!-- 下雪的动画 -->
+  <div class="canvas-snow">
+    <canvas id="canvas" style="margin: 0;  padding: 0;top:0; left: 0; right: 0; background: transparent; position: absolute;" width="1366" height="105"></canvas>
+      <script>
+
+      var canvasBgImg = {
+        start: function () {
+          this.canvas = document.getElementById('canvas')
+          this.ctx = this.canvas.getContext("2d")
+          this.canvas.width = window.innerWidth
+          this.canvas.height = 105
+          this.starList = []
+        },
+        drawLine: function (ctx, x1, y1, x2, y2) {
+          ctx.beginPath()
+          ctx.strokeStyle = '#ffffff'
+          ctx.lineTo(x1, y1)
+          ctx.lineTo(x2, y2)
+          ctx.stroke()
+        },
+        canvasSingleSnow: function (snowSize) {
+          var singleSnow = document.createElement('canvas'),
+            ctxSingle = singleSnow.getContext('2d')
+          singleSnow.setAttribute('width', snowSize * 2)
+          singleSnow.setAttribute('height', snowSize * 2)
+          for (var i = 0; i < 6; i++) {
+            ctxSingle.save()
+            ctxSingle.translate(snowSize, snowSize)
+            ctxSingle.rotate(Math.PI * 2 * i / 6)
+            this.drawLine(ctxSingle, 0, 0, snowSize, 0)
+            ctxSingle.restore()
+          }
+          return singleSnow
+        },
+        canvasAllSnow: function (centerSnow) {
+          var canvasSnow = document.createElement('canvas'),
+            ctxSnow = canvasSnow.getContext('2d'),
+            bigSnow = this.canvasSingleSnow(centerSnow),
+            smallSnow = this.canvasSingleSnow(centerSnow / 3),
+            sizeSnow = centerSnow * 3 / 5,
+            rSnow = centerSnow - sizeSnow / 2
+          canvasSnow.setAttribute('width', centerSnow * 2)
+          canvasSnow.setAttribute('height', centerSnow * 2)
+          ctxSnow.drawImage(bigSnow, 0, 0, bigSnow.width, bigSnow.height, 0, 0, centerSnow * 2, centerSnow * 2)
+          for (var i = 0; i < 6; i++) {
+            ctxSnow.save()
+            ctxSnow.translate(centerSnow, centerSnow)
+            ctxSnow.rotate(Math.PI * 2 * i / 6)
+            ctxSnow.drawImage(smallSnow, 0, 0, smallSnow.width, smallSnow.height, rSnow - sizeSnow / 2,
+              -sizeSnow / 2, sizeSnow, sizeSnow)
+            ctxSnow.restore()
+          }
+          return canvasSnow
+        },
+        init: function () {
+          this.start()
+          for (var i = 0; i < 75; i++) {
+            this.starList.push({
+              drawFunc: this.canvasAllSnow(15),
+              width: Math.random() * this.canvas.width,
+              height: Math.random() * this.canvas.height,
+              speed: Math.random() * 1.5 + .5,
+              scale: Math.random() * 12 + 5,
+              angel: 0
+            })
+          }
+          var self = this,
+            loop = function () {
+              self.ctx.clearRect(0, 0, self.canvas.width, self.canvas.width)
+              for (var i = 0; i < 75; i++) {
+                self.ctx.save()
+                self.starList[i].height = self.starList[i].height + self.starList[i].speed
+                self.starList[i].angel += 2
+                self.ctx.translate(self.starList[i].width, self.starList[i].height)
+                self.ctx.rotate(self.starList[i].angel * Math.PI / 360)
+                self.ctx.translate(-self.starList[i].width, -self.starList[i].height)
+                self.ctx.drawImage(self.starList[i].drawFunc, 0, 0,
+                  self.starList[i].drawFunc.width, self.starList[i].drawFunc.height,
+                  self.starList[i].width - self.starList[i].scale / 2,
+                  self.starList[i].height - self.starList[i].scale / 2,
+                  self.starList[i].scale, self.starList[i].scale)
+                if (self.starList[i].height > self.canvas.height) {
+                  self.starList[i] = Object.assign(self.starList[i], {
+                    height: -self.starList[i].scale,
+                    width: Math.random() * this.canvas.width
+                  })
+                }
+                self.ctx.restore()
+              }
+              requestAnimationFrame(loop)
+            }
+          requestAnimationFrame(loop)
+        }
+      }
+      canvasBgImg.init()
+      </script>
+
+    </div>
+
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <!-- modify by zhangwei -->
+        <!-- 圣诞帽 -->
+        <img src="uploads/santa-hat.png" id="santa" style="height: 41px; position: absolute; left: -40px; top: -20px; transform: rotate(-45deg); z-index: 9000;">
+
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">班德尔城</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">微笑，简单，奋发</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-send"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-favourite">
+          <a href="/favourite" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bookmark"></i> <br />
+            
+            收藏
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tiimor.cn/Android功守道-反编译VS混淆与加壳/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tiimor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="班德尔城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android功守道-反编译VS混淆与加壳</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-19T20:18:41+08:00">
+                2017-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android联盟/" itemprop="url" rel="index">
+                    <span itemprop="name">Android联盟</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Android功守道-反编译VS混淆与加壳/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/Android功守道-反编译VS混淆与加壳/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/Android功守道-反编译VS混淆与加壳/" class="leancloud_visitors" data-flag-title="Android功守道-反编译VS混淆与加壳">
+               <span class="post-meta-divider">|</span>
+               <!-- modify by zhangwei -->
+               <!-- 去掉阅读的眼睛图标，阅读次数改为℃ -->
+			   
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://cdn.tiimor.cn/images/%E5%94%AF%E7%BE%8E%E7%AF%87%EF%BC%8D%E8%97%8F%E5%9C%A8%E5%A2%99%E4%B8%AD%E7%9A%84android.jpg" alt="Android" title="藏在墙中的android"></p>
+<p><strong>反编译并不是为了去破解人家辛辛苦苦开发的app；混淆与加壳也是为了在一定程度上保护自己的开发成果。反编译、混淆、加壳是非常有用的技能。</strong></p>
+<a id="more"></a>
+<p>记录一下个人日常使用</p>
+<h1 id="反编译"><a href="#反编译" class="headerlink" title="反编译"></a>反编译</h1><h2 id="反编译工具"><a href="#反编译工具" class="headerlink" title="反编译工具"></a>反编译工具</h2><ul>
+<li><p><strong><a href="http://note.youdao.com/noteshare?id=4407e5ea540038d4dd16e05b22ca89bb&amp;sub=4C55C31576284FEA8373E50938A16608" target="_blank" rel="external">apktool</a></strong><br>资源文件获取，可以提取出图片文件和布局文件进行使用查看：<code>apktool.bat d -f [apk文件] [输出文件夹]</code></p>
+</li>
+<li><p><strong><a href="http://note.youdao.com/noteshare?id=5bc5444d04b4c162b78c80ca6b503acf&amp;sub=6E2DCBD46DD44889980AA4FF7C3700F7" target="_blank" rel="external">dex2jar</a></strong><br>将apk反编译成Java源码（classes.dex转化成jar文件）：<code>dex2jar.bat [apk文件]</code></p>
+</li>
+<li><p><strong><a href="http://note.youdao.com/noteshare?id=2564f7947bbba25c2541d2eccf4a2d10&amp;sub=1055626537D747098912D757314E9FB9" target="_blank" rel="external">jd-gui</a></strong><br>查看APK中classes.dex转化成出的jar文件，即源码文件：用jd-gui.exe打开上面生成的classes.dex即可</p>
+</li>
+</ul>
+<p>注：<strong>AndroidKiller</strong>是一个反编译工具，一步到位，看Java源码的时候，需要借助smail转java的工具。另外将test.apk的apk文件更换后缀名为test.zip，可以提取出资源图片文件等等。</p>
+<h2 id="未混淆"><a href="#未混淆" class="headerlink" title="未混淆"></a>未混淆</h2><p>未混淆的app，反编译可以看到源码：<br><img src="http://cdn.tiimor.cn/images/%E6%9C%AA%E6%B7%B7%E6%B7%86.png" alt="未混淆"></p>
+<h2 id="混淆"><a href="#混淆" class="headerlink" title="混淆"></a>混淆</h2><p>混淆app之后，反编译得到的源码：<br><img src="http://cdn.tiimor.cn/images/%E6%B7%B7%E6%B7%86.png" alt="混淆"></p>
+<h1 id="混淆-1"><a href="#混淆-1" class="headerlink" title="混淆"></a>混淆</h1><p>开启App的混淆，在一定程度上保护自己辛苦开发的成果，即反编译出来的源码是<code>a b c...</code>这样的，但是仍然可以被反编译看到AndroidManifest和资源文件。</p>
+<h2 id="开启混淆"><a href="#开启混淆" class="headerlink" title="开启混淆"></a>开启混淆</h2><p>在Android Studio的app工程目录里，release版本开启代码混淆，然后混淆的配置写在该目录里的<code>proguard-rules.pro</code>文件里</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">release &#123;</div><div class="line">    <span class="comment">// proguard files</span></div><div class="line">    minifyEnabled <span class="literal">true</span></div><div class="line"></div><div class="line">    <span class="comment">// add proguard cfg</span></div><div class="line">    proguardFiles getDefaultProguardFile(<span class="string">'proguard-android-optimize.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="配置proguard-rules"><a href="#配置proguard-rules" class="headerlink" title="配置proguard-rules"></a>配置proguard-rules</h2><p>配置该文件是为了防止某些功能的正常使用，代码过于混淆，会导致功能无法使用，这个时候就要保持不被混淆。比较全面的通用配置（常用的第三方框架）如下：</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div></pre></td><td class="code"><pre><div class="line"># Add project specific ProGuard rules here.</div><div class="line"># By default, the flags in this file are appended to flags specified</div><div class="line"># in E:\AndroidTools\AndroidStudio\sdk/tools/proguard/proguard-android.txt</div><div class="line"># You can edit the include path and order by changing the proguardFiles</div><div class="line"># directive in build.gradle.</div><div class="line">#</div><div class="line"># For more details, see</div><div class="line">#   http://developer.android.com/guide/developing/tools/proguard.html</div><div class="line"></div><div class="line"># Add any project specific keep options here:</div><div class="line"></div><div class="line"></div><div class="line">###-----------指定代码的压缩级别------------</div><div class="line">-<span class="ruby">optimizationpasses <span class="number">5</span></span></div><div class="line">###-----------是否使用大小写混合------------</div><div class="line">-<span class="ruby">dontusemixedcaseclassnames</span></div><div class="line">###-----------混淆时是否做预校验------------</div><div class="line">-<span class="ruby">dontpreverify</span></div><div class="line">###-----------混淆时是否记录日志------------</div><div class="line">-<span class="ruby">verbose</span></div><div class="line">###-----------忽略警告------------</div><div class="line">-<span class="ruby">ignorewarnings</span></div><div class="line">-<span class="ruby">keepattributes EnclosingMethod</span></div><div class="line"></div><div class="line">###-----------保证异常时显示行号------------</div><div class="line">-<span class="ruby">renamesourcefileattribute SourceFile</span></div><div class="line">-<span class="ruby">keepattributes SourceFile,LineNumberTable</span></div><div class="line"></div><div class="line">###-----------注解------------</div><div class="line">-<span class="ruby">keepattributes *Annotation*</span></div><div class="line"></div><div class="line">###-----------泛型------------</div><div class="line">-<span class="ruby">keepattributes Signature</span></div><div class="line"></div><div class="line">###-----------异常------------</div><div class="line">-<span class="ruby">keepattributes Exceptions</span></div><div class="line"></div><div class="line">###-----------去掉代码里的Log------------</div><div class="line">-<span class="ruby">assumenosideeffects <span class="class"><span class="keyword">class</span> <span class="title">android</span>.<span class="title">util</span>.<span class="title">Log</span> &#123;</span></span></div><div class="line">    public static boolean isLoggable(java.lang.String,int);</div><div class="line">    public static *** d(...);</div><div class="line">	public static *** v(...);</div><div class="line">	public static *** i(...);</div><div class="line">	public static *** w(...);</div><div class="line">	public static *** e(...);</div><div class="line">&#125;</div><div class="line"></div><div class="line">###-----------混淆时所采用的算法------------</div><div class="line">-<span class="ruby">optimizations !code/simplification/arithmetic,!field/*,!<span class="class"><span class="keyword">class</span>/<span class="title">merging</span>/*</span></span></div><div class="line"></div><div class="line">###-----------保持Activity类不被混淆------------</div><div class="line">-<span class="ruby">keep public <span class="class"><span class="keyword">class</span> * <span class="title">extends</span> <span class="title">android</span>.<span class="title">app</span>.<span class="title">Activity</span></span></span></div><div class="line">###-----------保持AppCompatActivity类不被混淆------------</div><div class="line">-<span class="ruby">keep public <span class="class"><span class="keyword">class</span> * <span class="title">extends</span> <span class="title">android</span>.<span class="title">support</span>.<span class="title">v7</span>.<span class="title">app</span>.<span class="title">AppCompatActivity</span></span></span></div><div class="line">###-----------保持DialogFragment类不被混淆------------</div><div class="line">-<span class="ruby">keep public <span class="class"><span class="keyword">class</span> * <span class="title">extends</span> <span class="title">android</span>.<span class="title">app</span>.<span class="title">DialogFragment</span></span></span></div><div class="line">###-----------保持Application类不被混淆------------</div><div class="line">-<span class="ruby">keep public <span class="class"><span class="keyword">class</span> * <span class="title">extends</span> <span class="title">android</span>.<span class="title">app</span>.<span class="title">Application</span></span></span></div><div class="line">###-----------保持Service类不被混淆------------</div><div class="line">-<span class="ruby">keep public <span class="class"><span class="keyword">class</span> * <span class="title">extends</span> <span class="title">android</span>.<span class="title">app</span>.<span class="title">Service</span></span></span></div><div class="line">###-----------保持BroadcastReceiver类不被混淆------------</div><div class="line">-<span class="ruby">keep public <span class="class"><span class="keyword">class</span> * <span class="title">extends</span> <span class="title">android</span>.<span class="title">content</span>.<span class="title">BroadcastReceiver</span></span></span></div><div class="line">###-----------保持ContentProvider类不被混淆------------</div><div class="line">-<span class="ruby">keep public <span class="class"><span class="keyword">class</span> * <span class="title">extends</span> <span class="title">android</span>.<span class="title">content</span>.<span class="title">ContentProvider</span></span></span></div><div class="line">###-----------保持BackupAgentHelper类不被混淆------------</div><div class="line">-<span class="ruby">keep public <span class="class"><span class="keyword">class</span> * <span class="title">extends</span> <span class="title">android</span>.<span class="title">app</span>.<span class="title">backup</span>.<span class="title">BackupAgentHelper</span></span></span></div><div class="line">###-----------保持Preference类不被混淆------------</div><div class="line">-<span class="ruby">keep public <span class="class"><span class="keyword">class</span> * <span class="title">extends</span> <span class="title">android</span>.<span class="title">preference</span>.<span class="title">Preference</span></span></span></div><div class="line">###-----------保持ILicensingService类不被混淆------------</div><div class="line">-<span class="ruby">keep public <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">android</span>.<span class="title">vending</span>.<span class="title">licensing</span>.<span class="title">ILicensingService</span></span></span></div><div class="line"></div><div class="line">###-----------保持 native 方法不被混淆------------</div><div class="line">-<span class="ruby">keepclasseswithmembernames <span class="class"><span class="keyword">class</span> * &#123;</span></span></div><div class="line">    native &lt;methods&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">###-----------保持自定义控件类不被混淆------------</div><div class="line">-<span class="ruby">keepclasseswithmembers <span class="class"><span class="keyword">class</span> * &#123;</span></span></div><div class="line">    public &lt;init&gt;(android.content.Context, android.util.AttributeSet);</div><div class="line">&#125;</div><div class="line"></div><div class="line">###-----------保持自定义控件类不被混淆------------</div><div class="line">-<span class="ruby">keepclasseswithmembers <span class="class"><span class="keyword">class</span> * &#123;</span></span></div><div class="line">    public &lt;init&gt;(android.content.Context, android.util.AttributeSet, int);</div><div class="line">&#125;</div><div class="line"></div><div class="line">###-----------保持自定义控件类不被混淆------------</div><div class="line">-<span class="ruby">keepclassmembers <span class="class"><span class="keyword">class</span> * <span class="title">extends</span> <span class="title">android</span>.<span class="title">app</span>.<span class="title">Activity</span> &#123;</span></span></div><div class="line">    public void *(android.view.View);</div><div class="line">&#125;</div><div class="line"></div><div class="line">###-----------保持枚举 enum 类不被混淆------------</div><div class="line">-<span class="ruby">keepclassmembers enum * &#123;</span></div><div class="line">    public static **[] values();</div><div class="line">    public static ** valueOf(java.lang.String);</div><div class="line">&#125;</div><div class="line"></div><div class="line">###-----------# 保持 Parcelable 不被混淆------------</div><div class="line">-<span class="ruby">keep <span class="class"><span class="keyword">class</span> * <span class="title">implements</span> <span class="title">android</span>.<span class="title">os</span>.<span class="title">Parcelable</span> &#123;</span></span></div><div class="line">    public static final android.os.Parcelable$Creator *;</div><div class="line">&#125;</div><div class="line"></div><div class="line">###-----------保持 retrofit 不被混淆------------</div><div class="line">-<span class="ruby">dontwarn retrofit2.**</span></div><div class="line">-<span class="ruby">keep <span class="class"><span class="keyword">class</span> <span class="title">retrofit2</span>.** &#123; *;</span> &#125;</span></div><div class="line">-<span class="ruby">dontwarn javax.annotation.**</span></div><div class="line"></div><div class="line">###-----------保持 okhttp 不被混淆------------</div><div class="line">-<span class="ruby">dontwarn com.squareup.okhttp3.**</span></div><div class="line">-<span class="ruby">keep <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">squareup</span>.<span class="title">okhttp3</span>.** &#123; *;</span>&#125;</span></div><div class="line">-<span class="ruby">dontwarn okio.**</span></div><div class="line"></div><div class="line">###-----------保持 GreenDao 不被混淆------------</div><div class="line">-<span class="ruby">keepclassmembers <span class="class"><span class="keyword">class</span> * <span class="title">extends</span> <span class="title">org</span>.<span class="title">greenrobot</span>.<span class="title">greendao</span>.<span class="title">AbstractDao</span> &#123;</span></span></div><div class="line">public static java.lang.String TABLENAME;</div><div class="line">&#125;</div><div class="line">-<span class="ruby">keep <span class="class"><span class="keyword">class</span> **$<span class="title">Properties</span></span></span></div><div class="line"></div><div class="line">###-----------保持 Zbar 不被混淆------------</div><div class="line">-<span class="ruby">keep <span class="class"><span class="keyword">class</span> <span class="title">net</span>.<span class="title">sourceforge</span>.<span class="title">zbar</span>.** &#123; *;</span> &#125;</span></div><div class="line">-<span class="ruby">keep interface net.sourceforge.zbar.** &#123; *; &#125;</span></div><div class="line">-<span class="ruby">dontwarn net.sourceforge.zbar.**</span></div><div class="line"></div><div class="line">###-----------保持 Glide 不被混淆------------</div><div class="line">-<span class="ruby">keep public <span class="class"><span class="keyword">class</span> * <span class="title">implements</span> <span class="title">com</span>.<span class="title">bumptech</span>.<span class="title">glide</span>.<span class="title">module</span>.<span class="title">GlideModule</span></span></span></div><div class="line">-<span class="ruby">keep public <span class="class"><span class="keyword">class</span> * <span class="title">extends</span> <span class="title">com</span>.<span class="title">bumptech</span>.<span class="title">glide</span>.<span class="title">module</span>.<span class="title">AppGlideModule</span></span></span></div><div class="line">-<span class="ruby">keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** &#123;</span></div><div class="line">  **[] $VALUES;</div><div class="line">  public *;</div><div class="line">&#125;</div><div class="line"></div><div class="line">###-----------保持 eventbus 不被混淆------------</div><div class="line">-<span class="ruby">keepattributes *Annotation*</span></div><div class="line">-<span class="ruby">keepclassmembers <span class="class"><span class="keyword">class</span> ** &#123;</span></span></div><div class="line">    @org.greenrobot.eventbus.Subscribe &lt;methods&gt;;</div><div class="line">&#125;</div><div class="line">-<span class="ruby">keep enum org.greenrobot.eventbus.ThreadMode &#123; *; &#125;</span></div><div class="line"># Only required if you use AsyncExecutor</div><div class="line">-<span class="ruby">keepclassmembers <span class="class"><span class="keyword">class</span> * <span class="title">extends</span> <span class="title">org</span>.<span class="title">greenrobot</span>.<span class="title">eventbus</span>.<span class="title">util</span>.<span class="title">ThrowableFailureEvent</span> &#123;</span></span></div><div class="line">    &lt;init&gt;(java.lang.Throwable);</div><div class="line">&#125;</div><div class="line"></div><div class="line">###-----------保持 MPAndroidChart 不被混淆------------</div><div class="line">-<span class="ruby">keep <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">github</span>.<span class="title">mikephil</span>.<span class="title">charting</span>.** &#123; *;</span> &#125;</span></div><div class="line"></div><div class="line">###-----------保持 bugly 不被混淆------------</div><div class="line">-<span class="ruby">dontwarn com.tencent.bugly.**</span></div><div class="line">-<span class="ruby">keep public <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">tencent</span>.<span class="title">bugly</span>.**&#123;*;</span>&#125;</span></div><div class="line"></div><div class="line">###-----------保持 gson 不被混淆------------</div><div class="line">-<span class="ruby">keep <span class="class"><span class="keyword">class</span> <span class="title">sun</span>.<span class="title">misc</span>.<span class="title">Unsafe</span> &#123; *;</span> &#125;</span></div><div class="line">-<span class="ruby">keep <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">google</span>.<span class="title">gson</span>.<span class="title">stream</span>.** &#123; *;</span> &#125;</span></div><div class="line"></div><div class="line">###-----------保持 Rxjava RxAndroid 不被混淆------------</div><div class="line">-<span class="ruby">dontwarn sun.misc.**</span></div><div class="line">-<span class="ruby">keepclassmembers <span class="class"><span class="keyword">class</span> <span class="title">rx</span>.<span class="title">internal</span>.<span class="title">util</span>.<span class="title">unsafe</span>.*<span class="title">ArrayQueue</span>*<span class="title">Field</span>* &#123;</span></span></div><div class="line">   long producerIndex;</div><div class="line">   long consumerIndex;</div><div class="line">&#125;</div><div class="line">-<span class="ruby">keepclassmembers <span class="class"><span class="keyword">class</span> <span class="title">rx</span>.<span class="title">internal</span>.<span class="title">util</span>.<span class="title">unsafe</span>.<span class="title">BaseLinkedQueueProducerNodeRef</span> &#123;</span></span></div><div class="line">    rx.internal.util.atomic.LinkedQueueNode producerNode;</div><div class="line">&#125;</div><div class="line">-<span class="ruby">keepclassmembers <span class="class"><span class="keyword">class</span> <span class="title">rx</span>.<span class="title">internal</span>.<span class="title">util</span>.<span class="title">unsafe</span>.<span class="title">BaseLinkedQueueConsumerNodeRef</span> &#123;</span></span></div><div class="line">    rx.internal.util.atomic.LinkedQueueNode consumerNode;</div><div class="line">&#125;</div><div class="line"></div><div class="line">###-----------保持 volley 不被混淆------------</div><div class="line">-<span class="ruby">keep <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">android</span>.<span class="title">volley</span>.** &#123; *;</span> &#125;</span></div><div class="line">-<span class="ruby">keep <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">android</span>.<span class="title">volley</span>.<span class="title">toolbox</span>.** &#123; *;</span> &#125;</span></div><div class="line"></div><div class="line">###-----------保持 本项目的gson实体类 不被混淆------------</div><div class="line">###-----------网络请求解析的实体类一定不要混淆------------</div><div class="line">-<span class="ruby">keep <span class="class"><span class="keyword">class</span> <span class="title">your</span>-<span class="title">package</span>.<span class="title">entity</span>.** &#123; *;</span> &#125;</span></div><div class="line"></div><div class="line"># If your project uses WebView with JS, uncomment the following</div><div class="line"># and specify the fully qualified class name to the JavaScript interface</div><div class="line"># class:</div><div class="line">#-keepclassmembers class fqcn.of.javascript.interface.for.webview &#123;</div><div class="line">#   public *;</div><div class="line">#&#125;</div><div class="line"></div><div class="line"># Uncomment this to preserve the line number information for</div><div class="line"># debugging stack traces.</div><div class="line">#-keepattributes SourceFile,LineNumberTable</div><div class="line"></div><div class="line"># If you keep the line number information, uncomment this to</div><div class="line"># hide the original source file name.</div><div class="line">#-renamesourcefileattribute SourceFile</div></pre></td></tr></table></figure>
+<h2 id="Proguard常用语法"><a href="#Proguard常用语法" class="headerlink" title="Proguard常用语法"></a><a href="http://www.trinea.cn/android/proguard-grammar/" target="_blank" rel="external">Proguard常用语法</a></h2><ul>
+<li>关键字</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>keep</td>
+<td>保留类和类中的成员，防止它们被移除或被重命名</td>
+</tr>
+<tr>
+<td>keepnames</td>
+<td>保留类和类中的成员，防止它们被重命名，但当成员没有被引用时会被移除</td>
+</tr>
+<tr>
+<td>keepclassmembers</td>
+<td>只保留类中的成员，防止它们被移除或者被重命名</td>
+</tr>
+<tr>
+<td>keepclassmembernames</td>
+<td>只保留类中的成员，防止它们被重命名，但当成员没有被引用时会被移除</td>
+</tr>
+<tr>
+<td>keepclasseswithmembers</td>
+<td>防止<strong>拥有该成员的</strong>类和成员被移除或被重命名，前提是指明的类中的成员必须存在，如果不存在则还是会混淆</td>
+</tr>
+<tr>
+<td>keepclasseswithmembernames</td>
+<td>防止<strong>拥有该成员的</strong>类和成员被重命名，但当成员没有被引用时会被移除，前提是指明的类中的成员必须存在，如果不存在则还是会混淆</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>通配符</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;field&gt;</code></td>
+<td>匹配类中的所有字段</td>
+</tr>
+<tr>
+<td><code>&lt;method&gt;</code></td>
+<td>匹配类中的所有方法</td>
+</tr>
+<tr>
+<td><code>&lt;init&gt;</code></td>
+<td>匹配类中的所有构造函数</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td><code>匹配任意长度字符，但不含包名分隔符（.）；如完整包名：com.example.test.util，使用com.*、com.example.*都是无法匹配的，因为*无法匹配包名中的分隔符，正确的匹配方式是com.example.*.*、com.example.test.*；如果你不写任何其他内容，只有一个*，则表示匹配所有的字符</code></td>
+</tr>
+<tr>
+<td><code>**</code></td>
+<td>匹配任意长度字符，并且包含包名分隔符（.）；如混淆文件里的：dontwarn android.support.**就可以匹配android.support包下的所有内容，包括任意长度的子包</td>
+</tr>
+<tr>
+<td><code>***</code></td>
+<td>匹配任意参数类型；如<code>void set(***)</code>匹配任意传入的参数类型，<code>*** get()</code>就能匹配任意返回值的类型</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>匹配任意长度的任意类型参数；如void test(…)匹配<code>void test(String a)</code>或<code>void test(int a, String b)</code>等等</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>常见规则</li>
+</ul>
+<p>形如：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[<span class="string">关键字</span>][<span class="symbol">类</span>]&#123;</div><div class="line"><span class="code">	[成员]</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>包：<code>com.example.test</code><br>类：A</p>
+<ul>
+<li><p>不混淆某个类</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-keep <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">example</span>.<span class="title">test</span>.<span class="title">A</span> </span>&#123; *; &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>不混淆某个包下所有的类</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-<span class="ruby">keep <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">example</span>.<span class="title">test</span>.**&#123; *;</span> &#125;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>不混淆某个类的子类</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-keep public <span class="class"><span class="keyword">class</span> <span class="title">*</span> <span class="keyword">extends</span> <span class="title">com</span>.<span class="title">example</span>.<span class="title">test</span>.<span class="title">A</span> </span>&#123; *; &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>不混淆所有类名中包含了”关键字”的类及成员</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-keep <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> **.*<span class="title">model</span>*.** </span>&#123; *; &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>不混淆某个接口</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-keep <span class="class"><span class="keyword">class</span> * <span class="keyword">implements</span> <span class="title">com</span>.<span class="title">example</span>.<span class="title">test</span>.<span class="title">Interface</span> </span>&#123; *; &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>不混淆某个类的构造方法</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-<span class="ruby">keepclassmembers <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">example</span>.<span class="title">test</span>.<span class="title">A</span> &#123;</span></span></div><div class="line">	public &lt;init&gt;();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>不混淆某个类的特定的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-keepclassmembers <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">example</span>.<span class="title">test</span>.<span class="title">A</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(java.lang.String)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>不混淆某个类的内部类</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-<span class="ruby">keep <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">example</span>.<span class="title">test</span>.<span class="title">A</span>$* &#123;</span></span></div><div class="line">	*;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="混淆注意"><a href="#混淆注意" class="headerlink" title="混淆注意"></a>混淆注意</h2><p>代码开启混淆之后，调试app或者遇到app异常时，打印里面显示的则是<code>a b c...</code>这种的异常，定位不到异常的位置，这个时候在目录<code>build\outputs\mapping\release</code>里，使用mapping.txt，结合SDK里的工具<br><code>sdk\tools\proguard\bin\proguardgui.bat</code>-&gt;ReTrace，进行定位异常，基本上可以定位，然后解决异常错误。</p>
+<h1 id="加壳"><a href="#加壳" class="headerlink" title="加壳"></a>加壳</h1><p>加壳是在二进制的程序中植入一段代码，在运行的时候优先取得程序的控制权，做一些额外的工作。是应用加固的一种手法对原始二进制原文进行加密/隐藏/混淆。加壳的程序可以有效阻止对程序的反汇编分析，常用来保护软件版权，防止被软件破解。</p>
+<h2 id="Android-Dex文件加壳原理"><a href="#Android-Dex文件加壳原理" class="headerlink" title="Android Dex文件加壳原理"></a>Android Dex文件加壳原理</h2><p>Android Dex文件大量使用引用给加壳带来了一定的难度，但是从理论上讲，Android APK加壳也是可行的。</p>
+<ul>
+<li><p>加壳程序：加密源程序为解壳数据、组装解壳程序和解壳数据</p>
+</li>
+<li><p>解壳程序：解密解壳数据，并运行时通过DexClassLoader动态加载</p>
+</li>
+<li><p>源程序：需要加壳处理的被保护代码</p>
+</li>
+</ul>
+<h2 id="加壳的利与弊"><a href="#加壳的利与弊" class="headerlink" title="加壳的利与弊"></a>加壳的利与弊</h2><h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ul>
+<li><p>保护自己核心代码算法,提高破解/盗版/二次打包的难度</p>
+</li>
+<li><p>还可以缓解代码注入/动态调试/内存注入攻击</p>
+</li>
+</ul>
+<h3 id="劣势"><a href="#劣势" class="headerlink" title="劣势"></a>劣势</h3><ul>
+<li><p>影响兼容性</p>
+</li>
+<li><p>影响程序运行效率</p>
+</li>
+</ul>
+<h2 id="常用的加壳方式"><a href="#常用的加壳方式" class="headerlink" title="常用的加壳方式"></a>常用的加壳方式</h2><ul>
+<li><a href="https://cloud.tencent.com/product/ms?idx=2" target="_blank" rel="external">腾讯乐固</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢老板，请尽情用红包来蹂躏我吧！！！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechatpay.jpg" alt="Tiimor 微信打赏"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay.jpg" alt="Tiimor 支付宝打赏"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <!-- modify by zhangwei -->
+            <!-- 文章底部标签图标 -->
+            <a href="/tags/Android/" rel="tag"><i class="menu-item-icon fa fa-tag fa-fw"></i>Android</a>
+          
+            <!-- modify by zhangwei -->
+            <!-- 文章底部标签图标 -->
+            <a href="/tags/混淆/" rel="tag"><i class="menu-item-icon fa fa-tag fa-fw"></i>混淆</a>
+          
+            <!-- modify by zhangwei -->
+            <!-- 文章底部标签图标 -->
+            <a href="/tags/反编译/" rel="tag"><i class="menu-item-icon fa fa-tag fa-fw"></i>反编译</a>
+          
+            <!-- modify by zhangwei -->
+            <!-- 文章底部标签图标 -->
+            <a href="/tags/加壳/" rel="tag"><i class="menu-item-icon fa fa-tag fa-fw"></i>加壳</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android图表库-MPAndroidChart/" rel="next" title="Android图表库-MPAndroidChart">
+                <i class="fa fa-chevron-left"></i> Android图表库-MPAndroidChart
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Merry-Christmas/" rel="prev" title="Merry Christmas-2017">
+                Merry Christmas-2017 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="Tiimor" />
+            
+              <p class="site-author-name" itemprop="name">Tiimor</p>
+              <p class="site-description motion-element" itemprop="description">安静地做一只攻城狮。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/VeiZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.weibo.com/tiimor" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/589972d0570c3500624fd791" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-anchor"></i>掘金</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.jianshu.com/u/93b886580243" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-book"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://wpa.qq.com/msgrd?v=3&uin=690393541&site=qq&menu=yes" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:tiimor@qq.com" target="_blank" title="邮箱">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>邮箱</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#反编译"><span class="nav-number">1.</span> <span class="nav-text">反编译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#反编译工具"><span class="nav-number">1.1.</span> <span class="nav-text">反编译工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未混淆"><span class="nav-number">1.2.</span> <span class="nav-text">未混淆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#混淆"><span class="nav-number">1.3.</span> <span class="nav-text">混淆</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#混淆-1"><span class="nav-number">2.</span> <span class="nav-text">混淆</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#开启混淆"><span class="nav-number">2.1.</span> <span class="nav-text">开启混淆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置proguard-rules"><span class="nav-number">2.2.</span> <span class="nav-text">配置proguard-rules</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proguard常用语法"><span class="nav-number">2.3.</span> <span class="nav-text">Proguard常用语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#混淆注意"><span class="nav-number">2.4.</span> <span class="nav-text">混淆注意</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#加壳"><span class="nav-number">3.</span> <span class="nav-text">加壳</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Dex文件加壳原理"><span class="nav-number">3.1.</span> <span class="nav-text">Android Dex文件加壳原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加壳的利与弊"><span class="nav-number">3.2.</span> <span class="nav-text">加壳的利与弊</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优势"><span class="nav-number">3.2.1.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#劣势"><span class="nav-number">3.2.2.</span> <span class="nav-text">劣势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的加壳方式"><span class="nav-number">3.3.</span> <span class="nav-text">常用的加壳方式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tiimor</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <!-- modify by zhangwei -->
+  <!-- 修改不蒜子统计脚本 -->
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+<script>
+  	var _mtac = {};
+  	(function() {
+  		var mta = document.createElement("script");
+  		mta.src = "https://pingjs.qq.com/h5/stats.js?v2.0.4";
+  		mta.setAttribute("name", "MTAH5");
+  		mta.setAttribute("sid", "500425805");
+
+  		var s = document.getElementsByTagName("script")[0];
+  		s.parentNode.insertBefore(mta, s);
+  	})();
+</script>
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=61441764";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            <!-- modify by zhangwei -->
+            <!-- 修复gitment评论页初始化错误@tiimor -->
+            id: '1513685921000', 
+            owner: 'VeiZhang',
+            repo: 'veizhang.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '9919bc61413a89ea3eb156910d282e3103093e32',
+            
+                client_id: 'f08924ca58e61d6f51f4'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("7aBs9I9Y3PjoN6ueX5J3AYQW-gzGzoHsz", "kboycyzaPNAYcUW8AkF3edeW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <!-- modify by zhangwei -->
+  <!-- 动态时间小人 -->
+  <!-- modify by zhangwei -->
+<!-- 动态时间小人 -->
+<!-- z-index -1 表示在最底层，不能悬浮也不能点击 -->
+<!-- z-index auto 可以点击 -->
+<!-- z-index 9999 无限大时，总是在最上层，会影响其他悬浮框 -->
+<div id="dg" style="z-index: auto; position: fixed ! important; right: 0px; top: 0px;">  
+    <table width=""100% style="position: absolute; width:260px; right: 0px; top: 0px;">  
+		<div>
+			<embed wmode="transparent" src="http://cdn.tiimor.cn/images/dynamic_time.swf" quality="high" bgcolor="#ffffff" width="160" height="70" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+		</div>
+    </table>  
+</div>
+  
+</body>
+</html>
