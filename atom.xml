@@ -1245,13 +1245,13 @@
     
       <category term="Android" scheme="http://tiimor.cn/tags/Android/"/>
     
-      <category term="SQLite" scheme="http://tiimor.cn/tags/SQLite/"/>
-    
-      <category term="GreenDao" scheme="http://tiimor.cn/tags/GreenDao/"/>
-    
       <category term="加密" scheme="http://tiimor.cn/tags/%E5%8A%A0%E5%AF%86/"/>
     
       <category term="SQLCipher" scheme="http://tiimor.cn/tags/SQLCipher/"/>
+    
+      <category term="SQLite" scheme="http://tiimor.cn/tags/SQLite/"/>
+    
+      <category term="GreenDao" scheme="http://tiimor.cn/tags/GreenDao/"/>
     
   </entry>
   
