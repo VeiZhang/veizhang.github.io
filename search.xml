@@ -423,10 +423,10 @@
       </categories>
       <tags>
         <tag>Android</tag>
-        <tag>jCenter</tag>
-        <tag>Bintray</tag>
         <tag>AndroidStudio</tag>
         <tag>gradle</tag>
+        <tag>jCenter</tag>
+        <tag>Bintray</tag>
       </tags>
   </entry>
   <entry>

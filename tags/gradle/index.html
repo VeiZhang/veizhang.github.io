@@ -89,7 +89,7 @@
 <meta name="description" content="安静地做一只攻城狮。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="班德尔城">
-<meta property="og:url" content="https://tiimor.cn/tags/Gradle/index.html">
+<meta property="og:url" content="https://tiimor.cn/tags/gradle/index.html">
 <meta property="og:site_name" content="班德尔城">
 <meta property="og:description" content="安静地做一只攻城狮。">
 <meta name="twitter:card" content="summary">
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://tiimor.cn/tags/Gradle/"/>
+  <link rel="canonical" href="https://tiimor.cn/tags/gradle/"/>
 
 
 
 
 
-  <title>标签: Gradle | 班德尔城</title>
+  <title>标签: gradle | 班德尔城</title>
   
 
 
@@ -432,7 +432,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>Gradle<small>标签</small>
+        <h1>gradle<small>标签</small>
         </h1>
       </div>
 
@@ -444,9 +444,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/Gradle多渠道代码/" itemprop="url">
+            <a class="post-title-link" href="/AndroidStudio统一管理gradle脚本/" itemprop="url">
               
-                <span itemprop="name">Gradle多渠道代码</span>
+                <span itemprop="name">AndroidStudio统一管理gradle脚本</span>
               
             </a>
         
@@ -454,9 +454,93 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-17T14:48:47+08:00"
-              content="2019-03-17" >
-          03-17
+              datetime="2018-06-01T11:10:02+08:00"
+              content="2018-06-01" >
+          06-01
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/Artifactory搭建本地JFrog的Library仓库/" itemprop="url">
+              
+                <span itemprop="name">Artifactory搭建本地JFrog的Library仓库</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-05-21T16:37:55+08:00"
+              content="2017-05-21" >
+          05-21
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/AndroidStudio发布Library到jCenter/" itemprop="url">
+              
+                <span itemprop="name">AndroidStudio发布Library到jCenter</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-05-16T13:17:48+08:00"
+              content="2017-05-16" >
+          05-16
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/专治AndroidStudio中Gradle的疑难杂症/" itemprop="url">
+              
+                <span itemprop="name">专治AndroidStudio中Gradle疑难杂症</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-03-31T20:48:05+08:00"
+              content="2017-03-31" >
+          03-31
         </time>
       </div>
 
@@ -957,82 +1041,6 @@
             newcounter.set("title", title);
             newcounter.set("url", url);
             newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
-
-  
-
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-  <!-- modify by zhangwei -->
-  <!-- 动态时间小人 -->
-  <!-- modify by zhangwei -->
-<!-- 动态时间小人 -->
-<!-- z-index -1 表示在最底层，不能悬浮也不能点击 -->
-<!-- z-index auto 可以点击 -->
-<!-- z-index 9999 无限大时，总是在最上层，会影响其他悬浮框 -->
-<div id="dg" style="z-index: auto; position: fixed ! important; right: 0px; top: 0px;">  
-    <table width=""100% style="position: absolute; width:260px; right: 0px; top: 0px;">  
-		<div>
-			<embed wmode="transparent" src="http://cdn.tiimor.cn/images/dynamic_time.swf" quality="high" bgcolor="#ffffff" width="160" height="70" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
-		</div>
-    </table>  
-</div>
-  
-</body>
-</html>
-1);
             newcounter.save(null, {
               success: function(newcounter) {
                 var $element = $(document.getElementById(url));
