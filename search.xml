@@ -136,8 +136,8 @@
       </categories>
       <tags>
         <tag>Android</tag>
-        <tag>反编译</tag>
         <tag>混淆</tag>
+        <tag>反编译</tag>
         <tag>加壳</tag>
       </tags>
   </entry>
@@ -423,10 +423,10 @@
       </categories>
       <tags>
         <tag>Android</tag>
-        <tag>AndroidStudio</tag>
-        <tag>gradle</tag>
         <tag>jCenter</tag>
         <tag>Bintray</tag>
+        <tag>AndroidStudio</tag>
+        <tag>gradle</tag>
       </tags>
   </entry>
   <entry>

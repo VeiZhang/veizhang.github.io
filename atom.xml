@@ -4,9 +4,9 @@
   <subtitle>微笑，简单，奋发</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://tiimor.cn/"/>
+  <link href="https://tiimor.cn/"/>
   <updated>2019-03-24T04:39:00.858Z</updated>
-  <id>http://tiimor.cn/</id>
+  <id>https://tiimor.cn/</id>
   
   <author>
     <name>Tiimor</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Gradle多渠道代码</title>
-    <link href="http://tiimor.cn/Gradle%E5%A4%9A%E6%B8%A0%E9%81%93%E4%BB%A3%E7%A0%81/"/>
-    <id>http://tiimor.cn/Gradle多渠道代码/</id>
+    <link href="https://tiimor.cn/Gradle%E5%A4%9A%E6%B8%A0%E9%81%93%E4%BB%A3%E7%A0%81/"/>
+    <id>https://tiimor.cn/Gradle多渠道代码/</id>
     <published>2019-03-17T06:48:47.000Z</published>
     <updated>2019-03-24T04:39:00.858Z</updated>
     
@@ -58,19 +58,19 @@
     
     </summary>
     
-      <category term="Android联盟" scheme="http://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
+      <category term="Android联盟" scheme="https://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
     
     
-      <category term="Gradle" scheme="http://tiimor.cn/tags/Gradle/"/>
+      <category term="Gradle" scheme="https://tiimor.cn/tags/Gradle/"/>
     
-      <category term="多渠道" scheme="http://tiimor.cn/tags/%E5%A4%9A%E6%B8%A0%E9%81%93/"/>
+      <category term="多渠道" scheme="https://tiimor.cn/tags/%E5%A4%9A%E6%B8%A0%E9%81%93/"/>
     
   </entry>
   
   <entry>
     <title>Retrofit封装</title>
-    <link href="http://tiimor.cn/Retrofit%E5%B0%81%E8%A3%85/"/>
-    <id>http://tiimor.cn/Retrofit封装/</id>
+    <link href="https://tiimor.cn/Retrofit%E5%B0%81%E8%A3%85/"/>
+    <id>https://tiimor.cn/Retrofit封装/</id>
     <published>2018-12-22T05:25:13.000Z</published>
     <updated>2019-03-17T06:47:42.382Z</updated>
     
@@ -163,19 +163,19 @@
     
     </summary>
     
-      <category term="Android联盟" scheme="http://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
+      <category term="Android联盟" scheme="https://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
     
     
-      <category term="网络请求" scheme="http://tiimor.cn/tags/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/"/>
+      <category term="网络请求" scheme="https://tiimor.cn/tags/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/"/>
     
-      <category term="Retrofit" scheme="http://tiimor.cn/tags/Retrofit/"/>
+      <category term="Retrofit" scheme="https://tiimor.cn/tags/Retrofit/"/>
     
   </entry>
   
   <entry>
     <title>Android图片加载策略-ImageLoader</title>
-    <link href="http://tiimor.cn/Android%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E7%AD%96%E7%95%A5-ImageLoader/"/>
-    <id>http://tiimor.cn/Android图片加载策略-ImageLoader/</id>
+    <link href="https://tiimor.cn/Android%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E7%AD%96%E7%95%A5-ImageLoader/"/>
+    <id>https://tiimor.cn/Android图片加载策略-ImageLoader/</id>
     <published>2018-12-22T05:24:38.000Z</published>
     <updated>2019-03-17T06:47:42.362Z</updated>
     
@@ -248,17 +248,17 @@
     
     </summary>
     
-      <category term="Android联盟" scheme="http://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
+      <category term="Android联盟" scheme="https://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
     
     
-      <category term="ImageLoader" scheme="http://tiimor.cn/tags/ImageLoader/"/>
+      <category term="ImageLoader" scheme="https://tiimor.cn/tags/ImageLoader/"/>
     
   </entry>
   
   <entry>
     <title>RxJava+Retrofit常用的使用场景</title>
-    <link href="http://tiimor.cn/RxJava-Retrofit%E5%B8%B8%E7%94%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"/>
-    <id>http://tiimor.cn/RxJava-Retrofit常用的使用场景/</id>
+    <link href="https://tiimor.cn/RxJava-Retrofit%E5%B8%B8%E7%94%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"/>
+    <id>https://tiimor.cn/RxJava-Retrofit常用的使用场景/</id>
     <published>2018-12-22T05:18:56.000Z</published>
     <updated>2019-03-17T06:47:42.383Z</updated>
     
@@ -288,19 +288,19 @@
     
     </summary>
     
-      <category term="Android联盟" scheme="http://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
+      <category term="Android联盟" scheme="https://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
     
     
-      <category term="Retrofit" scheme="http://tiimor.cn/tags/Retrofit/"/>
+      <category term="Retrofit" scheme="https://tiimor.cn/tags/Retrofit/"/>
     
-      <category term="RxJava" scheme="http://tiimor.cn/tags/RxJava/"/>
+      <category term="RxJava" scheme="https://tiimor.cn/tags/RxJava/"/>
     
   </entry>
   
   <entry>
     <title>Android功守道-so库混淆加密</title>
-    <link href="http://tiimor.cn/Android%E5%8A%9F%E5%AE%88%E9%81%93-so%E5%BA%93%E6%B7%B7%E6%B7%86%E5%8A%A0%E5%AF%86/"/>
-    <id>http://tiimor.cn/Android功守道-so库混淆加密/</id>
+    <link href="https://tiimor.cn/Android%E5%8A%9F%E5%AE%88%E9%81%93-so%E5%BA%93%E6%B7%B7%E6%B7%86%E5%8A%A0%E5%AF%86/"/>
+    <id>https://tiimor.cn/Android功守道-so库混淆加密/</id>
     <published>2018-12-22T05:17:04.000Z</published>
     <updated>2019-03-17T06:47:42.360Z</updated>
     
@@ -339,19 +339,19 @@
     
     </summary>
     
-      <category term="Android联盟" scheme="http://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
+      <category term="Android联盟" scheme="https://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
     
     
-      <category term="Android" scheme="http://tiimor.cn/tags/Android/"/>
+      <category term="Android" scheme="https://tiimor.cn/tags/Android/"/>
     
-      <category term="混淆" scheme="http://tiimor.cn/tags/%E6%B7%B7%E6%B7%86/"/>
+      <category term="混淆" scheme="https://tiimor.cn/tags/%E6%B7%B7%E6%B7%86/"/>
     
   </entry>
   
   <entry>
     <title>AndroidFFmpeg命令使用</title>
-    <link href="http://tiimor.cn/AndroidFFmpeg%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/"/>
-    <id>http://tiimor.cn/AndroidFFmpeg命令使用/</id>
+    <link href="https://tiimor.cn/AndroidFFmpeg%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/"/>
+    <id>https://tiimor.cn/AndroidFFmpeg命令使用/</id>
     <published>2018-09-01T08:18:05.000Z</published>
     <updated>2019-03-17T06:47:42.355Z</updated>
     
@@ -455,19 +455,19 @@
     
     </summary>
     
-      <category term="Android联盟" scheme="http://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
+      <category term="Android联盟" scheme="https://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
     
     
-      <category term="Android" scheme="http://tiimor.cn/tags/Android/"/>
+      <category term="Android" scheme="https://tiimor.cn/tags/Android/"/>
     
-      <category term="FFmpeg" scheme="http://tiimor.cn/tags/FFmpeg/"/>
+      <category term="FFmpeg" scheme="https://tiimor.cn/tags/FFmpeg/"/>
     
   </entry>
   
   <entry>
     <title>基于Android的HTTP下载速度提升</title>
-    <link href="http://tiimor.cn/%E5%9F%BA%E4%BA%8EAndroid%E7%9A%84HTTP%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E6%8F%90%E5%8D%87/"/>
-    <id>http://tiimor.cn/基于Android的HTTP下载速度提升/</id>
+    <link href="https://tiimor.cn/%E5%9F%BA%E4%BA%8EAndroid%E7%9A%84HTTP%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E6%8F%90%E5%8D%87/"/>
+    <id>https://tiimor.cn/基于Android的HTTP下载速度提升/</id>
     <published>2018-07-01T06:43:44.000Z</published>
     <updated>2019-03-17T06:47:42.386Z</updated>
     
@@ -521,21 +521,21 @@
     
     </summary>
     
-      <category term="Android联盟" scheme="http://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
+      <category term="Android联盟" scheme="https://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
     
     
-      <category term="Android" scheme="http://tiimor.cn/tags/Android/"/>
+      <category term="Android" scheme="https://tiimor.cn/tags/Android/"/>
     
-      <category term="HTTP" scheme="http://tiimor.cn/tags/HTTP/"/>
+      <category term="HTTP" scheme="https://tiimor.cn/tags/HTTP/"/>
     
-      <category term="Downloader" scheme="http://tiimor.cn/tags/Downloader/"/>
+      <category term="Downloader" scheme="https://tiimor.cn/tags/Downloader/"/>
     
   </entry>
   
   <entry>
     <title>AndroidSDK-原生Settings添加菜单项</title>
-    <link href="http://tiimor.cn/AndroidSDK-%E5%8E%9F%E7%94%9FSettings%E6%B7%BB%E5%8A%A0%E8%8F%9C%E5%8D%95%E9%A1%B9/"/>
-    <id>http://tiimor.cn/AndroidSDK-原生Settings添加菜单项/</id>
+    <link href="https://tiimor.cn/AndroidSDK-%E5%8E%9F%E7%94%9FSettings%E6%B7%BB%E5%8A%A0%E8%8F%9C%E5%8D%95%E9%A1%B9/"/>
+    <id>https://tiimor.cn/AndroidSDK-原生Settings添加菜单项/</id>
     <published>2018-06-03T11:01:41.000Z</published>
     <updated>2019-03-17T06:47:42.356Z</updated>
     
@@ -594,19 +594,19 @@
     
     </summary>
     
-      <category term="Android联盟" scheme="http://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
+      <category term="Android联盟" scheme="https://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
     
     
-      <category term="AndroidSDK" scheme="http://tiimor.cn/tags/AndroidSDK/"/>
+      <category term="AndroidSDK" scheme="https://tiimor.cn/tags/AndroidSDK/"/>
     
-      <category term="Settings" scheme="http://tiimor.cn/tags/Settings/"/>
+      <category term="Settings" scheme="https://tiimor.cn/tags/Settings/"/>
     
   </entry>
   
   <entry>
     <title>AndroidStudio统一管理gradle脚本</title>
-    <link href="http://tiimor.cn/AndroidStudio%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86gradle%E8%84%9A%E6%9C%AC/"/>
-    <id>http://tiimor.cn/AndroidStudio统一管理gradle脚本/</id>
+    <link href="https://tiimor.cn/AndroidStudio%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86gradle%E8%84%9A%E6%9C%AC/"/>
+    <id>https://tiimor.cn/AndroidStudio统一管理gradle脚本/</id>
     <published>2018-06-01T03:10:02.000Z</published>
     <updated>2019-04-13T02:03:10.809Z</updated>
     
@@ -657,19 +657,19 @@
     
     </summary>
     
-      <category term="Android联盟" scheme="http://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
+      <category term="Android联盟" scheme="https://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
     
     
-      <category term="AndroidStudio" scheme="http://tiimor.cn/tags/AndroidStudio/"/>
+      <category term="AndroidStudio" scheme="https://tiimor.cn/tags/AndroidStudio/"/>
     
-      <category term="gradle" scheme="http://tiimor.cn/tags/gradle/"/>
+      <category term="gradle" scheme="https://tiimor.cn/tags/gradle/"/>
     
   </entry>
   
   <entry>
     <title>Android二维码生成与扫描</title>
-    <link href="http://tiimor.cn/Android%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%94%9F%E6%88%90%E4%B8%8E%E6%89%AB%E6%8F%8F/"/>
-    <id>http://tiimor.cn/Android二维码生成与扫描/</id>
+    <link href="https://tiimor.cn/Android%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%94%9F%E6%88%90%E4%B8%8E%E6%89%AB%E6%8F%8F/"/>
+    <id>https://tiimor.cn/Android二维码生成与扫描/</id>
     <published>2018-03-04T05:57:16.000Z</published>
     <updated>2019-03-17T06:47:42.359Z</updated>
     
@@ -712,23 +712,23 @@
     
     </summary>
     
-      <category term="Android联盟" scheme="http://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
+      <category term="Android联盟" scheme="https://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
     
     
-      <category term="Android" scheme="http://tiimor.cn/tags/Android/"/>
+      <category term="Android" scheme="https://tiimor.cn/tags/Android/"/>
     
-      <category term="二维码" scheme="http://tiimor.cn/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
+      <category term="二维码" scheme="https://tiimor.cn/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
     
-      <category term="zxing" scheme="http://tiimor.cn/tags/zxing/"/>
+      <category term="zxing" scheme="https://tiimor.cn/tags/zxing/"/>
     
-      <category term="zbar" scheme="http://tiimor.cn/tags/zbar/"/>
+      <category term="zbar" scheme="https://tiimor.cn/tags/zbar/"/>
     
   </entry>
   
   <entry>
     <title>Merry Christmas-2017</title>
-    <link href="http://tiimor.cn/Merry-Christmas/"/>
-    <id>http://tiimor.cn/Merry-Christmas/</id>
+    <link href="https://tiimor.cn/Merry-Christmas/"/>
+    <id>https://tiimor.cn/Merry-Christmas/</id>
     <published>2017-12-25T11:58:55.000Z</published>
     <updated>2019-03-17T06:47:42.381Z</updated>
     
@@ -748,8 +748,8 @@
   
   <entry>
     <title>Android功守道-反编译VS混淆与加壳</title>
-    <link href="http://tiimor.cn/Android%E5%8A%9F%E5%AE%88%E9%81%93-%E5%8F%8D%E7%BC%96%E8%AF%91VS%E6%B7%B7%E6%B7%86%E4%B8%8E%E5%8A%A0%E5%A3%B3/"/>
-    <id>http://tiimor.cn/Android功守道-反编译VS混淆与加壳/</id>
+    <link href="https://tiimor.cn/Android%E5%8A%9F%E5%AE%88%E9%81%93-%E5%8F%8D%E7%BC%96%E8%AF%91VS%E6%B7%B7%E6%B7%86%E4%B8%8E%E5%8A%A0%E5%A3%B3/"/>
+    <id>https://tiimor.cn/Android功守道-反编译VS混淆与加壳/</id>
     <published>2017-12-19T12:18:41.000Z</published>
     <updated>2019-03-17T06:47:42.361Z</updated>
     
@@ -917,23 +917,23 @@
     
     </summary>
     
-      <category term="Android联盟" scheme="http://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
+      <category term="Android联盟" scheme="https://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
     
     
-      <category term="Android" scheme="http://tiimor.cn/tags/Android/"/>
+      <category term="Android" scheme="https://tiimor.cn/tags/Android/"/>
     
-      <category term="反编译" scheme="http://tiimor.cn/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
+      <category term="混淆" scheme="https://tiimor.cn/tags/%E6%B7%B7%E6%B7%86/"/>
     
-      <category term="混淆" scheme="http://tiimor.cn/tags/%E6%B7%B7%E6%B7%86/"/>
+      <category term="反编译" scheme="https://tiimor.cn/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
     
-      <category term="加壳" scheme="http://tiimor.cn/tags/%E5%8A%A0%E5%A3%B3/"/>
+      <category term="加壳" scheme="https://tiimor.cn/tags/%E5%8A%A0%E5%A3%B3/"/>
     
   </entry>
   
   <entry>
     <title>Android图表库-MPAndroidChart</title>
-    <link href="http://tiimor.cn/Android%E5%9B%BE%E8%A1%A8%E5%BA%93-MPAndroidChart/"/>
-    <id>http://tiimor.cn/Android图表库-MPAndroidChart/</id>
+    <link href="https://tiimor.cn/Android%E5%9B%BE%E8%A1%A8%E5%BA%93-MPAndroidChart/"/>
+    <id>https://tiimor.cn/Android图表库-MPAndroidChart/</id>
     <published>2017-12-10T06:29:46.000Z</published>
     <updated>2019-03-17T06:47:42.363Z</updated>
     
@@ -1110,19 +1110,19 @@
     
     </summary>
     
-      <category term="Android联盟" scheme="http://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
+      <category term="Android联盟" scheme="https://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
     
     
-      <category term="Android图表" scheme="http://tiimor.cn/tags/Android%E5%9B%BE%E8%A1%A8/"/>
+      <category term="Android图表" scheme="https://tiimor.cn/tags/Android%E5%9B%BE%E8%A1%A8/"/>
     
-      <category term="MPAndroidChart" scheme="http://tiimor.cn/tags/MPAndroidChart/"/>
+      <category term="MPAndroidChart" scheme="https://tiimor.cn/tags/MPAndroidChart/"/>
     
   </entry>
   
   <entry>
     <title>Android数据库加密</title>
-    <link href="http://tiimor.cn/Android%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8A%A0%E5%AF%86/"/>
-    <id>http://tiimor.cn/Android数据库加密/</id>
+    <link href="https://tiimor.cn/Android%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8A%A0%E5%AF%86/"/>
+    <id>https://tiimor.cn/Android数据库加密/</id>
     <published>2017-11-05T07:11:51.000Z</published>
     <updated>2019-03-17T06:47:42.365Z</updated>
     
@@ -1240,25 +1240,25 @@
     
     </summary>
     
-      <category term="Android联盟" scheme="http://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
+      <category term="Android联盟" scheme="https://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
     
     
-      <category term="Android" scheme="http://tiimor.cn/tags/Android/"/>
+      <category term="Android" scheme="https://tiimor.cn/tags/Android/"/>
     
-      <category term="加密" scheme="http://tiimor.cn/tags/%E5%8A%A0%E5%AF%86/"/>
+      <category term="加密" scheme="https://tiimor.cn/tags/%E5%8A%A0%E5%AF%86/"/>
     
-      <category term="SQLCipher" scheme="http://tiimor.cn/tags/SQLCipher/"/>
+      <category term="SQLCipher" scheme="https://tiimor.cn/tags/SQLCipher/"/>
     
-      <category term="SQLite" scheme="http://tiimor.cn/tags/SQLite/"/>
+      <category term="SQLite" scheme="https://tiimor.cn/tags/SQLite/"/>
     
-      <category term="GreenDao" scheme="http://tiimor.cn/tags/GreenDao/"/>
+      <category term="GreenDao" scheme="https://tiimor.cn/tags/GreenDao/"/>
     
   </entry>
   
   <entry>
     <title>Android白银篇-GreenDao3</title>
-    <link href="http://tiimor.cn/Android%E7%99%BD%E9%93%B6%E7%AF%87-GreenDao3/"/>
-    <id>http://tiimor.cn/Android白银篇-GreenDao3/</id>
+    <link href="https://tiimor.cn/Android%E7%99%BD%E9%93%B6%E7%AF%87-GreenDao3/"/>
+    <id>https://tiimor.cn/Android白银篇-GreenDao3/</id>
     <published>2017-11-04T08:34:52.000Z</published>
     <updated>2019-03-17T06:47:42.367Z</updated>
     
@@ -1356,21 +1356,21 @@
     
     </summary>
     
-      <category term="Android联盟" scheme="http://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
+      <category term="Android联盟" scheme="https://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
     
     
-      <category term="Android" scheme="http://tiimor.cn/tags/Android/"/>
+      <category term="Android" scheme="https://tiimor.cn/tags/Android/"/>
     
-      <category term="SQLite" scheme="http://tiimor.cn/tags/SQLite/"/>
+      <category term="SQLite" scheme="https://tiimor.cn/tags/SQLite/"/>
     
-      <category term="GreenDao" scheme="http://tiimor.cn/tags/GreenDao/"/>
+      <category term="GreenDao" scheme="https://tiimor.cn/tags/GreenDao/"/>
     
   </entry>
   
   <entry>
     <title>Android适配器终结者？</title>
-    <link href="http://tiimor.cn/Android%E9%80%82%E9%85%8D%E5%99%A8%E7%BB%88%E7%BB%93%E8%80%85%EF%BC%9F/"/>
-    <id>http://tiimor.cn/Android适配器终结者？/</id>
+    <link href="https://tiimor.cn/Android%E9%80%82%E9%85%8D%E5%99%A8%E7%BB%88%E7%BB%93%E8%80%85%EF%BC%9F/"/>
+    <id>https://tiimor.cn/Android适配器终结者？/</id>
     <published>2017-10-22T06:39:56.000Z</published>
     <updated>2019-03-17T06:47:42.368Z</updated>
     
@@ -1436,19 +1436,19 @@
     
     </summary>
     
-      <category term="Android联盟" scheme="http://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
+      <category term="Android联盟" scheme="https://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
     
     
-      <category term="Android-Adapter" scheme="http://tiimor.cn/tags/Android-Adapter/"/>
+      <category term="Android-Adapter" scheme="https://tiimor.cn/tags/Android-Adapter/"/>
     
-      <category term="适配器终结者" scheme="http://tiimor.cn/tags/%E9%80%82%E9%85%8D%E5%99%A8%E7%BB%88%E7%BB%93%E8%80%85/"/>
+      <category term="适配器终结者" scheme="https://tiimor.cn/tags/%E9%80%82%E9%85%8D%E5%99%A8%E7%BB%88%E7%BB%93%E8%80%85/"/>
     
   </entry>
   
   <entry>
     <title>Android6.0+动态权限管理</title>
-    <link href="http://tiimor.cn/Android6-0-%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/"/>
-    <id>http://tiimor.cn/Android6-0-动态权限管理/</id>
+    <link href="https://tiimor.cn/Android6-0-%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/"/>
+    <id>https://tiimor.cn/Android6-0-动态权限管理/</id>
     <published>2017-10-21T11:52:28.000Z</published>
     <updated>2019-03-17T06:47:42.354Z</updated>
     
@@ -1510,19 +1510,19 @@
     
     </summary>
     
-      <category term="Android联盟" scheme="http://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
+      <category term="Android联盟" scheme="https://tiimor.cn/categories/Android%E8%81%94%E7%9B%9F/"/>
     
     
-      <category term="Android6.0+" scheme="http://tiimor.cn/tags/Android6-0/"/>
+      <category term="Android6.0+" scheme="https://tiimor.cn/tags/Android6-0/"/>
     
-      <category term="动态权限" scheme="http://tiimor.cn/tags/%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90/"/>
+      <category term="动态权限" scheme="https://tiimor.cn/tags/%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90/"/>
     
   </entry>
   
   <entry>
     <title>Android-DIY-ShimmerTextView</title>
-    <link href="http://tiimor.cn/Android-DIY-ShimmerTextView/"/>
-    <id>http://tiimor.cn/Android-DIY-ShimmerTextView/</id>
+    <link href="https://tiimor.cn/Android-DIY-ShimmerTextView/"/>
+    <id>https://tiimor.cn/Android-DIY-ShimmerTextView/</id>
     <published>2017-09-24T05:46:44.000Z</published>
     <updated>2019-03-17T06:47:42.353Z</updated>
     
@@ -1544,19 +1544,19 @@
     
     </summary>
     
-      <category term="DIY" scheme="http://tiimor.cn/categories/DIY/"/>
+      <category term="DIY" scheme="https://tiimor.cn/categories/DIY/"/>
     
     
-      <category term="Android" scheme="http://tiimor.cn/tags/Android/"/>
+      <category term="Android" scheme="https://tiimor.cn/tags/Android/"/>
     
-      <category term="自定义控件" scheme="http://tiimor.cn/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/"/>
+      <category term="自定义控件" scheme="https://tiimor.cn/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/"/>
     
   </entry>
   
   <entry>
     <title>Android热修复-Sophix</title>
-    <link href="http://tiimor.cn/Android%E7%83%AD%E4%BF%AE%E5%A4%8D-Sophix/"/>
-    <id>http://tiimor.cn/Android热修复-Sophix/</id>
+    <link href="https://tiimor.cn/Android%E7%83%AD%E4%BF%AE%E5%A4%8D-Sophix/"/>
+    <id>https://tiimor.cn/Android热修复-Sophix/</id>
     <published>2017-09-17T03:52:10.000Z</published>
     <updated>2019-03-17T06:47:42.366Z</updated>
     
@@ -1783,21 +1783,21 @@
     
     </summary>
     
-      <category term="好好学习" scheme="http://tiimor.cn/categories/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0/"/>
+      <category term="好好学习" scheme="https://tiimor.cn/categories/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="Android" scheme="http://tiimor.cn/tags/Android/"/>
+      <category term="Android" scheme="https://tiimor.cn/tags/Android/"/>
     
-      <category term="热修复" scheme="http://tiimor.cn/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D/"/>
+      <category term="热修复" scheme="https://tiimor.cn/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D/"/>
     
-      <category term="Sophix" scheme="http://tiimor.cn/tags/Sophix/"/>
+      <category term="Sophix" scheme="https://tiimor.cn/tags/Sophix/"/>
     
   </entry>
   
   <entry>
     <title>Java编译注解-自动生成代码</title>
-    <link href="http://tiimor.cn/Java%E7%BC%96%E8%AF%91%E6%B3%A8%E8%A7%A3-%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/"/>
-    <id>http://tiimor.cn/Java编译注解-自动生成代码/</id>
+    <link href="https://tiimor.cn/Java%E7%BC%96%E8%AF%91%E6%B3%A8%E8%A7%A3-%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/"/>
+    <id>https://tiimor.cn/Java编译注解-自动生成代码/</id>
     <published>2017-09-10T05:58:52.000Z</published>
     <updated>2019-03-17T06:47:42.378Z</updated>
     
@@ -1906,12 +1906,12 @@
     
     </summary>
     
-      <category term="好好学习" scheme="http://tiimor.cn/categories/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0/"/>
+      <category term="好好学习" scheme="https://tiimor.cn/categories/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="Java" scheme="http://tiimor.cn/tags/Java/"/>
+      <category term="Java" scheme="https://tiimor.cn/tags/Java/"/>
     
-      <category term="编译注解" scheme="http://tiimor.cn/tags/%E7%BC%96%E8%AF%91%E6%B3%A8%E8%A7%A3/"/>
+      <category term="编译注解" scheme="https://tiimor.cn/tags/%E7%BC%96%E8%AF%91%E6%B3%A8%E8%A7%A3/"/>
     
   </entry>
   
